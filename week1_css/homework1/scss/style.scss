@@ -22,7 +22,6 @@ input{
 }
 #header{
     background:#fff;
-    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     justify-content: center;
@@ -52,42 +51,76 @@ input{
     margin: 0 auto;
     min-height: 100%;
     letter-spacing: 1px;
-    li{
+    .description{
+        color:#38494d;
         background:#759ca4;
         font-size: 3.2em;
         font-weight: bold;
         line-height: 120%;
         box-sizing: border-box;
         margin: 0 0 20px 0;
+        padding: 45px 0 45px 40px;
+        background: url('../images/bg01.jpg') #759ca4 no-repeat right bottom;
 
-        &:nth-child(1){
-            color:#38494d;
-            padding: 45px 0 45px 40px;
-            background: url(../images/bg01.jpg) #759ca4 no-repeat right bottom;
-            a{
-                font-weight: normal;
-                font-size: 25px;
-                border-bottom: 3px solid #557277;
-                color:#fff;
-                padding: 0 0 5px 0;
-            }
+        a{
+            font-weight: normal;
+            font-size: 25px;
+            border-bottom: 3px solid #557277;
+            color:#fff;
+            padding: 0 0 5px 0;
         }
+    }
+    .waterfallWall{
+        column-count: 3;
+        -webkit-column-count: 3;
+        column-fill: auto;
+        -webkit-column-fill: auto;
+        height: 2030px;
 
-        &:nth-child(2),
-        &:nth-child(3),
-        &:nth-child(4){
-            column-count: 3;
-            -webkit-count: 3;
-            column-rule-style: solid;
-            -webkit-column-rule-style: solid;
-            column-rule-color: #eaecee;
-            -webkit-column-rule-color: #eaecee;
-            column-rule-width: 20px;
-            -webkit-column-rule-width: 20px;
+        li{
+            color: #eaecee;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            background: #759CA4;
+            margin: 0 0 20px 0;
+            
+            &:nth-child(1){background:url('../images/photo01.jpg') no-repeat left top;}
+            &:nth-child(3){background:url('../images/photo03.jpg') no-repeat left top;}
+            &:nth-child(4){background:url('../images/photo04.jpg') no-repeat left top;}
+            &:nth-child(5){background:url('../images/photo05.jpg') no-repeat left top;}
+            &:nth-child(6){background:url('../images/photo06.jpg') no-repeat left top;}
+            &:nth-child(7){background:url('../images/photo07.jpg') no-repeat left top;}
+            &:nth-child(8){background:url('../images/photo08.jpg') no-repeat left top;}
+            &:nth-child(9){background:url('../images/photo09.jpg') no-repeat left top;}
+            &:nth-child(11){background:url('../images/photo11.jpg') no-repeat left top;}
+            &:nth-child(12){background:url('../images/photo12.jpg') no-repeat left top;}
+            &:nth-child(13){background:url('../images/photo13.jpg') no-repeat left top;}
+            &:nth-child(15){background:url('../images/photo15.jpg') no-repeat left top;}
 
-            span{
-                display: block;
-                height: 655px;
+            &:nth-child(1),
+            &:nth-child(4),
+            &:nth-child(7){
+                height: 657px;
+            }
+            &:nth-child(2),
+            &:nth-child(10),
+            &:nth-child(14){
+                height: 170px;
+                line-height: 170px;
+            }
+            &:nth-child(3),
+            &:nth-child(11),
+            &:nth-child(15){
+                height: 469px;
+            }
+            &:nth-child(5),
+            &:nth-child(6),
+            &:nth-child(8),
+            &:nth-child(9),
+            &:nth-child(12),
+            &:nth-child(13){
+                height: 319px;
             }
         }
     }
@@ -96,8 +129,9 @@ input{
     background:#557277;
     color:#d0d0d0;
     .bottomInfo{
+        width: 980px;
+        margin: 0 auto;
         padding: 3em;
-        display: -webkit-box;
         display: -webkit-flex;
         display: flex;
         justify-content: center;
