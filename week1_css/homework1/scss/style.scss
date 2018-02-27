@@ -1,60 +1,111 @@
+/*RESET*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul, li {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*VARIABLES*/
+$primary-color:#759ca4;
+$secondary-color:#38494d;
+$veryMinor-color:#557277;
+$link-color:#d0d0d0;
+$bg-color:#eaecee;
+
+
+/*MIXIN*/
+@mixin displayFlex{
+    display: flex;
+    display: -webkit-flex;
+}
+
+%buttonDefault{
+    width: 100%;
+    padding: 10px;
+}
+
+/*START*/
 html, body{
     height: 100%;
 }
 body{
-    margin: 0;
-	padding: 0;
     font-size: 15px;
     line-height: 150%;
-    background: #eaecee;
+    background: $bg-color;
     font-family: Arial, Helvetica, sans-serif;
 }
 a{
     color:#999;
     text-decoration: none;
 }
-h1,p{
-    margin: 0;
-    padding: 0;
-}
-ul,li{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
 input{
     border: 0px;
     font-size: 15px;
 }
 #header{
+    @include displayFlex;
     background:#fff;
-    display: flex;
-    display: -webkit-flex;
     justify-content: center;
     align-items: center;
 
     h1{
         padding: 0 40px;
         a{
-            color:#38494d;
+            color: $secondary-color;
             font-weight: bold;
             font-size:18px;
             letter-spacing: 2px;
-            border-bottom: 3px solid #38494d;
+            border-bottom: 3px solid $secondary-color;
         }
     }
     ul{
-        display: flex;
-        display: -webkit-flex;
+        @include displayFlex;
         li{
             padding: 2em;
             a{
                 display: block;
                 &.active{
-                    color:#38494d;
+                    color: $secondary-color;
                 }
                 &:hover{
-                    color: #38494d;
+                    color: $secondary-color;
                 }
             }
         }
@@ -70,14 +121,13 @@ input{
     letter-spacing: 1px;
 
     .description{
-        color:#38494d;
-        background:#759ca4;
+        color:$secondary-color;
+        background:$primary-color;
         font-size: 3.2em;
         font-weight: bold;
         box-sizing: border-box;
         margin: 0 0 20px 0;
-        display: flex;
-        display: -webkit-flex;
+        @include displayFlex;
         justify-content: space-between;
         
         .slogan{
@@ -86,7 +136,7 @@ input{
             a{
                 font-weight: normal;
                 font-size: 25px;
-                border-bottom: 3px solid #557277;
+                border-bottom: 3px solid $veryMinor-color;
                 color:#fff;
                 padding: 0 0 5px 0;
             }
@@ -108,43 +158,43 @@ input{
             .mark{
                 position: absolute;
                 color:#fff;
-                background:#759ca4;
+                background:$primary-color;
                 padding: 15px 25px;
             }
         }
-        .h657{
+        .photo-2x{
             height: 657px;
         }
-        .h468{
+        .photo-lg{
             height: 468px;
         }
-        .h319{
+        .photo-sm{
             height: 319px;
         }
-        .h170{
-            background: #759ca4;
+        .photo-xs{
+            height: 170px;
+        }
+        .photo-bg{
+            background: $primary-color;
             color: #eaecee;
             font-size:  30px;
             font-weight: bold;
             text-align: center;
-            height: 170px;
             line-height: 170px;
         }
     }
 }
 #footer{
-    background:#557277;
-    color:#d0d0d0;
+    background:$veryMinor-color;
+    color:$link-color;
 
     .bottomInfo{
-        display: flex;
-        display: -webkit-flex;
+        @include displayFlex;
         justify-content:center;
         -webkit-justify-content:center;
         
         .box{
-            display: flex;
-            display: -webkit-flex;
+            @include displayFlex;
             margin: 20px 0;
             width: 980px;
             
@@ -184,17 +234,15 @@ input{
                 }
                 input[type=email]{
                     box-sizing: border-box;
-                    width: 100%;
-                    background:#d0d0d0;
+                    background:$link-color;
                     margin: 10px 0;
-                    padding: 10px;
+                    @extend %buttonDefault;
                 }
                 button{
                     border: 0;
-                    width: 100%;
-                    background:#38494d;
                     color:#fff;
-                    padding: 10px;
+                    background:$secondary-color;
+                    @extend %buttonDefault;
                 }
             }
         }
