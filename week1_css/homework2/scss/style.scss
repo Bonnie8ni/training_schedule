@@ -13,9 +13,9 @@ $bg-color:#f5f4f2;
     display: -webkit-flex;
 }
 
-@mixin justifyContentSpaceBetween {
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
+@mixin justifyContent($value:center) {
+    justify-content: $value;
+    -webkit-justify-content: $value;
 }
 
 
@@ -55,12 +55,12 @@ input {
 
 #header {
     @include displayFlex;
+    @include justifyContent;
     background: url('../images/headerbg.jpg') #e3eae8 repeat left top;
-    justify-content: center;
     .box {
         width: 930px;
         @include displayFlex;
-        @include justifyContentSpaceBetween;
+        @include justifyContent(space-between);
         h1 {
             padding: 15px 0
         }
@@ -102,7 +102,7 @@ input {
     .article {
         line-height: 190%;
         @include displayFlex;
-        @include justifyContentSpaceBetween;
+        @include justifyContent(space-between);
         padding: 50px 0;
         .entry-content-first {
             padding: 70px 0 0 0;
@@ -138,7 +138,7 @@ input {
     padding: 20px 0 0 0;
     height: 130px;
     @include displayFlex;
-    justify-content: center;
+    @include justifyContent;
     a {
         color: #51d9da;
         transition: 1s;
@@ -153,11 +153,11 @@ input {
     #box {
         width: 930px;
         @include displayFlex;
-        @include justifyContentSpaceBetween;
+        @include justifyContent(space-between);
         .bottomlink {
             width: 180px;
             @include displayFlex;
-            @include justifyContentSpaceBetween;
+            @include justifyContent(space-between);
         }
     }
 }
