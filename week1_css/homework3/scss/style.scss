@@ -178,7 +178,7 @@ input {
             color: #999;
         }
     }
-    .more {
+    .description {
         @include displayFlex;
         .about {
             @include aboutClassSet(#666,

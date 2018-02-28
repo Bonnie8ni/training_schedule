@@ -3,7 +3,7 @@
 /*VARIABLES*/
 /*MIXIN*/
 /*EXTEND*/
-#content .more .about .title, #content .more .about .text, #content .more .classes .title, #content .more .classes .text {
+#content .description .about .title, #content .description .about .text, #content .description .classes .title, #content .description .classes .text {
   width: 50%;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
@@ -120,12 +120,12 @@ input {
     #content .slogan .author {
       font-size: 8px;
       color: #999; }
-  #content .more {
+  #content .description {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     display: -webkit-flex; }
-    #content .more .about {
+    #content .description .about {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -134,29 +134,29 @@ input {
       box-sizing: border-box;
       padding: 0 10px;
       width: 50%; }
-      #content .more .about .title {
+      #content .description .about .title {
         font-size: 25px;
         line-height: 120%;
         font-family: Arial, Helvetica, sans-serif; }
-        #content .more .about .title p {
+        #content .description .about .title p {
           margin: 10px 0 0 0;
           color: #999; }
-      #content .more .about .text {
+      #content .description .about .text {
         font-size: 8px;
         font-weight: bold;
         color: #666;
         font-family: Georgia, 'Times New Roman', Times, serif;
         border-left: 2px solid #999; }
-        #content .more .about .text .entry-title {
+        #content .description .about .text .entry-title {
           font-size: 14px; }
-        #content .more .about .text .entry-text {
+        #content .description .about .text .entry-text {
           padding: 15px 0;
           line-height: 150%; }
-        #content .more .about .text .entry-more {
+        #content .description .about .text .entry-more {
           font-size: 35px; }
-          #content .more .about .text .entry-more i {
+          #content .description .about .text .entry-more i {
             color: #666; }
-    #content .more .classes {
+    #content .description .classes {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -165,25 +165,25 @@ input {
       box-sizing: border-box;
       padding: 0 10px;
       width: 50%; }
-      #content .more .classes .title {
+      #content .description .classes .title {
         font-size: 25px;
         line-height: 120%;
         font-family: Arial, Helvetica, sans-serif; }
-        #content .more .classes .title p {
+        #content .description .classes .title p {
           margin: 10px 0 0 0;
           color: #de5454; }
-      #content .more .classes .text {
+      #content .description .classes .text {
         font-size: 8px;
         font-weight: bold;
         color: #de5454;
         font-family: Georgia, 'Times New Roman', Times, serif;
         border-left: 2px solid #de5454; }
-        #content .more .classes .text .entry-title {
+        #content .description .classes .text .entry-title {
           font-size: 14px; }
-        #content .more .classes .text .entry-text {
+        #content .description .classes .text .entry-text {
           padding: 15px 0;
           line-height: 150%; }
-        #content .more .classes .text .entry-more {
+        #content .description .classes .text .entry-more {
           font-size: 35px; }
-          #content .more .classes .text .entry-more i {
+          #content .description .classes .text .entry-more i {
             color: #de5454; }
