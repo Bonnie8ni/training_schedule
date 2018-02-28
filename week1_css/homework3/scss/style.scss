@@ -1,0 +1,194 @@
+/*RESET*/
+
+@import url('../css/reset.css');
+
+/*VARIABLES*/
+
+$bg-color:#f1f1f1;
+$content-bg-color:#fff;
+$defult-color:#777;
+$primary-color:#de5454;
+$secondary-color:#11a2ae;
+$veryMinor-color:#999;
+
+/*MIXIN*/
+
+@mixin displayFlex {
+    display: flex;
+    display: -webkit-flex;
+}
+
+@mixin justifyContent($value:center) {
+    justify-content: $value;
+    -webkit-justify-content: $value;
+}
+
+@mixin alignItems($value:center) {
+    align-items: $value;
+    -webkit-align-items: $value;
+}
+
+@mixin flexDirection($value:row) {
+    flex-direction: $value;
+    -webkit-flex-direction: $value;
+}
+
+@mixin aboutClassSet($value1,
+$value2) {
+    @include displayFlex;
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 50%;
+    .title {
+        @extend %aboutClassesSet;
+        font-size: 25px;
+        line-height: 120%;
+        font-family: Arial, Helvetica, sans-serif;
+        p {
+            margin: 10px 0 0 0;
+            color: $value2;
+        }
+    }
+    .text {
+        @extend %aboutClassesSet;
+        font-size: 8px;
+        font-weight: bold;
+        color: $value1;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        border-left: 2px solid $value2;
+        .entry-title {
+            font-size: 14px;
+        }
+        .entry-text {
+            padding: 15px 0;
+            line-height: 150%;
+        }
+        .entry-more {
+            font-size: 35px;
+            i {
+                color: $value1;
+            }
+        }
+    }
+}
+
+
+/*EXTEND*/
+
+%aboutClassesSet {
+    width: 50%;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+
+/*START*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 15px;
+    line-height: 150%;
+    color: $defult-color;
+    background: $bg-color;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+    color: $defult-color;
+    text-decoration: none;
+}
+
+input {
+    border: 0px;
+    font-size: 15px;
+}
+
+#header {
+    @include displayFlex;
+    @include justifyContent;
+    margin: 0 0 20px 0;
+    .box {
+        @include displayFlex;
+        @include justifyContent(space-between);
+        @include alignItems;
+        padding: 0 40px 0 20px;
+        width: 980px;
+        height: 125px;
+        background: url('../images/toplinkbg.jpg') #fff repeat-x center top;
+        box-sizing: border-box;
+        h1 {
+            a {
+                @include displayFlex;
+                @include alignItems;
+                font-size: 32px;
+                font-family: Tahoma, sans-serif;
+                color: #555;
+                .logo {
+                    padding: 0 20px 0 0;
+                }
+                span {
+                    color: $primary-color;
+                }
+            }
+        }
+        .link {
+            width: 480px;
+            ul {
+                @include displayFlex;
+                @include flexDirection;
+                @include justifyContent(space-between);
+                li {
+                    a {
+                        font-family: 'Times New Roman', serif;
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: #555;
+                        &.active {
+                            color: #009999;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#content {
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100%;
+    background: $content-bg-color;
+    .slogan {
+        font-size: 50px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bold;
+        color: $primary-color;
+        line-height: 120%;
+        box-sizing: border-box;
+        padding: 50px 200px;
+        background: url('../images/sloganbg.jpg') $content-bg-color no-repeat left top;
+        .author {
+            font-size: 8px;
+            color: #999;
+        }
+    }
+    .more {
+        @include displayFlex;
+        .about {
+            @include aboutClassSet(#666,
+            $veryMinor-color);
+        }
+        .classes {
+            @include aboutClassSet($primary-color,
+            $primary-color);
+        }
+    }
+}
+
+#footer {}
