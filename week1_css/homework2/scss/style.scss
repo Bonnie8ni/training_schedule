@@ -141,8 +141,13 @@ input {
     justify-content: center;
     a {
         color: #51d9da;
+        transition: 1s;
+        -webkit-transition: 1s;
         i {
             font-size: 35px;
+        }
+        &:hover {
+            color: #fff;
         }
     }
     #box {
