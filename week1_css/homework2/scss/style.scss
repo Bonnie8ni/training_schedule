@@ -57,7 +57,7 @@ input {
     @include displayFlex;
     background: url('../images/headerbg.jpg') #e3eae8 repeat left top;
     justify-content: center;
-    #box {
+    .box {
         width: 930px;
         @include displayFlex;
         @include justifyContentSpaceBetween;
