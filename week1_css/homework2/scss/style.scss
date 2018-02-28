@@ -21,6 +21,12 @@ $bg-color:#f5f4f2;
 
 /*EXTEND*/
 
+%toplinkAction {
+    color: #19aca8;
+    text-shadow: 1px 1px 1px #fff;
+    background: url('../images/linkbg.jpg') repeat-x left top;
+}
+
 
 /*START*/
 
@@ -69,9 +75,10 @@ input {
                     line-height: 130px;
                     text-align: center;
                     &.active {
-                        color: #19aca8;
-                        text-shadow: 1px 1px 1px #fff;
-                        background: url('../images/linkbg.jpg') repeat-x left top;
+                        @extend %toplinkAction;
+                    }
+                    &:hover {
+                        @extend %toplinkAction;
                     }
                 }
             }
