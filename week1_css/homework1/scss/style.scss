@@ -1,148 +1,117 @@
 /*RESET*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul, li {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+
+@import url('../css/reset.css');
 
 /*VARIABLES*/
+
 $primary-color:#759ca4;
 $secondary-color:#38494d;
 $veryMinor-color:#557277;
 $link-color:#d0d0d0;
 $bg-color:#eaecee;
 
-
 /*MIXIN*/
-@mixin displayFlex{
+
+@mixin displayFlex {
     display: flex;
     display: -webkit-flex;
 }
 
-%buttonDefault{
+
+/*EXTEND*/
+
+%buttonDefault {
     width: 100%;
     padding: 10px;
 }
 
+
 /*START*/
-html, body{
+
+html,
+body {
     height: 100%;
 }
-body{
+
+body {
     font-size: 15px;
     line-height: 150%;
     background: $bg-color;
     font-family: Arial, Helvetica, sans-serif;
 }
-a{
-    color:#999;
+
+a {
+    color: #999;
     text-decoration: none;
 }
-input{
+
+input {
     border: 0px;
     font-size: 15px;
 }
-#header{
+
+#header {
     @include displayFlex;
-    background:#fff;
+    background: #fff;
     justify-content: center;
     align-items: center;
-
-    h1{
+    h1 {
         padding: 0 40px;
-        a{
+        a {
             color: $secondary-color;
             font-weight: bold;
-            font-size:18px;
+            font-size: 18px;
             letter-spacing: 2px;
             border-bottom: 3px solid $secondary-color;
         }
     }
-    ul{
+    ul {
         @include displayFlex;
-        li{
+        li {
             padding: 2em;
-            a{
+            a {
                 display: block;
-                &.active{
+                &.active {
                     color: $secondary-color;
                 }
-                &:hover{
+                &:hover {
                     color: $secondary-color;
                 }
             }
         }
     }
-    .shop{
+    .shop {
         padding: 0 40px;
     }
 }
-#content{
+
+#content {
     width: 980px;
     margin: 0 auto;
     min-height: 100%;
     letter-spacing: 1px;
-
-    .description{
-        color:$secondary-color;
-        background:$primary-color;
+    .description {
+        color: $secondary-color;
+        background: $primary-color;
         font-size: 3.2em;
         font-weight: bold;
         box-sizing: border-box;
         margin: 0 0 20px 0;
         @include displayFlex;
         justify-content: space-between;
-        
-        .slogan{
+        .slogan {
             line-height: 120%;
             padding: 40px;
-            a{
+            a {
                 font-weight: normal;
                 font-size: 25px;
                 border-bottom: 3px solid $veryMinor-color;
-                color:#fff;
+                color: #fff;
                 padding: 0 0 5px 0;
             }
         }
     }
-    .waterfallWall{
+    .waterfallWall {
         column-count: 3;
         -webkit-column-count: 3;
         column-fill: auto;
@@ -150,110 +119,105 @@ input{
         column-gap: 20px;
         -webkit-column-gap: 20px;
         height: 2030px;
-
-        .defult{
+        .defult {
             margin: 0 0 20px 0;
             overflow: hidden;
-
-            .mark{
+            .mark {
                 position: absolute;
-                color:#fff;
-                background:$primary-color;
+                color: #fff;
+                background: $primary-color;
                 padding: 15px 25px;
             }
         }
-        .photo-2x{
+        .photo-2x {
             height: 657px;
         }
-        .photo-lg{
+        .photo-lg {
             height: 468px;
         }
-        .photo-sm{
+        .photo-sm {
             height: 319px;
         }
-        .photo-xs{
+        .photo-xs {
             height: 170px;
         }
-        .photo-bg{
+        .photo-bg {
             background: $primary-color;
             color: #eaecee;
-            font-size:  30px;
+            font-size: 30px;
             font-weight: bold;
             text-align: center;
             line-height: 170px;
         }
     }
 }
-#footer{
-    background:$veryMinor-color;
-    color:$link-color;
 
-    .bottomInfo{
+#footer {
+    background: $veryMinor-color;
+    color: $link-color;
+    .bottomInfo {
         @include displayFlex;
-        justify-content:center;
-        -webkit-justify-content:center;
-        
-        .box{
+        justify-content: center;
+        -webkit-justify-content: center;
+        .box {
             @include displayFlex;
             margin: 20px 0;
             width: 980px;
-            
-            .contactUs{
+            .contactUs {
                 flex: 1;
-                .title{
+                .title {
                     font-weight: bold;
                 }
-                .mail{
+                .mail {
                     margin: 0 0 20px 0;
                 }
-                .link{
-                    a{
+                .link {
+                    a {
                         padding: 10px;
-                        color:#fff;
-                        i{
+                        color: #fff;
+                        i {
                             font-size: 22px;
-
-                            &:hover{
-                                color:#999;
+                            &:hover {
+                                color: #999;
                             }
                         }
                     }
                 }
             }
-            .weAccept{
+            .weAccept {
                 flex: 1;
-                img{
-                    color:#fff;
+                img {
+                    color: #fff;
                     margin: 10px 5px 0 0;
                 }
             }
-            .joinEmail{
+            .joinEmail {
                 flex: 2;
-                input{
+                input {
                     padding: 5px 0;
                 }
-                input[type=email]{
+                input[type=email] {
                     box-sizing: border-box;
-                    background:$link-color;
+                    background: $link-color;
                     margin: 10px 0;
                     @extend %buttonDefault;
                 }
-                button{
+                button {
                     border: 0;
-                    color:#fff;
-                    background:$secondary-color;
+                    color: #fff;
+                    background: $secondary-color;
                     @extend %buttonDefault;
                 }
             }
         }
     }
-    .copyright{
+    .copyright {
         font-size: 10px;
-        background:#545354;
+        background: #545354;
         padding: 1em 0;
         text-align: center;
-        a{
-            color:#fff;
+        a {
+            color: #fff;
             text-decoration: underline;
         }
     }
