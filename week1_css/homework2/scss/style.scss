@@ -97,8 +97,23 @@ input {
     }
     .solgan {
         position: absolute;
-        top: 20px;
+        top: 0px;
         right: 0;
+        .title{
+            font-size: 85px;
+            line-height: 120%;
+            font-family: BlinkMacSystemFont;
+            background: -webkit-linear-gradient(#9ab91a,#576f10);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 5px;
+        }
+        .text{
+            font-size: 8px;
+            letter-spacing: 10px;
+            margin: -15px 0 0 150px;
+            color:#576f10;
+        }
     }
     .article {
         line-height: 190%;
@@ -106,7 +121,7 @@ input {
         @include justifyContent(space-between);
         padding: 50px 0;
         .entry-content-first {
-            padding: 70px 0 0 0;
+            padding: 80px 0 0 0;
         }
         .entry-content {
             font-size: 8px;
