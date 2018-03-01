@@ -24,7 +24,8 @@ $bg-color:#f5f4f2;
 %toplinkAction {
     color: #19aca8;
     text-shadow: 1px 1px 1px #fff;
-    background: url('../images/linkbg.jpg') repeat-x left top;
+    background: -webkit-linear-gradient(#19aca8,#c8e09e,transparent 92%);
+    
 }
 
 
