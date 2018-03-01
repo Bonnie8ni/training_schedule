@@ -15,38 +15,29 @@ $veryMinor-color:#999;
 /*MIXIN*/
 
 @mixin displayFlex {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     display: -webkit-flex;
 }
 
 @mixin justifyContent($value:center) {
-    -webkit-box-pack: $value;
-        -ms-flex-pack: $value;
-            justify-content: $value;
+    justify-content: $value;
     -webkit-justify-content: $value;
 }
 
 @mixin alignItems($value:center) {
-    -webkit-box-align: $value;
-        -ms-flex-align: $value;
-            align-items: $value;
+    align-items: $value;
     -webkit-align-items: $value;
 }
 
 @mixin flexDirection($value:row) {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: $value;
-            flex-direction: $value;
+    flex-direction: $value;
+    -webkit-flex-direction: $value;
 }
 
-@mixin aboutClassSet($textColor,
-$titleAndBorderColor) {
+@mixin aboutClassSet($textColorAndIconColor,
+$titlePColorAndTextBorderColor) {
     @include displayFlex;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 0 10px;
     width: 50%;
     .title {
@@ -56,16 +47,16 @@ $titleAndBorderColor) {
         font-family: Arial, Helvetica, sans-serif;
         p {
             margin: 10px 0 0 0;
-            color: $titleAndBorderColor;
+            color: $titlePColorAndTextBorderColor;
         }
     }
     .text {
         @extend %aboutClassesSet;
         font-size: 8px;
         font-weight: bold;
-        color: $textColor;
+        color: $textColorAndIconColor;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        border-left: 2px solid $titleAndBorderColor;
+        border-left: 2px solid $titlePColorAndTextBorderColor;
         .entry-title {
             font-size: 14px;
         }
@@ -76,7 +67,7 @@ $titleAndBorderColor) {
         .entry-more {
             font-size: 35px;
             i {
-                color: $value1;
+                color: $textColorAndIconColor;
             }
         }
     }
@@ -87,12 +78,9 @@ $titleAndBorderColor) {
 
 %aboutClassesSet {
     width: 50%;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
+    flex-grow: 1;
     -webkit-flex-grow: 1;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 0 20px;
 }
 
@@ -184,8 +172,7 @@ input {
         width: 980px;
         height: 125px;
         background: #fff;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         h1 {
             a {
                 @include displayFlex;
@@ -236,8 +223,7 @@ input {
         font-weight: bold;
         color: $primary-color;
         line-height: 120%;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         padding: 50px 200px;
         background: url('../images/sloganbg.jpg') $content-bg-color no-repeat left top;
         .author {
@@ -267,8 +253,7 @@ input {
         background: #fff;
 
         div{
-            -webkit-box-sizing: border-box;
-                    box-sizing: border-box;
+            box-sizing: border-box;
             color:#fff;
             
             &.corporate { grid-area: item1; }
@@ -296,8 +281,7 @@ input {
                 padding: 20px 0;
                 font-size: 18px;
                 background: $primary-color;
-                -webkit-box-shadow: 1px 1px 5px #000;
-                        box-shadow: 1px 1px 5px #000;
+                box-shadow: 1px 1px 5px #000;
                 &:before{
                     font-size: 15px;
                     position: absolute;
@@ -340,8 +324,7 @@ input {
             }
             .text{
                 width: 50%;
-                -webkit-box-sizing: border-box;
-                        box-sizing: border-box;
+                box-sizing: border-box;
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 border-left: 2px solid $veryMinor-color;
                 padding: 0 20px 0 40px;
@@ -362,8 +345,7 @@ input {
             width: 495px;
             .title{
                 background: $primary-color;
-                -webkit-box-sizing: border-box;
-                        box-sizing: border-box;
+                box-sizing: border-box;
                 padding: 10px 20px;
                 font-size: 22px;
                 margin: 5px 0 20px 8px;
@@ -387,8 +369,8 @@ input {
         }
         .preparation{
             width: 240px;
-            height: 500px;
-            margin: 5px -8px 0px 0;
+            height: 492px;
+            margin: 5px -9px 0px 0;
             @extend %contentLongSet;
         }
         .video{
@@ -397,7 +379,7 @@ input {
         }
         .photo{
             width: 245px;
-            padding: 10px 0 0 20px;
+            padding: 10px 0 0 13px;
         }
     }
 }
@@ -407,10 +389,7 @@ input {
     @include justifyContent;
     .content{
         @include displayFlex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
         .box{
             @include displayFlex;
             @include justifyContent(space-between);
@@ -436,22 +415,18 @@ input {
             .comment{
                 @include displayFlex;
                 @include justifyContent;
-                -webkit-box-sizing: border-box;
-                        box-sizing: border-box;
+                box-sizing: border-box;
                 padding: 20px 50px;
                 border-left: 2px solid $secondary-color;
                 border-right: 2px solid $secondary-color;
                 width: 50%;
                 .entry-left{
                     @include displayFlex;
-                    -webkit-box-orient: vertical;
-                    -webkit-box-direction: normal;
-                        -ms-flex-direction: column;
-                            flex-direction: column;
+                    flex-direction: column;
+                    -webkit-flex-direction: column;
                     input{
                         width: 95%;
-                        -webkit-box-sizing: border-box;
-                                box-sizing: border-box;
+                        box-sizing: border-box;
                         padding: 5px;
                         margin: 0 0 5px 0;
                         font-size: 14px;
@@ -459,10 +434,7 @@ input {
                 }
                 .entry-right{
                     @include displayFlex;
-                    -webkit-box-orient: vertical;
-                    -webkit-box-direction: normal;
-                        -ms-flex-direction: column;
-                            flex-direction: column;
+                    flex-direction: column;
 
                     textarea{
                         border: 0;
@@ -473,8 +445,7 @@ input {
                         resize: none;
                     }
                     button{
-                        -ms-flex-item-align: end;
-                            align-self: flex-end;
+                        align-self: flex-end;
                         width: 50px;
                         border: 0px;
                         color:#fff;
