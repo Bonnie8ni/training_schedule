@@ -36,7 +36,7 @@ input {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
-  #header .box {
+  #header .branding {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -47,26 +47,26 @@ input {
     -ms-flex-align: center;
     align-items: center;
     background: #494747; }
-    #header .box h1 {
+    #header .branding h1 {
       padding: 0 40px; }
-      #header .box h1 a {
+      #header .branding h1 a {
         color: #cdcdcd;
         font-weight: bold;
         font-size: 20px;
         letter-spacing: 5px; }
-    #header .box .toplink ul {
+    #header .branding .toplink ul {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; }
-      #header .box .toplink ul li {
+      #header .branding .toplink ul li {
         padding: 2em; }
-        #header .box .toplink ul li a {
+        #header .branding .toplink ul li a {
           font-family: 'ABeeZee'; }
-          #header .box .toplink ul li a.active {
+          #header .branding .toplink ul li a.active {
             color: #fff; }
-          #header .box .toplink ul li a:hover {
+          #header .branding .toplink ul li a:hover {
             color: #fff; }
-    #header .box .shop {
+    #header .branding .shop {
       padding: 0 40px; }
   #header .flexslider {
     display: -webkit-box;
