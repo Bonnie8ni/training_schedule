@@ -2,6 +2,12 @@
 
 @import url('../css/reset.css');
 
+/*MIXIN*/
+
+
+/*EXTEND*/
+
+
 /*START*/
 
 html,
@@ -79,7 +85,111 @@ input {
                 }
             }
         }
-        .flexslider {}
-        
+    }
+}
+
+#content {
+    width: 980px;
+    margin: 0 auto;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #fff;
+        .article {
+            width: 232px;
+            display: flex;
+            flex-direction: column;
+            div {
+                margin: 0 0 20px 0;
+            }
+            .title {
+                font-size: 20px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            .text {
+                font-size: 14px;
+            }
+            .more {
+                font-size: 8px;
+                a {
+                    color: #b78a15;
+                }
+            }
+        }
+    }
+    .reservations {
+        padding: 40px 0;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+        .title {
+            font-size: 30px;
+            margin: 0 0 50px 0;
+            line-height: normal;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        select {
+            border: 1px solid #fff;
+            background: #000000;
+            color: #fff;
+            width: 170px;
+            padding: 10px;
+            font-size: 18px;
+            margin: 0 10px 0 0;
+        }
+        button {
+            background: #b78a15;
+            color: #fff;
+            border-radius: 2px;
+            padding: 12px;
+            border: 0;
+            width: 180px;
+            font-size: 18px;
+        }
+    }
+}
+
+#footer {
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+    .container {
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+        .title {
+            font-weight: bold;
+            color: #b78a15;
+            font-size: 16px;
+            margin: 0 0 20px 0;
+        }
+        .text {
+            font-size: 8px;
+        }
+        .contact {
+            flex: 1;
+            padding: 0 50px 0 0;
+            .address {
+                margin: 0 0 15px 0;
+            }
+        }
+        .opening {
+            flex: 1;
+        }
+        .find {
+            flex: 2;
+        }
+    }
+    .link {
+        position: absolute;
+        bottom: 80px;
+        a {
+            padding: 0 5px;
+            font-size: 18px;
+        }
+    }
+    .copyright {
+        position: absolute;
+        bottom: 50px;
+        font-size: 8px;
     }
 }
