@@ -1,0 +1,85 @@
+/*RESET*/
+
+@import url('../css/reset.css');
+
+/*START*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: #fff;
+    font-size: 15px;
+    line-height: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+input {
+    border: 0px;
+    font-size: 15px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    .branding {
+        display: flex;
+        flex-direction: column;
+        max-width: 980px;
+        margin: 50px 0;
+        .banner {
+            text-align: center;
+            h1 {
+                display: inline-block;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                a {
+                    display: inline-block;
+                    margin: 10px;
+                    padding: 0 15px;
+                    font-size: 50px;
+                    line-height: normal;
+                    border-top: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                }
+            }
+            h2 {
+                font-size: 18px;
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 10px 0;
+            }
+        }
+        .link {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            ul {
+                display: flex;
+                li {
+                    a {
+                        padding: 0 20px;
+                        &.active,
+                        &:hover {
+                            color: #b78a15;
+                        }
+                    }
+                }
+            }
+        }
+        .flexslider {}
+        
+    }
+}
