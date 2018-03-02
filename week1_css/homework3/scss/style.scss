@@ -88,32 +88,33 @@ $titlePColorAndTextBorderColor) {
     padding: 20px;
     background: $secondary-color;
     margin: 10px 0 0 0;
-    .title{
+    .title {
         font-weight: bold;
         font-size: 22px;
         line-height: 140%;
         margin: 0 0 20px 0;
-        .icon{
-            font-size:50px;
-            color:#0d676f;
+        .icon {
+            font-size: 50px;
+            color: #0d676f;
             margin: 0 0 20px 0;
         }
     }
-    .text{
+    .text {
         font-family: Georgia, 'Times New Roman', Times, serif;
-        .entry-title{
+        .entry-title {
             font-weight: bold;
         }
-        .entry-text{
+        .entry-text {
             line-height: 120%;
             margin: 10px 0 30px 0;
         }
-        i{
-            color:#fff;
+        i {
+            color: #fff;
             font-size: 35px;
         }
     }
 }
+
 
 /*START*/
 
@@ -139,27 +140,29 @@ input {
     border: 0px;
     font-size: 15px;
 }
-#topColorbar{
+
+#topColorbar {
     width: 980px;
     overflow: hidden;
     margin: 0 auto;
-    .all{
+    .all {
         @include displayFlex;
-        .cycle{
+        .cycle {
             width: 100%;
             height: 7px;
         }
-        .Brown{
-            background:#a09e9e;
+        .Brown {
+            background: #a09e9e;
         }
-        .Pink{
-            background:#ef9a9a;
+        .Pink {
+            background: #ef9a9a;
         }
-        .Green{
-            background:#66c2c9;
+        .Green {
+            background: #66c2c9;
         }
     }
 }
+
 #header {
     @include displayFlex;
     @include justifyContent;
@@ -201,7 +204,7 @@ input {
                         font-size: 22px;
                         color: #555;
                         &.active,
-                        &:hover{
+                        &:hover {
                             color: $secondary-color;
                             text-shadow: 1px 1px 1px #ddd;
                         }
@@ -242,123 +245,131 @@ input {
             $primary-color);
         }
     }
-    .main{
+    .main {
         margin: 50px 0 30px 0;
         display: grid;
-        grid-template-areas:
-            'item1 item2 item3 item3'
-            'item1 item4 item4 item5'
-            'item6 item6 item7 item5';
+        grid-template-areas: 'item1 item2 item3 item3' 'item1 item4 item4 item5' 'item6 item6 item7 item5';
         grid-gap: 10px;
         background: #fff;
-
-        div{
+        div {
             box-sizing: border-box;
-            color:#fff;
-            
-            &.corporate { grid-area: item1; }
-            &.enrollment { grid-area: item2; }
-            &.conversation { grid-area: item3; }
-            &.schedule { grid-area: item4; }
-            &.preparation { grid-area: item5; }
-            &.video { grid-area: item6; }
-            &.photo { grid-area: item7; }
+            color: #fff;
+            &.corporate {
+                grid-area: item1;
+            }
+            &.enrollment {
+                grid-area: item2;
+            }
+            &.conversation {
+                grid-area: item3;
+            }
+            &.schedule {
+                grid-area: item4;
+            }
+            &.preparation {
+                grid-area: item5;
+            }
+            &.video {
+                grid-area: item6;
+            }
+            &.photo {
+                grid-area: item7;
+            }
         }
-
-        .corporate{
+        .corporate {
             @extend %contentLongSet;
         }
-        .enrollment{
+        .enrollment {
             width: 242px;
             position: relative;
             text-align: center;
-            .text{
-                opacity:0.9;
+            .text {
+                opacity: 0.9;
                 position: absolute;
                 left: 5px;
-                top:170px;
+                top: 170px;
                 width: 232px;
                 padding: 20px 0;
                 font-size: 18px;
                 background: $primary-color;
                 box-shadow: 1px 1px 5px #000;
-                &:before{
+                &:before {
                     font-size: 15px;
                     position: absolute;
                     left: -1px;
                     top: 56px;
-                    content:'◥';
+                    content: '◥';
                     color: #471d1d;
                 }
-                &:after{
+                &:after {
                     font-size: 15px;
                     position: absolute;
                     left: 220px;
                     top: 56px;
-                    content:'◤';
+                    content: '◤';
                     color: #471d1d;
                 }
             }
         }
-        .conversation{
+        .conversation {
             @include displayFlex;
             @include justifyContent(spce-between);
             @include alignItems;
-            background:$defult-color;
+            background: $defult-color;
             margin: 10px 0 0 0;
-            div{
+            div {
                 overflow: hidden;
             }
-            .title{
+            .title {
                 width: 50%;
                 font-weight: bold;
                 font-size: 22px;
                 line-height: 150%;
                 margin: 0 0 20px 0;
                 padding: 0 45px 0 25px;
-                .icon{
-                    font-size:50px;
+                .icon {
+                    font-size: 50px;
                     color: #444;
                     margin: 0 0 20px 0;
                 }
             }
-            .text{
+            .text {
                 width: 50%;
                 box-sizing: border-box;
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 border-left: 2px solid $veryMinor-color;
                 padding: 0 20px 0 40px;
-                .entry-title{
+                .entry-title {
                     font-weight: bold;
                 }
-                .entry-text{
+                .entry-text {
                     line-height: 120%;
                     margin: 10px 0 30px 0;
                 }
-                i{
-                    color:#fff;
+                i {
+                    color: #fff;
                     font-size: 35px;
                 }
             }
         }
-        .schedule{
+        .schedule {
             width: 495px;
-            .title{
+            .title {
                 background: $primary-color;
                 box-sizing: border-box;
                 padding: 10px 20px;
                 font-size: 22px;
                 margin: 5px 0 20px 8px;
             }
-            .text{
-                li{
+            .text {
+                li {
                     color: $veryMinor-color;
                     font-size: 28px;
                     line-height: 150%;
-                    span{
+                    span {
                         font-weight: bold;
                     }
-                    &:before{
+                    &:before {
                         content: "•";
                         padding: 0 10px 0 20px;
                         font-size: 25px;
@@ -367,17 +378,17 @@ input {
                 }
             }
         }
-        .preparation{
+        .preparation {
             width: 240px;
             height: 492px;
             margin: 5px -9px 0px 0;
             @extend %contentLongSet;
         }
-        .video{
+        .video {
             width: 445px;
             padding: 10px 25px;
         }
-        .photo{
+        .photo {
             width: 245px;
             padding: 10px 0 0 13px;
         }
@@ -387,32 +398,31 @@ input {
 #footer {
     @include displayFlex;
     @include justifyContent;
-    .content{
+    .content {
         @include displayFlex;
         flex-direction: column;
-        .box{
+        .box {
             @include displayFlex;
             @include justifyContent(space-between);
             width: 980px;
-
-            .details{
+            .details {
                 width: 20%;
                 padding: 20px 0;
-                .entry-title{
+                .entry-title {
                     color: $secondary-color;
                     font-weight: bold;
                 }
-                .entry-text{
+                .entry-text {
                     font-family: Georgia, 'Times New Roman', Times, serif;
                     font-weight: bold;
                     font-size: 8px;
                     line-height: 120%;
-                    .address{
+                    .address {
                         padding: 20px 0;
                     }
                 }
             }
-            .comment{
+            .comment {
                 @include displayFlex;
                 @include justifyContent;
                 box-sizing: border-box;
@@ -420,11 +430,11 @@ input {
                 border-left: 2px solid $secondary-color;
                 border-right: 2px solid $secondary-color;
                 width: 50%;
-                .entry-left{
+                .entry-left {
                     @include displayFlex;
                     flex-direction: column;
                     -webkit-flex-direction: column;
-                    input{
+                    input {
                         width: 97%;
                         box-sizing: border-box;
                         padding: 5px;
@@ -432,11 +442,10 @@ input {
                         font-size: 14px;
                     }
                 }
-                .entry-right{
+                .entry-right {
                     @include displayFlex;
                     flex-direction: column;
-
-                    textarea{
+                    textarea {
                         border: 0;
                         width: 90%;
                         padding: 10px;
@@ -444,11 +453,11 @@ input {
                         font-size: 14px;
                         resize: none;
                     }
-                    button{
+                    button {
                         align-self: flex-end;
                         width: 50px;
                         border: 0px;
-                        color:#fff;
+                        color: #fff;
                         padding: 5px;
                         border-radius: 5px;
                         font-size: 16px;
@@ -458,38 +467,37 @@ input {
                     }
                 }
             }
-            .join{
+            .join {
                 width: 22%;
                 padding: 20px 0;
-                .entry-title{
+                .entry-title {
                     font-weight: bold;
                     color: $dark-color;
                     margin: 0 0 10px 0;
                 }
-                .entry-text{
+                .entry-text {
                     @include displayFlex;
                     @include justifyContent(space-between);
                     width: 70%;
                 }
             }
         }
-        .link{
+        .link {
             margin: 20px 0;
             text-align: center;
-            a{
+            a {
                 color: $dark-color;
                 padding: 0 20px;
                 font-size: 20px;
                 font-family: Georgia, 'Times New Roman', Times, serif;
-
                 &.active,
-                &:hover{
+                &:hover {
                     color: $secondary-color;
                     text-shadow: 1px 1px 1px #ddd;
                 }
             }
         }
-        .copyright{
+        .copyright {
             color: $dark-color;
             margin: 0 0 50px 0;
             text-align: center;

@@ -1,7 +1,9 @@
 /*NORMAIL*/
+
 @import url('../css/reset.css');
 
 /*START*/
+
 html,
 body {
     height: 100%;
@@ -23,14 +25,16 @@ input {
     border: 0px;
     font-size: 15px;
 }
+
 * {
     box-sizing: border-box;
 }
+
 #header {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    .box{
+    .box {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -44,7 +48,7 @@ input {
                 letter-spacing: 5px;
             }
         }
-        .toplink{
+        .toplink {
             ul {
                 display: flex;
                 li {
@@ -65,35 +69,35 @@ input {
             padding: 0 40px;
         }
     }
-    .flexslider{
-        display:flex;
+    .flexslider {
+        display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        .photo{
+        .photo {
             img {
                 width: 100%;
                 display: block;
             }
         }
-        .more{
+        .more {
             position: absolute;
-            background:rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
             width: 500px;
             text-align: center;
             padding: 0 0 20px 0;
-            .title{
-                color:#000;
+            .title {
+                color: #000;
                 font-size: 50px;
                 line-height: 230%;
                 font-family: 'Times New Roman', Times, serif;
                 font-weight: bold;
             }
-            .shop{
-                a{
-                    display:inline-block;
-                    background:#000;
-                    color:#fff;
+            .shop {
+                a {
+                    display: inline-block;
+                    background: #000;
+                    color: #fff;
                     font-size: 18px;
                     font-weight: bold;
                     width: 250px;
@@ -103,138 +107,141 @@ input {
             }
         }
     }
-    .slogan{
-        h2{
+    .slogan {
+        h2 {
             text-align: center;
             letter-spacing: 5px;
             padding: 10px;
-            background:#e1e1e1;
+            background: #e1e1e1;
         }
     }
 }
-#content{
+
+#content {
     margin: 100px auto;
     max-width: 930px;
-    .main{
+    .main {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        .title{
+        .title {
             text-align: center;
             font-family: Georgia, 'Times New Roman', Times, serif;
-            .line{
+            .line {
                 border-bottom: 1px solid #000;
                 width: 35px;
                 margin: 50px auto 40px auto;
             }
-            .primary{
+            .primary {
                 font-size: 40px;
                 font-weight: bold;
                 letter-spacing: 10px;
                 line-height: 40px;
             }
-            .secondary{
+            .secondary {
                 font-family: 'ABeeZee';
-                font-size:  20px;
+                font-size: 20px;
                 letter-spacing: 5px;
             }
         }
-        .article{
+        .article {
             margin: 100px 0 0 0;
-            .boutique{
+            .boutique {
                 display: flex;
                 justify-content: space-between;
-                .rack{
+                .rack {
                     position: relative;
-                    img{width: 100%;}
-                    .mark{
+                    img {
+                        width: 100%;
+                    }
+                    .mark {
                         width: 100%;
                         position: absolute;
                         padding: 20px;
                         text-align: center;
                         font-family: 'ABeeZee';
                     }
-                    .defult{
+                    .defult {
                         bottom: 7px;
-                        background:#000;
-                        color:#fff;
+                        background: #000;
+                        color: #fff;
                     }
-                    .sale{
+                    .sale {
                         top: 50px;
                         font-size: 50px;
                         letter-spacing: 15px;
                         font-family: Georgia, 'Times New Roman', Times, serif;
                     }
                 }
-                
             }
         }
     }
 }
-#footer{
-    display:flex;
+
+#footer {
+    display: flex;
     justify-content: center;
-    background:#2a2b2c;
-    color:#cdcdcd;
+    background: #2a2b2c;
+    color: #cdcdcd;
     padding: 25px;
-    .box{
-        display:flex;
+    .box {
+        display: flex;
         flex-direction: column;
         width: 100%;
         max-width: 980px;
-        .buttomlink{
-            display:flex;
+        .buttomlink {
+            display: flex;
             justify-content: space-around;
-            .title{
+            .title {
                 font-size: 14px;
                 margin: 0 0 20px 0;
                 text-align: center;
             }
-            .text{
+            .text {
                 text-align: center;
             }
-            .link{
+            .link {
                 flex: 1;
-                .text{
-                    span{
-                        a{
-                            color:#fff;
+                .text {
+                    span {
+                        a {
+                            color: #fff;
                             padding: 0 5px;
                         }
                     }
                 }
             }
-            .subscribe{
+            .subscribe {
                 flex: 1;
-                .text{
+                .text {
                     display: flex;
                     flex-direction: column;
-                    input{
+                    input {
                         padding: 10px;
                         margin: 0 0 10px 0;
-                        background:#494747;
+                        background: #494747;
                         font-size: 13px;
                     }
-                    button{
+                    button {
                         padding: 10px;
                         border: 0;
                     }
                 }
             }
-            .assistance{
+            .assistance {
                 flex: 1;
-                .text{
-                    color:#fff;
+                .text {
+                    color: #fff;
                     text-align: center;
                     line-height: 140%;
                     font-family: Georgia, 'Times New Roman', Times, serif;
-                    a{
-                        color:#fff;
+                    a {
+                        color: #fff;
                     }
                 }
             }
         }
-        .copyright{
+        .copyright {
             text-align: center;
             font-size: 13px;
             padding: 25px 0 0 0;

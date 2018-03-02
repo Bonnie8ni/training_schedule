@@ -24,8 +24,7 @@ $bg-color:#f5f4f2;
 %toplinkAction {
     color: #19aca8;
     text-shadow: 1px 1px 1px #fff;
-    background: -webkit-linear-gradient(#19aca8,#c8e09e,transparent 92%);
-    
+    background: -webkit-linear-gradient(#19aca8, #c8e09e, transparent 92%);
 }
 
 
@@ -99,20 +98,20 @@ input {
         position: absolute;
         top: 0px;
         right: 0;
-        .title{
+        .title {
             font-size: 85px;
             line-height: 120%;
             font-family: BlinkMacSystemFont;
-            background: -webkit-linear-gradient(#9ab91a,#576f10);
+            background: -webkit-linear-gradient(#9ab91a, #576f10);
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: 5px;
         }
-        .text{
+        .text {
             font-size: 8px;
             letter-spacing: 10px;
             margin: -15px 0 0 150px;
-            color:#576f10;
+            color: #576f10;
         }
     }
     .article {
@@ -149,7 +148,7 @@ input {
     font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    background: -webkit-linear-gradient(#25bbbb,#1b7692);
+    background: -webkit-linear-gradient(#25bbbb, #1b7692);
     box-sizing: border-box;
     padding: 20px 0 0 0;
     height: 130px;
