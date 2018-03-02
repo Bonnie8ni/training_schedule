@@ -1,0 +1,214 @@
+/*NORMAIL*/
+@import url('../css/reset.css');
+
+/*START*/
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 15px;
+    line-height: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: #999;
+    text-decoration: none;
+}
+
+input {
+    border: 0px;
+    font-size: 15px;
+}
+* {
+    box-sizing: border-box;
+}
+#header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #494747;
+        h1 {
+            padding: 0 40px;
+            a {
+                color: #cdcdcd;
+                font-weight: bold;
+                font-size: 20px;
+                letter-spacing: 5px;
+            }
+        }
+        .toplink{
+            ul {
+                display: flex;
+                li {
+                    padding: 2em;
+                    a {
+                        font-family: 'ABeeZee';
+                        &.active {
+                            color: #fff;
+                        }
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        .shop {
+            padding: 0 40px;
+        }
+    }
+    .flexslider{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .photo{
+            img {
+                width: 100vw;
+                display: block;
+            }
+        }
+        .more{
+            position: absolute;
+            background:rgba(255,255,255,0.5);
+            width: 500px;
+            text-align: center;
+            padding: 0 0 20px 0;
+            .title{
+                color:#000;
+                font-size: 50px;
+                line-height: 230%;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+            }
+            .shop{
+                a{
+                    display:inline-block;
+                    background:#000;
+                    color:#fff;
+                    font-size: 18px;
+                    font-weight: bold;
+                    width: 250px;
+                    height: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+    .slogan{
+        h2{
+            text-align: center;
+            letter-spacing: 5px;
+            padding: 10px;
+            background:#e1e1e1;
+            
+        }
+    }
+}
+#content{
+    margin: 0 auto;
+    min-height: 80%;
+    width: 980px;
+    margin: 100px auto;
+    .description{
+        display: flex;
+        justify-content: center;
+        .title{
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            .line{
+                border-bottom: 1px solid #000;
+                width: 35px;
+                margin: 50px auto 40px auto;
+            }
+            .primary{
+                font-size: 40px;
+                font-weight: bold;
+                letter-spacing: 10px;
+            }
+            .secondary{
+                font-family: 'ABeeZee';
+                font-size:  20px;
+                letter-spacing: 5px;
+            }
+        }
+    }
+}
+#footer{
+    display:flex;
+    justify-content: center;
+    background:#2a2b2c;
+    color:#cdcdcd;
+    .box{
+        display:flex;
+        flex-direction: column;
+    }
+    .buttomlink{
+        display:flex;
+        justify-content: space-around;
+        padding: 20px 0;
+        width: 980px;
+        .title{
+            font-size: 14px;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        .text{
+            text-align: center;
+        }
+        .link{
+            flex: 1;
+            .text{
+                span{
+                    a{
+                        color:#fff;
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+        .subscribe{
+            flex: 2;
+            margin: 0 150px;
+            .text{
+                display: flex;
+                flex-direction: column;
+                input{
+                    padding: 10px;
+                    margin: 0 0 10px 0;
+                    background:#494747;
+                    font-size: 13px;
+                }
+                button{
+                    padding: 10px;
+                    border: 0;
+                }
+            }
+        }
+        .assistance{
+            flex: 1;
+            .text{
+                color:#fff;
+                text-align: center;
+                line-height: 140%;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                a{
+                    color:#fff;
+                }
+            }
+        }
+    }
+    .copyright{
+        text-align: center;
+        font-size: 8pt;
+        padding: 20px 0;
+    }
+}
