@@ -2,6 +2,10 @@
 
 @import url('../css/reset.css');
 
+/*VARIABLES*/
+
+$primary-font-color:#2a2b2c;
+
 /*START*/
 
 html,
@@ -14,6 +18,7 @@ body {
     line-height: 150%;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    color: $primary-font-color;
 }
 
 a {
@@ -87,7 +92,6 @@ input {
             text-align: center;
             padding: 0 0 20px 0;
             .title {
-                color: #000;
                 font-size: 50px;
                 line-height: 230%;
                 font-family: 'Times New Roman', Times, serif;
@@ -96,13 +100,13 @@ input {
             .shop {
                 a {
                     display: inline-block;
-                    background: #000;
                     color: #fff;
                     font-size: 18px;
                     font-weight: bold;
                     width: 250px;
                     height: 30px;
                     line-height: 30px;
+                    color: $primary-font-color;
                 }
             }
         }
@@ -128,7 +132,7 @@ input {
             text-align: center;
             font-family: Georgia, 'Times New Roman', Times, serif;
             .line {
-                border-bottom: 1px solid #000;
+                border-bottom: 1px solid $primary-font-color;
                 width: 35px;
                 margin: 50px auto 40px auto;
             }
@@ -146,32 +150,30 @@ input {
         }
         .article {
             margin: 100px 0 0 0;
-            .boutique {
-                display: flex;
-                justify-content: space-between;
-                .rack {
-                    position: relative;
-                    img {
-                        width: 100%;
-                    }
-                    .mark {
-                        width: 100%;
-                        position: absolute;
-                        padding: 20px;
-                        text-align: center;
-                        font-family: 'ABeeZee';
-                    }
-                    .defult {
-                        bottom: 7px;
-                        background: #000;
-                        color: #fff;
-                    }
-                    .sale {
-                        top: 50px;
-                        font-size: 50px;
-                        letter-spacing: 15px;
-                        font-family: Georgia, 'Times New Roman', Times, serif;
-                    }
+            display: flex;
+            justify-content: space-between;
+            .rack {
+                position: relative;
+                img {
+                    width: 100%;
+                }
+                .mark {
+                    width: 100%;
+                    position: absolute;
+                    padding: 20px;
+                    text-align: center;
+                    font-family: 'ABeeZee';
+                }
+                .defult {
+                    bottom: 7px;
+                    background: $primary-font-color;
+                    color: #fff;
+                }
+                .sale {
+                    top: 50px;
+                    font-size: 50px;
+                    letter-spacing: 15px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
                 }
             }
         }
@@ -181,7 +183,7 @@ input {
 #footer {
     display: flex;
     justify-content: center;
-    background: #2a2b2c;
+    background: $primary-font-color;
     color: #cdcdcd;
     padding: 25px;
     .box {
@@ -221,10 +223,14 @@ input {
                         margin: 0 0 10px 0;
                         background: #494747;
                         font-size: 13px;
+                        &::placeholder {
+                            color: #cdcdcd;
+                        }
                     }
                     button {
                         padding: 10px;
                         border: 0;
+                        background: #cdcdcd;
                     }
                 }
             }
@@ -244,7 +250,7 @@ input {
         .copyright {
             text-align: center;
             font-size: 13px;
-            padding: 25px 0 0 0;
+            margin: 25px 0 0 0;
         }
     }
 }

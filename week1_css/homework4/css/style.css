@@ -1,5 +1,6 @@
 /*NORMAIL*/
 @import url("../css/reset.css");
+/*VARIABLES*/
 /*START*/
 html,
 body {
@@ -9,7 +10,8 @@ body {
   font-size: 15px;
   line-height: 150%;
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  color: #2a2b2c; }
 
 a {
   color: #999;
@@ -87,20 +89,19 @@ input {
       text-align: center;
       padding: 0 0 20px 0; }
       #header .flexslider .more .title {
-        color: #000;
         font-size: 50px;
         line-height: 230%;
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold; }
       #header .flexslider .more .shop a {
         display: inline-block;
-        background: #000;
         color: #fff;
         font-size: 18px;
         font-weight: bold;
         width: 250px;
         height: 30px;
-        line-height: 30px; }
+        line-height: 30px;
+        color: #2a2b2c; }
   #header .slogan h2 {
     text-align: center;
     letter-spacing: 5px;
@@ -125,7 +126,7 @@ input {
       text-align: center;
       font-family: Georgia, 'Times New Roman', Times, serif; }
       #content .main .title .line {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #2a2b2c;
         width: 35px;
         margin: 50px auto 40px auto; }
       #content .main .title .primary {
@@ -138,33 +139,32 @@ input {
         font-size: 20px;
         letter-spacing: 5px; }
     #content .main .article {
-      margin: 100px 0 0 0; }
-      #content .main .article .boutique {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between; }
-        #content .main .article .boutique .rack {
-          position: relative; }
-          #content .main .article .boutique .rack img {
-            width: 100%; }
-          #content .main .article .boutique .rack .mark {
-            width: 100%;
-            position: absolute;
-            padding: 20px;
-            text-align: center;
-            font-family: 'ABeeZee'; }
-          #content .main .article .boutique .rack .defult {
-            bottom: 7px;
-            background: #000;
-            color: #fff; }
-          #content .main .article .boutique .rack .sale {
-            top: 50px;
-            font-size: 50px;
-            letter-spacing: 15px;
-            font-family: Georgia, 'Times New Roman', Times, serif; }
+      margin: 100px 0 0 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      #content .main .article .rack {
+        position: relative; }
+        #content .main .article .rack img {
+          width: 100%; }
+        #content .main .article .rack .mark {
+          width: 100%;
+          position: absolute;
+          padding: 20px;
+          text-align: center;
+          font-family: 'ABeeZee'; }
+        #content .main .article .rack .defult {
+          bottom: 7px;
+          background: #2a2b2c;
+          color: #fff; }
+        #content .main .article .rack .sale {
+          top: 50px;
+          font-size: 50px;
+          letter-spacing: 15px;
+          font-family: Georgia, 'Times New Roman', Times, serif; }
 
 #footer {
   display: -webkit-box;
@@ -222,9 +222,18 @@ input {
             margin: 0 0 10px 0;
             background: #494747;
             font-size: 13px; }
+            #footer .box .buttomlink .subscribe .text input::-webkit-input-placeholder {
+              color: #cdcdcd; }
+            #footer .box .buttomlink .subscribe .text input:-ms-input-placeholder {
+              color: #cdcdcd; }
+            #footer .box .buttomlink .subscribe .text input::-ms-input-placeholder {
+              color: #cdcdcd; }
+            #footer .box .buttomlink .subscribe .text input::placeholder {
+              color: #cdcdcd; }
           #footer .box .buttomlink .subscribe .text button {
             padding: 10px;
-            border: 0; }
+            border: 0;
+            background: #cdcdcd; }
       #footer .box .buttomlink .assistance {
         -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -239,4 +248,4 @@ input {
     #footer .box .copyright {
       text-align: center;
       font-size: 13px;
-      padding: 25px 0 0 0; }
+      margin: 25px 0 0 0; }
