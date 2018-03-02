@@ -78,7 +78,7 @@ input {
     align-items: center;
     position: relative; }
     #header .flexslider .photo img {
-      width: 100vw;
+      width: 100%;
       display: block; }
     #header .flexslider .more {
       position: absolute;
