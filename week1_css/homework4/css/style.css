@@ -131,7 +131,8 @@ input {
       #content .main .title .primary {
         font-size: 40px;
         font-weight: bold;
-        letter-spacing: 10px; }
+        letter-spacing: 10px;
+        line-height: 40px; }
       #content .main .title .secondary {
         font-family: 'ABeeZee';
         font-size: 20px;
@@ -156,7 +157,7 @@ input {
             text-align: center;
             font-family: 'ABeeZee'; }
           #content .main .article .boutique .rack .defult {
-            bottom: 6px;
+            bottom: 7px;
             background: #000;
             color: #fff; }
           #content .main .article .boutique .rack .sale {
