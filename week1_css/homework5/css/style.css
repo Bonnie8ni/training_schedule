@@ -99,14 +99,47 @@ input {
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
       flex-direction: column; }
-      #content .container .article div {
-        margin: 0 0 20px 0; }
       #content .container .article .title {
         font-size: 20px;
-        font-family: Georgia, 'Times New Roman', Times, serif; }
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 0 0 20px 0; }
+      #content .container .article .photo {
+        margin: 0 0 20px 0; }
+      #content .container .article .noPhoto {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+        width: 232px;
+        height: 146px;
+        background: #b78a15;
+        color: #fff;
+        margin: 0 0 20px 0; }
+        #content .container .article .noPhoto .entry-container {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          font-family: Georgia, 'Times New Roman', Times, serif; }
+          #content .container .article .noPhoto .entry-container .prefixFont {
+            font-size: 35px;
+            line-height: normal; }
+          #content .container .article .noPhoto .entry-container .businessHours {
+            font-size: 20px; }
       #content .container .article .text {
+        margin: 0 0 20px 0;
         font-size: 14px; }
       #content .container .article .more {
+        margin: 0 0 20px 0;
         font-size: 8px; }
         #content .container .article .more a {
           color: #b78a15; }

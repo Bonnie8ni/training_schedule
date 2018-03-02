@@ -4,6 +4,7 @@
 
 /*MIXIN*/
 
+$primary-color:#b78a15;
 
 /*EXTEND*/
 
@@ -79,7 +80,7 @@ input {
                         padding: 0 20px;
                         &.active,
                         &:hover {
-                            color: #b78a15;
+                            color: $primary-color;
                         }
                     }
                 }
@@ -99,20 +100,46 @@ input {
             width: 232px;
             display: flex;
             flex-direction: column;
-            div {
-                margin: 0 0 20px 0;
-            }
             .title {
                 font-size: 20px;
                 font-family: Georgia, 'Times New Roman', Times, serif;
+                margin: 0 0 20px 0;
+            }
+            .photo {
+                margin: 0 0 20px 0;
+            }
+            .noPhoto {
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                width: 232px;
+                height: 146px;
+                background: $primary-color;
+                color: #fff;
+                margin: 0 0 20px 0;
+                .entry-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    .prefixFont {
+                        font-size: 35px;
+                        line-height: normal;
+                    }
+                    .businessHours {
+                        font-size: 20px;
+                    }
+                }
             }
             .text {
+                margin: 0 0 20px 0;
                 font-size: 14px;
             }
             .more {
+                margin: 0 0 20px 0;
                 font-size: 8px;
                 a {
-                    color: #b78a15;
+                    color: $primary-color;
                 }
             }
         }
@@ -137,7 +164,7 @@ input {
             margin: 0 10px 0 0;
         }
         button {
-            background: #b78a15;
+            background: $primary-color;
             color: #fff;
             border-radius: 2px;
             padding: 12px;
@@ -158,7 +185,7 @@ input {
         justify-content: center;
         .title {
             font-weight: bold;
-            color: #b78a15;
+            color: $primary-color;
             font-size: 16px;
             margin: 0 0 20px 0;
         }
