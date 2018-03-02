@@ -109,17 +109,15 @@ input {
             letter-spacing: 5px;
             padding: 10px;
             background:#e1e1e1;
-            
         }
     }
 }
 #content{
-    margin: 0 auto;
-    min-height: 80%;
-    width: 980px;
     margin: 100px auto;
-    .description{
+    max-width: 930px;
+    .main{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         .title{
             text-align: center;
@@ -140,6 +138,36 @@ input {
                 letter-spacing: 5px;
             }
         }
+        .article{
+            margin: 100px 0 0 0;
+            .boutique{
+                display: flex;
+                justify-content: space-between;
+                .rack{
+                    position: relative;
+                    img{width: 100%;}
+                    .mark{
+                        width: 100%;
+                        position: absolute;
+                        padding: 20px;
+                        text-align: center;
+                        font-family: 'ABeeZee';
+                    }
+                    .defult{
+                        bottom: 6px;
+                        background:#000;
+                        color:#fff;
+                    }
+                    .sale{
+                        top: 50px;
+                        font-size: 50px;
+                        letter-spacing: 15px;
+                        font-family: Georgia, 'Times New Roman', Times, serif;
+                    }
+                }
+                
+            }
+        }
     }
 }
 #footer{
@@ -147,68 +175,68 @@ input {
     justify-content: center;
     background:#2a2b2c;
     color:#cdcdcd;
+    padding: 25px;
     .box{
         display:flex;
         flex-direction: column;
-    }
-    .buttomlink{
-        display:flex;
-        justify-content: space-around;
-        padding: 20px 0;
-        width: 980px;
-        .title{
-            font-size: 14px;
-            margin: 0 0 20px 0;
-            text-align: center;
-        }
-        .text{
-            text-align: center;
-        }
-        .link{
-            flex: 1;
+        width: 100%;
+        max-width: 980px;
+        .buttomlink{
+            display:flex;
+            justify-content: space-around;
+            .title{
+                font-size: 14px;
+                margin: 0 0 20px 0;
+                text-align: center;
+            }
             .text{
-                span{
+                text-align: center;
+            }
+            .link{
+                flex: 1;
+                .text{
+                    span{
+                        a{
+                            color:#fff;
+                            padding: 0 5px;
+                        }
+                    }
+                }
+            }
+            .subscribe{
+                flex: 1;
+                .text{
+                    display: flex;
+                    flex-direction: column;
+                    input{
+                        padding: 10px;
+                        margin: 0 0 10px 0;
+                        background:#494747;
+                        font-size: 13px;
+                    }
+                    button{
+                        padding: 10px;
+                        border: 0;
+                    }
+                }
+            }
+            .assistance{
+                flex: 1;
+                .text{
+                    color:#fff;
+                    text-align: center;
+                    line-height: 140%;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
                     a{
                         color:#fff;
-                        padding: 0 5px;
                     }
                 }
             }
         }
-        .subscribe{
-            flex: 2;
-            margin: 0 150px;
-            .text{
-                display: flex;
-                flex-direction: column;
-                input{
-                    padding: 10px;
-                    margin: 0 0 10px 0;
-                    background:#494747;
-                    font-size: 13px;
-                }
-                button{
-                    padding: 10px;
-                    border: 0;
-                }
-            }
+        .copyright{
+            text-align: center;
+            font-size: 13px;
+            padding: 25px 0 0 0;
         }
-        .assistance{
-            flex: 1;
-            .text{
-                color:#fff;
-                text-align: center;
-                line-height: 140%;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-                a{
-                    color:#fff;
-                }
-            }
-        }
-    }
-    .copyright{
-        text-align: center;
-        font-size: 8pt;
-        padding: 20px 0;
     }
 }

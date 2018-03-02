@@ -108,32 +108,62 @@ input {
     background: #e1e1e1; }
 
 #content {
-  margin: 0 auto;
-  min-height: 80%;
-  width: 980px;
-  margin: 100px auto; }
-  #content .description {
+  margin: 100px auto;
+  max-width: 930px; }
+  #content .main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center; }
-    #content .description .title {
+    #content .main .title {
       text-align: center;
       font-family: Georgia, 'Times New Roman', Times, serif; }
-      #content .description .title .line {
+      #content .main .title .line {
         border-bottom: 1px solid #000;
         width: 35px;
         margin: 50px auto 40px auto; }
-      #content .description .title .primary {
+      #content .main .title .primary {
         font-size: 40px;
         font-weight: bold;
         letter-spacing: 10px; }
-      #content .description .title .secondary {
+      #content .main .title .secondary {
         font-family: 'ABeeZee';
         font-size: 20px;
         letter-spacing: 5px; }
+    #content .main .article {
+      margin: 100px 0 0 0; }
+      #content .main .article .boutique {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between; }
+        #content .main .article .boutique .rack {
+          position: relative; }
+          #content .main .article .boutique .rack img {
+            width: 100%; }
+          #content .main .article .boutique .rack .mark {
+            width: 100%;
+            position: absolute;
+            padding: 20px;
+            text-align: center;
+            font-family: 'ABeeZee'; }
+          #content .main .article .boutique .rack .defult {
+            bottom: 6px;
+            background: #000;
+            color: #fff; }
+          #content .main .article .boutique .rack .sale {
+            top: 50px;
+            font-size: 50px;
+            letter-spacing: 15px;
+            font-family: Georgia, 'Times New Roman', Times, serif; }
 
 #footer {
   display: -webkit-box;
@@ -143,7 +173,8 @@ input {
   -ms-flex-pack: center;
   justify-content: center;
   background: #2a2b2c;
-  color: #cdcdcd; }
+  color: #cdcdcd;
+  padding: 25px; }
   #footer .box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -151,61 +182,60 @@ input {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
-  #footer .buttomlink {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    padding: 20px 0;
-    width: 980px; }
-    #footer .buttomlink .title {
-      font-size: 14px;
-      margin: 0 0 20px 0;
-      text-align: center; }
-    #footer .buttomlink .text {
-      text-align: center; }
-    #footer .buttomlink .link {
-      -webkit-box-flex: 1;
-      -ms-flex: 1;
-      flex: 1; }
-      #footer .buttomlink .link .text span a {
-        color: #fff;
-        padding: 0 5px; }
-    #footer .buttomlink .subscribe {
-      -webkit-box-flex: 2;
-      -ms-flex: 2;
-      flex: 2;
-      margin: 0 150px; }
-      #footer .buttomlink .subscribe .text {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column; }
-        #footer .buttomlink .subscribe .text input {
-          padding: 10px;
-          margin: 0 0 10px 0;
-          background: #494747;
-          font-size: 13px; }
-        #footer .buttomlink .subscribe .text button {
-          padding: 10px;
-          border: 0; }
-    #footer .buttomlink .assistance {
-      -webkit-box-flex: 1;
-      -ms-flex: 1;
-      flex: 1; }
-      #footer .buttomlink .assistance .text {
-        color: #fff;
-        text-align: center;
-        line-height: 140%;
-        font-family: Georgia, 'Times New Roman', Times, serif; }
-        #footer .buttomlink .assistance .text a {
-          color: #fff; }
-  #footer .copyright {
-    text-align: center;
-    font-size: 8pt;
-    padding: 20px 0; }
+    flex-direction: column;
+    width: 100%;
+    max-width: 980px; }
+    #footer .box .buttomlink {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: distribute;
+      justify-content: space-around; }
+      #footer .box .buttomlink .title {
+        font-size: 14px;
+        margin: 0 0 20px 0;
+        text-align: center; }
+      #footer .box .buttomlink .text {
+        text-align: center; }
+      #footer .box .buttomlink .link {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1; }
+        #footer .box .buttomlink .link .text span a {
+          color: #fff;
+          padding: 0 5px; }
+      #footer .box .buttomlink .subscribe {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1; }
+        #footer .box .buttomlink .subscribe .text {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column; }
+          #footer .box .buttomlink .subscribe .text input {
+            padding: 10px;
+            margin: 0 0 10px 0;
+            background: #494747;
+            font-size: 13px; }
+          #footer .box .buttomlink .subscribe .text button {
+            padding: 10px;
+            border: 0; }
+      #footer .box .buttomlink .assistance {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1; }
+        #footer .box .buttomlink .assistance .text {
+          color: #fff;
+          text-align: center;
+          line-height: 140%;
+          font-family: Georgia, 'Times New Roman', Times, serif; }
+          #footer .box .buttomlink .assistance .text a {
+            color: #fff; }
+    #footer .box .copyright {
+      text-align: center;
+      font-size: 13px;
+      padding: 25px 0 0 0; }
