@@ -42,132 +42,146 @@ input {
     display: flex;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    .branding {
-        display: flex;
-        flex-direction: column;
-        max-width: 980px;
-        margin: 50px 0;
-        .banner {
-            text-align: center;
-            h1 {
-                display: inline-block;
-                border-top: 1px solid #fff;
-                border-bottom: 1px solid #fff;
-                a {
+    .container-box {
+        width: 980px;
+        .branding {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 50px 0;
+            .banner {
+                text-align: center;
+                h1 {
                     display: inline-block;
-                    margin: 10px;
-                    padding: 0 15px;
-                    font-size: 50px;
-                    line-height: normal;
                     border-top: 1px solid #fff;
                     border-bottom: 1px solid #fff;
-                }
-            }
-            h2 {
-                font-size: 18px;
-                font-family: Arial, Helvetica, sans-serif;
-                padding: 10px 0;
-            }
-        }
-        .link {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            li {
-                a {
-                    padding: 0 20px;
-                    &.active,
-                    &:hover {
-                        color: $primary-color;
+                    a {
+                        display: inline-block;
+                        margin: 10px;
+                        padding: 0 15px;
+                        font-size: 50px;
+                        line-height: normal;
+                        border-top: 1px solid #fff;
+                        border-bottom: 1px solid #fff;
                     }
                 }
+                h2 {
+                    font-size: 18px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    padding: 10px 0;
+                }
+            }
+            .link {
+                display: flex;
+                justify-content: center;
+                margin: 30px 0;
+                li {
+                    a {
+                        padding: 0 20px;
+                        &.active,
+                        &:hover {
+                            color: $primary-color;
+                        }
+                    }
+                }
+            }
+            .flexslider {
+                background-size: 980px 498px, contain;
+                background-image: url('../images/banner.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 498px;
             }
         }
     }
 }
 
 #content {
-    max-width: 980px;
-    margin: 0 auto;
-    .container {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #fff;
-        .article {
-            width: 232px;
+    display: flex;
+    justify-content: center;
+    .container-box {
+        width: 980px;
+        .container {
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            .title {
-                font-size: 20px;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-                margin: 0 0 20px 0;
-            }
-            .photo {
-                margin: 0 0 20px 0;
-            }
-            .noPhoto {
-                display: flex;
-                justify-content: center;
-                text-align: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #fff;
+            .article {
                 width: 232px;
-                height: 146px;
+                display: flex;
+                flex-direction: column;
+                .title {
+                    font-size: 20px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    margin: 0 0 20px 0;
+                }
+                .photo {
+                    margin: 0 0 20px 0;
+                }
+                .noPhoto {
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    width: 232px;
+                    height: 146px;
+                    background: $primary-color;
+                    color: #fff;
+                    margin: 0 0 20px 0;
+                    .entry-container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        font-family: Georgia, 'Times New Roman', Times, serif;
+                        .prefixFont {
+                            font-size: 35px;
+                            line-height: normal;
+                        }
+                        .businessHours {
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .text {
+                    margin: 0 0 20px 0;
+                    font-size: 14px;
+                }
+                .more {
+                    margin: 0 0 20px 0;
+                    font-size: 8px;
+                    a {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+        .reservations {
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid #fff;
+            .title {
+                font-size: 30px;
+                margin: 0 0 50px 0;
+                line-height: normal;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            select {
+                border: 1px solid #fff;
+                background: #000000;
+                color: #fff;
+                width: 170px;
+                padding: 10px;
+                font-size: 18px;
+                margin: 0 10px 0 0;
+            }
+            button {
                 background: $primary-color;
                 color: #fff;
-                margin: 0 0 20px 0;
-                .entry-container {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    font-family: Georgia, 'Times New Roman', Times, serif;
-                    .prefixFont {
-                        font-size: 35px;
-                        line-height: normal;
-                    }
-                    .businessHours {
-                        font-size: 20px;
-                    }
-                }
+                border-radius: 2px;
+                padding: 12px;
+                border: 0;
+                width: 180px;
+                font-size: 18px;
             }
-            .text {
-                margin: 0 0 20px 0;
-                font-size: 14px;
-            }
-            .more {
-                margin: 0 0 20px 0;
-                font-size: 8px;
-                a {
-                    color: $primary-color;
-                }
-            }
-        }
-    }
-    .reservations {
-        padding: 40px 0;
-        text-align: center;
-        border-bottom: 1px solid #fff;
-        .title {
-            font-size: 30px;
-            margin: 0 0 50px 0;
-            line-height: normal;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-        select {
-            border: 1px solid #fff;
-            background: #000000;
-            color: #fff;
-            width: 170px;
-            padding: 10px;
-            font-size: 18px;
-            margin: 0 10px 0 0;
-        }
-        button {
-            background: $primary-color;
-            color: #fff;
-            border-radius: 2px;
-            padding: 12px;
-            border: 0;
-            width: 180px;
-            font-size: 18px;
         }
     }
 }
@@ -185,33 +199,34 @@ input {
     .text {
         font-size: 8px;
     }
-    .container2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .container {
+    .container-box {
+        width: 980px;
+        .container2 {
+            width: 100%;
             display: flex;
-            .contact {
-                flex: 1;
-                padding: 0 50px 0 0;
-                .address {
-                    margin: 0 0 15px 0;
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: space-between;
+                .contact {
+                    flex-basis: 50%;
+                    padding: 0 50px 0 0;
+                    .address {
+                        margin: 0 0 15px 0;
+                    }
                 }
-            }
-            .opening {
-                flex: 1;
-            }
-        }
-        .link {
-            a {
-                padding: 0 5px;
-                font-size: 18px;
-            }
-        }
-        .copyright {
-            font-size: 8px;
-            .link {
-                margin: 0 0 5px 0;
+                .opening {
+                    flex-basis: 50%;
+                }
+                .copyright {
+                    flex-basis: 100%;
+                    .link {
+                        a {
+                            padding: 0 5px;
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
         }
     }
