@@ -70,14 +70,10 @@ input {
       -ms-flex-pack: center;
       justify-content: center;
       margin: 30px 0; }
-      #header .branding .link ul {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex; }
-        #header .branding .link ul li a {
-          padding: 0 20px; }
-          #header .branding .link ul li a.active, #header .branding .link ul li a:hover {
-            color: #b78a15; }
+      #header .branding .link li a {
+        padding: 0 20px; }
+        #header .branding .link li a.active, #header .branding .link li a:hover {
+          color: #b78a15; }
 
 #content {
   max-width: 980px;

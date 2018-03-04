@@ -14,29 +14,9 @@ $veryMinor-color:#999;
 
 /*MIXIN*/
 
-@mixin displayFlex {
-    display: flex;
-    display: -webkit-flex;
-}
-
-@mixin justifyContent($value:center) {
-    justify-content: $value;
-    -webkit-justify-content: $value;
-}
-
-@mixin alignItems($value:center) {
-    align-items: $value;
-    -webkit-align-items: $value;
-}
-
-@mixin flexDirection($value:row) {
-    flex-direction: $value;
-    -webkit-flex-direction: $value;
-}
-
 @mixin aboutClassSet($textColorAndIconColor,
 $titlePColorAndTextBorderColor) {
-    @include displayFlex;
+    display: flex;
     box-sizing: border-box;
     padding: 0 10px;
     width: 50%;
@@ -142,11 +122,12 @@ input {
 }
 
 #topColorbar {
-    width: 980px;
+    width: 100%;
+    max-width: 980px;
     overflow: hidden;
     margin: 0 auto;
     .all {
-        @include displayFlex;
+        display: flex;
         .cycle {
             width: 100%;
             height: 7px;
@@ -164,22 +145,23 @@ input {
 }
 
 #header {
-    @include displayFlex;
-    @include justifyContent;
+    display: flex;
+    justify-content: center;
     margin: 0 0 20px 0;
     .box {
-        @include displayFlex;
-        @include justifyContent(space-between);
-        @include alignItems;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 0 40px 0 20px;
-        width: 980px;
+        width: 100%;
+        max-width: 980px;
         height: 125px;
         background: #fff;
         box-sizing: border-box;
         h1 {
             a {
-                @include displayFlex;
-                @include alignItems;
+                display: flex;
+                align-items: center;
                 font-size: 32px;
                 font-family: Tahoma, sans-serif;
                 color: #555;
@@ -193,21 +175,19 @@ input {
         }
         .link {
             width: 480px;
-            ul {
-                @include displayFlex;
-                @include flexDirection;
-                @include justifyContent(space-between);
-                li {
-                    a {
-                        font-family: 'Times New Roman', serif;
-                        font-weight: 600;
-                        font-size: 22px;
-                        color: #555;
-                        &.active,
-                        &:hover {
-                            color: $secondary-color;
-                            text-shadow: 1px 1px 1px #ddd;
-                        }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            li {
+                a {
+                    font-family: 'Times New Roman', serif;
+                    font-weight: 600;
+                    font-size: 22px;
+                    color: #555;
+                    &.active,
+                    &:hover {
+                        color: $secondary-color;
+                        text-shadow: 1px 1px 1px #ddd;
                     }
                 }
             }
@@ -216,7 +196,8 @@ input {
 }
 
 #content {
-    width: 980px;
+    width: 100%;
+    max-width: 980px;
     margin: 0 auto;
     min-height: 100%;
     background: $content-bg-color;
@@ -235,7 +216,7 @@ input {
         }
     }
     .description {
-        @include displayFlex;
+        display: flex;
         .about {
             @include aboutClassSet($dark-color,
             $veryMinor-color);
@@ -312,9 +293,9 @@ input {
             }
         }
         .conversation {
-            @include displayFlex;
-            @include justifyContent(spce-between);
-            @include alignItems;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: $defult-color;
             margin: 10px 0 0 0;
             div {
@@ -396,15 +377,16 @@ input {
 }
 
 #footer {
-    @include displayFlex;
-    @include justifyContent;
+    display: flex;
+    justify-content: center;
     .content {
-        @include displayFlex;
+        display: flex;
         flex-direction: column;
         .box {
-            @include displayFlex;
-            @include justifyContent(space-between);
-            width: 980px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 980px;
             .details {
                 width: 20%;
                 padding: 20px 0;
@@ -423,15 +405,15 @@ input {
                 }
             }
             .comment {
-                @include displayFlex;
-                @include justifyContent;
+                display: flex;
+                justify-content: center;
                 box-sizing: border-box;
                 padding: 20px 50px;
                 border-left: 2px solid $secondary-color;
                 border-right: 2px solid $secondary-color;
                 width: 50%;
                 .entry-left {
-                    @include displayFlex;
+                    display: flex;
                     flex-direction: column;
                     -webkit-flex-direction: column;
                     input {
@@ -443,7 +425,7 @@ input {
                     }
                 }
                 .entry-right {
-                    @include displayFlex;
+                    display: flex;
                     flex-direction: column;
                     textarea {
                         border: 0;
@@ -476,8 +458,8 @@ input {
                     margin: 0 0 10px 0;
                 }
                 .entry-text {
-                    @include displayFlex;
-                    @include justifyContent(space-between);
+                    display: flex;
+                    justify-content: space-between;
                     width: 70%;
                 }
             }

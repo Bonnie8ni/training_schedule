@@ -73,15 +73,12 @@ input {
             display: flex;
             justify-content: center;
             margin: 30px 0;
-            ul {
-                display: flex;
-                li {
-                    a {
-                        padding: 0 20px;
-                        &.active,
-                        &:hover {
-                            color: $primary-color;
-                        }
+            li {
+                a {
+                    padding: 0 20px;
+                    &.active,
+                    &:hover {
+                        color: $primary-color;
                     }
                 }
             }

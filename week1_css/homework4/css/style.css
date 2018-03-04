@@ -54,17 +54,17 @@ input {
         font-weight: bold;
         font-size: 20px;
         letter-spacing: 5px; }
-    #header .branding .toplink ul {
+    #header .branding .link {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; }
-      #header .branding .toplink ul li {
+      #header .branding .link li {
         padding: 2em; }
-        #header .branding .toplink ul li a {
+        #header .branding .link li a {
           font-family: 'ABeeZee'; }
-          #header .branding .toplink ul li a.active {
+          #header .branding .link li a.active {
             color: #fff; }
-          #header .branding .toplink ul li a:hover {
+          #header .branding .link li a:hover {
             color: #fff; }
     #header .branding .shop {
       padding: 0 40px; }

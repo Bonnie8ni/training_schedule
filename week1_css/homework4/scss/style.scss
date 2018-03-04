@@ -53,19 +53,17 @@ input {
                 letter-spacing: 5px;
             }
         }
-        .toplink {
-            ul {
-                display: flex;
-                li {
-                    padding: 2em;
-                    a {
-                        font-family: 'ABeeZee';
-                        &.active {
-                            color: #fff;
-                        }
-                        &:hover {
-                            color: #fff;
-                        }
+        .link {
+            display: flex;
+            li {
+                padding: 2em;
+                a {
+                    font-family: 'ABeeZee';
+                    &.active {
+                        color: #fff;
+                    }
+                    &:hover {
+                        color: #fff;
                     }
                 }
             }
