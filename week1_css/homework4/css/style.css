@@ -129,70 +129,61 @@ input {
     background: #e1e1e1; }
 
 #content {
+  width: 980px;
+  margin: 100px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
-  margin: 100px 0; }
-  #content .container {
-    width: 980px; }
-    #content .container .main {
-      width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center; }
-      #content .container .main .title {
-        margin: 0 0 100px 0;
+  justify-content: center; }
+  #content .title {
+    margin: 0 0 100px 0;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif; }
+    #content .title .line {
+      border-bottom: 1px solid #2a2b2c;
+      width: 35px;
+      margin: 50px auto 40px auto; }
+    #content .title .primary {
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 10px;
+      line-height: 40px; }
+    #content .title .secondary {
+      font-family: 'ABeeZee';
+      font-size: 20px;
+      letter-spacing: 5px; }
+  #content .article {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    #content .article .rack {
+      position: relative; }
+      #content .article .rack img {
+        width: 100%; }
+      #content .article .rack .mark {
+        width: 100%;
+        position: absolute;
+        padding: 20px;
         text-align: center;
+        font-family: 'ABeeZee'; }
+      #content .article .rack .defult {
+        bottom: 7px;
+        background: #2a2b2c;
+        color: #fff; }
+      #content .article .rack .sale {
+        top: 50px;
+        font-size: 50px;
+        letter-spacing: 15px;
         font-family: Georgia, 'Times New Roman', Times, serif; }
-        #content .container .main .title .line {
-          border-bottom: 1px solid #2a2b2c;
-          width: 35px;
-          margin: 50px auto 40px auto; }
-        #content .container .main .title .primary {
-          font-size: 40px;
-          font-weight: bold;
-          letter-spacing: 10px;
-          line-height: 40px; }
-        #content .container .main .title .secondary {
-          font-family: 'ABeeZee';
-          font-size: 20px;
-          letter-spacing: 5px; }
-      #content .container .main .article {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between; }
-        #content .container .main .article .rack {
-          position: relative; }
-          #content .container .main .article .rack img {
-            width: 100%; }
-          #content .container .main .article .rack .mark {
-            width: 100%;
-            position: absolute;
-            padding: 20px;
-            text-align: center;
-            font-family: 'ABeeZee'; }
-          #content .container .main .article .rack .defult {
-            bottom: 7px;
-            background: #2a2b2c;
-            color: #fff; }
-          #content .container .main .article .rack .sale {
-            top: 50px;
-            font-size: 50px;
-            letter-spacing: 15px;
-            font-family: Georgia, 'Times New Roman', Times, serif; }
 
 #footer {
   display: -webkit-box;

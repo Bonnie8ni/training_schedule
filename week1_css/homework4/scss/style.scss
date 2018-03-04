@@ -131,64 +131,57 @@
     }
 
     #content {
+        width: 980px;
+        margin: 100px auto;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin: 100px 0;
-        .container {
-            width: 980px;
-            .main {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                .title {
-                    margin: 0 0 100px 0;
-                    text-align: center;
-                    font-family: Georgia, 'Times New Roman', Times, serif;
-                    .line {
-                        border-bottom: 1px solid $primary-font-color;
-                        width: 35px;
-                        margin: 50px auto 40px auto;
-                    }
-                    .primary {
-                        font-size: 40px;
-                        font-weight: bold;
-                        letter-spacing: 10px;
-                        line-height: 40px;
-                    }
-                    .secondary {
-                        font-family: 'ABeeZee';
-                        font-size: 20px;
-                        letter-spacing: 5px;
-                    }
+        .title {
+            margin: 0 0 100px 0;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            .line {
+                border-bottom: 1px solid $primary-font-color;
+                width: 35px;
+                margin: 50px auto 40px auto;
+            }
+            .primary {
+                font-size: 40px;
+                font-weight: bold;
+                letter-spacing: 10px;
+                line-height: 40px;
+            }
+            .secondary {
+                font-family: 'ABeeZee';
+                font-size: 20px;
+                letter-spacing: 5px;
+            }
+        }
+        .article {
+            display: flex;
+            justify-content: space-between;
+            .rack {
+                position: relative;
+                img {
+                    width: 100%;
                 }
-                .article {
-                    display: flex;
-                    justify-content: space-between;
-                    .rack {
-                        position: relative;
-                        img {
-                            width: 100%;
-                        }
-                        .mark {
-                            width: 100%;
-                            position: absolute;
-                            padding: 20px;
-                            text-align: center;
-                            font-family: 'ABeeZee';
-                        }
-                        .defult {
-                            bottom: 7px;
-                            background: $primary-font-color;
-                            color: #fff;
-                        }
-                        .sale {
-                            top: 50px;
-                            font-size: 50px;
-                            letter-spacing: 15px;
-                            font-family: Georgia, 'Times New Roman', Times, serif;
-                        }
-                    }
+                .mark {
+                    width: 100%;
+                    position: absolute;
+                    padding: 20px;
+                    text-align: center;
+                    font-family: 'ABeeZee';
+                }
+                .defult {
+                    bottom: 7px;
+                    background: $primary-font-color;
+                    color: #fff;
+                }
+                .sale {
+                    top: 50px;
+                    font-size: 50px;
+                    letter-spacing: 15px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
                 }
             }
         }
