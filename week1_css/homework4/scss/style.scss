@@ -69,7 +69,14 @@ input {
             }
         }
         .shop {
-            padding: 0 40px;
+            color: #494747;
+            font-size: 8px;
+            display: inline-block;
+            width: 21px;
+            height: 26px;
+            line-height: 32px;
+            text-align: center;
+            background: url('../images/shop.jpg') no-repeat left top;
         }
     }
     .flexslider {
@@ -77,6 +84,10 @@ input {
         justify-content: center;
         align-items: center;
         position: relative;
+        background-size: 1510px 475px, contain;
+        background-image: url('../images/banner.jpg');
+        background-position: center top;
+        min-height: 475px;
         .photo {
             img {
                 width: 100%;
@@ -87,11 +98,14 @@ input {
             position: absolute;
             background: rgba(255, 255, 255, 0.5);
             width: 500px;
+            height: 150px;
             text-align: center;
-            padding: 0 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
             .title {
                 font-size: 50px;
-                line-height: 230%;
+                line-height: normal;
                 font-family: 'Times New Roman', Times, serif;
                 font-weight: bold;
             }
@@ -101,9 +115,8 @@ input {
                     color: #fff;
                     font-size: 18px;
                     font-weight: bold;
-                    width: 250px;
-                    height: 30px;
-                    line-height: 30px;
+                    width: 50%;
+                    padding: 5px 0;
                     background: $primary-font-color;
                 }
             }
@@ -127,6 +140,7 @@ input {
         flex-direction: column;
         justify-content: center;
         .title {
+            margin: 0 0 100px 0;
             text-align: center;
             font-family: Georgia, 'Times New Roman', Times, serif;
             .line {
@@ -147,7 +161,6 @@ input {
             }
         }
         .article {
-            margin: 100px 0 0 0;
             display: flex;
             justify-content: space-between;
             .rack {
@@ -189,9 +202,10 @@ input {
         flex-direction: column;
         width: 100%;
         max-width: 980px;
-        .buttomlink {
+        .bottomlink {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
+            margin: 0 0 25px 0;
             .title {
                 font-size: 14px;
                 margin: 0 0 20px 0;
@@ -201,7 +215,6 @@ input {
                 text-align: center;
             }
             .link {
-                flex: 1;
                 .text {
                     span {
                         a {
@@ -212,7 +225,7 @@ input {
                 }
             }
             .subscribe {
-                flex: 1;
+                flex-basis: 30%;
                 .text {
                     display: flex;
                     flex-direction: column;
@@ -233,7 +246,6 @@ input {
                 }
             }
             .assistance {
-                flex: 1;
                 .text {
                     color: #fff;
                     text-align: center;
@@ -248,7 +260,6 @@ input {
         .copyright {
             text-align: center;
             font-size: 13px;
-            margin: 25px 0 0 0;
         }
     }
 }
