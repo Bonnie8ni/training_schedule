@@ -35,3 +35,13 @@ function reverseStr() {
 
     answer.innerHTML = reverse.join('');
 }
+
+function compareStr() {
+
+    var first_str = document.getElementById('test3_1Str').value.split('');
+    var second_str = document.getElementById('test3_2Str').value.split('');
+    var answer = document.getElementById('answer');
+
+    if (first_str.sort().join('') !== second_str.sort().join('')) answer.innerHTML = false;
+    else answer.innerHTML = true;
+}
