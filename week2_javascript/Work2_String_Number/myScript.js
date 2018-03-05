@@ -1,18 +1,37 @@
-
 function longestCommonWord() {
 
-    var str = document.getElementById('test1_str').value.split(',');
+    var strs = document.getElementById('test1Str').value.split(',');
     var answer = document.getElementById('answer');
-    answer.innerHTML = "";
-    var same = [];
 
-    for (i = 1; i < str.length; i++) {
-        for (j = 0; j < str[i].length; j++) {
-            if (Array.from(str[0])[j] === Array.from(str[i])[j]) {
-                same.push(Array.from(str[0])[j]);
+    if (strs == null || strs.length == 0) return "";
+    var same = strs[0];
+
+    for (var i = 1; i < strs.length; i++) {
+
+        var str = strs[i];
+
+        for (var j = 0; j < same.length; j++) {
+
+            if (same[j] != str.charAt(j)) {
                 break;
             }
+
         }
+        same = same.slice(0, j);
     }
-    console.log(same.toString());
+    answer.innerHTML = same;
+}
+
+function reverseStr() {
+
+    var strs = document.getElementById('test2Str').value.split('');
+    var answer = document.getElementById('answer');
+
+    var reverse = [];
+
+    for (var i = strs.length - 1; i >= 0; i--) {
+        reverse.push(strs[i]);
+    }
+
+    answer.innerHTML = reverse.join('');
 }
