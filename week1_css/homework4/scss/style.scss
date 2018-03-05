@@ -1,60 +1,57 @@
-/*NORMAIL*/
+    /*NORMAIL*/
 
-@import url('../css/reset.css');
+    @import url('../css/reset.css');
+    /*VARIABLES*/
 
-/*VARIABLES*/
+    $primary-font-color:#2a2b2c;
+    /*START*/
 
-$primary-font-color:#2a2b2c;
+    html,
+    body {
+        min-height: 100vh;
+    }
 
-/*START*/
+    body {
+        font-size: 15px;
+        line-height: 150%;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden;
+        color: $primary-font-color;
+    }
 
-html,
-body {
-    min-height: 100vh;
-}
+    a {
+        color: #999;
+        text-decoration: none;
+    }
 
-body {
-    font-size: 15px;
-    line-height: 150%;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-    color: $primary-font-color;
-}
+    input {
+        border: 0px;
+        font-size: 15px;
+    }
 
-a {
-    color: #999;
-    text-decoration: none;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-input {
-    border: 0px;
-    font-size: 15px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-#header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    .box {
+    #header {
         display: flex;
         justify-content: center;
-        align-items: center;
-        background: #494747;
-        h1 {
-            padding: 0 40px;
-            a {
-                color: #cdcdcd;
-                font-weight: bold;
-                font-size: 20px;
-                letter-spacing: 5px;
+        flex-direction: column;
+        .branding {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #494747;
+            h1 {
+                padding: 0 40px;
+                a {
+                    color: #cdcdcd;
+                    font-weight: bold;
+                    font-size: 20px;
+                    letter-spacing: 5px;
+                }
             }
-        }
-        .toplink {
-            ul {
+            .link {
                 display: flex;
                 li {
                     padding: 2em;
@@ -69,66 +66,78 @@ input {
                     }
                 }
             }
-        }
-        .shop {
-            padding: 0 40px;
-        }
-    }
-    .flexslider {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        .photo {
-            img {
-                width: 100%;
-                display: block;
-            }
-        }
-        .more {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            width: 500px;
-            text-align: center;
-            padding: 0 0 20px 0;
-            .title {
-                font-size: 50px;
-                line-height: 230%;
-                font-family: 'Times New Roman', Times, serif;
-                font-weight: bold;
-            }
             .shop {
-                a {
-                    display: inline-block;
-                    color: #fff;
-                    font-size: 18px;
+                color: #494747;
+                font-size: 8px;
+                display: inline-block;
+                width: 21px;
+                height: 26px;
+                line-height: 32px;
+                text-align: center;
+                background: url('../images/shop.jpg') no-repeat left top;
+            }
+        }
+        .flexslider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-size: 1510px 475px, contain;
+            background-image: url('../images/banner.jpg');
+            background-position: center top;
+            height: 475px;
+            .photo {
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+            .more {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.5);
+                width: 500px;
+                height: 150px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                .title {
+                    font-size: 50px;
+                    line-height: normal;
+                    font-family: 'Times New Roman', Times, serif;
                     font-weight: bold;
-                    width: 250px;
-                    height: 30px;
-                    line-height: 30px;
-                    background: $primary-font-color;
+                }
+                .shop {
+                    a {
+                        display: inline-block;
+                        color: #fff;
+                        font-size: 18px;
+                        font-weight: bold;
+                        width: 50%;
+                        padding: 5px 0;
+                        background: $primary-font-color;
+                    }
                 }
             }
         }
-    }
-    .slogan {
-        h2 {
-            text-align: center;
-            letter-spacing: 5px;
-            padding: 10px;
-            background: #e1e1e1;
+        .slogan {
+            h2 {
+                text-align: center;
+                letter-spacing: 5px;
+                padding: 10px;
+                background: #e1e1e1;
+            }
         }
     }
-}
 
-#content {
-    margin: 100px auto;
-    max-width: 930px;
-    .main {
+    #content {
+        width: 980px;
+        margin: 100px auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         .title {
+            margin: 0 0 100px 0;
             text-align: center;
             font-family: Georgia, 'Times New Roman', Times, serif;
             .line {
@@ -149,7 +158,6 @@ input {
             }
         }
         .article {
-            margin: 100px 0 0 0;
             display: flex;
             justify-content: space-between;
             .rack {
@@ -178,79 +186,78 @@ input {
             }
         }
     }
-}
 
-#footer {
-    display: flex;
-    justify-content: center;
-    background: $primary-font-color;
-    color: #cdcdcd;
-    padding: 25px;
-    .box {
+    #footer {
         display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 980px;
-        .buttomlink {
-            display: flex;
-            justify-content: space-around;
-            .title {
-                font-size: 14px;
-                margin: 0 0 20px 0;
-                text-align: center;
-            }
-            .text {
-                text-align: center;
-            }
-            .link {
-                flex: 1;
-                .text {
-                    span {
-                        a {
-                            color: #fff;
-                            padding: 0 5px;
-                        }
-                    }
-                }
-            }
-            .subscribe {
-                flex: 1;
-                .text {
+        justify-content: center;
+        background: $primary-font-color;
+        color: #cdcdcd;
+        padding: 25px;
+        .container {
+            width: 980px;
+            .container2 {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                .bottomlink {
                     display: flex;
-                    flex-direction: column;
-                    input {
-                        padding: 10px;
-                        margin: 0 0 10px 0;
-                        background: #494747;
-                        font-size: 13px;
-                        &::placeholder {
-                            color: #cdcdcd;
+                    justify-content: space-evenly;
+                    margin: 0 0 25px 0;
+                    .title {
+                        font-size: 14px;
+                        margin: 0 0 20px 0;
+                        text-align: center;
+                    }
+                    .text {
+                        text-align: center;
+                    }
+                    .link {
+                        .text {
+                            span {
+                                a {
+                                    color: #fff;
+                                    padding: 0 5px;
+                                }
+                            }
                         }
                     }
-                    button {
-                        padding: 10px;
-                        border: 0;
-                        background: #cdcdcd;
+                    .subscribe {
+                        flex-basis: 30%;
+                        .text {
+                            display: flex;
+                            flex-direction: column;
+                            input {
+                                padding: 10px;
+                                margin: 0 0 10px 0;
+                                background: #494747;
+                                font-size: 13px;
+                                &::placeholder {
+                                    color: #cdcdcd;
+                                }
+                            }
+                            button {
+                                padding: 10px;
+                                border: 0;
+                                background: #cdcdcd;
+                            }
+                        }
+                    }
+                    .assistance {
+                        .text {
+                            color: #fff;
+                            text-align: center;
+                            line-height: 140%;
+                            font-family: Georgia, 'Times New Roman', Times, serif;
+                            a {
+                                color: #fff;
+                            }
+                        }
                     }
                 }
-            }
-            .assistance {
-                flex: 1;
-                .text {
-                    color: #fff;
+                .copyright {
                     text-align: center;
-                    line-height: 140%;
-                    font-family: Georgia, 'Times New Roman', Times, serif;
-                    a {
-                        color: #fff;
-                    }
+                    font-size: 13px;
                 }
             }
-        }
-        .copyright {
-            text-align: center;
-            font-size: 13px;
-            margin: 25px 0 0 0;
         }
     }
-}
