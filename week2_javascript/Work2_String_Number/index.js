@@ -1,8 +1,10 @@
 //1. 一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。
-var longestCommonWord = function (strs) {
+//Bonnie修改題目為從字串後面找
+
+var longestCommonWord = ((strs) => {
 
     strs = strs.split(',');
-    if (strs == null || strs.length == 0) return "";
+    if (strs == null || strs.length == 0) return '';
     var same = strs[0];
 
     for (var i = strs.length - 1; i >= 0; i--) {
@@ -15,43 +17,29 @@ var longestCommonWord = function (strs) {
                 break;
             }
         }
-        same = same.replace(same[j], "$");
+        same = same.replace(same[j], '$');
     }
-
-    console.log("answer2:" + same);
-    same = same.replace(/\$/g, "");
+    same = same.replace(/\$/g, '');
     return same;
-}
-
-console.log(longestCommonWord('abc,cac,ebc'));
-
-
+})
+//console.log(longestCommonWord('abc,cac,ebc'))
 
 
 //2. 將一個字串反轉後回傳。
-var reverseStr = function (strs) {
-    var reverse = [];
-
-    for (var i = strs.length - 1; i >= 0; i--) {
-        reverse.push(strs[i]);
-    }
-
-    return reverse.join('');
-}
-//console.log(reverseStr('hello'));
-
-
+var reverseStr = ((strs) => {
+    strs = strs.split('').reverse().join('');
+    return strs;
+})
+console.log(reverseStr('hello'));
 
 
 //3. 給兩個字串s與t，回傳t是否為s的重組字
-var compareStr = function (first_str, second_str) {
-
-    if (first_str.sort().join('') !== second_str.sort().join('')) return false;
-    else return true;
-}
-//console.log(compareStr('abc,cba'));
-
-
+var compareStr = ((first_str, second_str) => {
+    first_str = first_str.split('').sort().join('');
+    second_str = second_str.split('').sort().join('');
+    return first_str !== second_str ? false : true;
+})
+//console.log(compareStr('abc', 'acb'));
 
 
 //4. 給一個英文字串，將裡面的母音字母反轉。
