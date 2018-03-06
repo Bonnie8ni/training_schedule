@@ -1,6 +1,5 @@
 //1. 一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。
 //Bonnie修改題目為從字串後面找
-
 var longestCommonWord = ((strs) => {
 
     strs = strs.split(',');
@@ -22,7 +21,8 @@ var longestCommonWord = ((strs) => {
     same = same.replace(/\$/g, '');
     return same;
 })
-//console.log(longestCommonWord('abc,cac,ebc'))
+
+
 
 
 //2. 將一個字串反轉後回傳。
@@ -30,7 +30,8 @@ var reverseStr = ((strs) => {
     strs = strs.split('').reverse().join('');
     return strs;
 })
-console.log(reverseStr('hello'));
+
+
 
 
 //3. 給兩個字串s與t，回傳t是否為s的重組字
@@ -39,15 +40,46 @@ var compareStr = ((first_str, second_str) => {
     second_str = second_str.split('').sort().join('');
     return first_str !== second_str ? false : true;
 })
-//console.log(compareStr('abc', 'acb'));
 
 
 //4. 給一個英文字串，將裡面的母音字母反轉。
 
+
+
+
+
 //5. 給二進制字串，將其換算成對應的十進制數字，需自己寫function
+
+
+
+
 
 //6. 將給定數字轉換成二進制字串。如果字串長度不足 8 位，則在前面補 0 到滿8位。
 
+var fillZero = ((strs) => {
+    var strLength = 8 - strs.length;
+    for (let i = 0; i < strLength; i++) {
+        strs = '0' + strs;
+    }
+    return strs;
+})
+
+
+
 //7. 將一個數字每個位數相加，直到剩個位數為止。
+var numberAddition = ((total) => {
+    var compareLength = total.toString().split('').length;
+    for (i = 0; i < compareLength; i++) {
+        var strArray = total.toString().split('');
+        if (strArray.length > 1)
+            total = parseInt(strArray[0]) + parseInt(strArray[1]);
+    }
+    return total;
+})
+
 
 //8. 反轉一個int整數。
+var reverseInt = ((total) => {
+    var reverse = Math.abs(total).toString().split('').reverse().join('');
+    return (Math.sign(total) < 0) ? reverse * (-1) : reverse;
+})
