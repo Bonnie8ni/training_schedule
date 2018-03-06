@@ -50,7 +50,13 @@ var compareStr = ((first_str, second_str) => {
 
 //5. 給二進制字串，將其換算成對應的十進制數字，需自己寫function
 
-
+var binary = ((total) => {
+    total = total.toString().split('');
+    for (i = 0; i < total.length; i++) {
+    }
+    return total;
+})
+console.log(binary(11000000));
 
 
 
