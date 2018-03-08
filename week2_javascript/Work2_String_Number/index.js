@@ -50,7 +50,7 @@ const reverseAEIOU = ((strs) => {
   }).join('');
   // return strsArry.join('');
 });
-console.log(reverseAEIOU('hEllo'));
+console.log(reverseAEIOU());
 
 
 // 5.給二進制字串，將其換算成對應的十進制數字，需自己寫function
@@ -70,23 +70,25 @@ console.log(binaryToDecimal());
 
 
 // 6. 將給定數字轉換成二進制字串。如果字串長度不足 8 位，則在前面補 0 到滿8位。
-const fillZero = ((strs) => {
-  let abcArray = [];
-  let a = parseInt(strs, 10) / 2;
-  let b = parseInt(strs, 10) % 2;
-  abcArray.push(b);
-  if (a !== 0) {
-    fillZero(a.toString());
+const fillZero = ((strs, modArray) => {
+  const quotient = Math.floor(strs / 2);
+  const remainder = Math.floor(strs % 2);
+  modArray.push(remainder);
+  if (quotient !== 0) {
+    fillZero(quotient, modArray);
   }
-  // const binaryStr = Array.from(strs.toString(2));
-  // let i = 0;
-  // while (i < 8 - binaryStr.length) {
-  //   binaryStr.unshift('0');
-  //   i += 1;
-  // }
-  return abcArray;
+  return modArray;
 });
-console.log(fillZero(25));
+
+const binaryNumber = ((decimal) => {
+  let modArray = [];
+  modArray = fillZero(decimal, modArray);
+  while (modArray.length < 8) {
+    modArray.unshift(0);
+  }
+  return modArray;
+});
+console.log(binaryNumber(25));
 
 
 // 7.將一個數字每個位數相加，直到剩個位數為止。
