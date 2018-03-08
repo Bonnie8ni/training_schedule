@@ -1,6 +1,5 @@
-// 1.一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。
-// Bonnie修改題目為從字串後面找
 
+// 1.一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。(Bonnie修改題目為從字串後面找)
 const longestCommonWord = ((strs) => {
   const reverse = strs.split('').reverse().join('');
   const allStrs = reverse.split(',');
@@ -31,9 +30,7 @@ console.log(reverseStr('ABCD'));
 // 3.給兩個字串s與t，回傳t是否為s的重組字
 const compareStr = ((firstStr, secondStr) => {
   if (firstStr.length !== secondStr.length) return false;
-  firstStr = firstStr.split('').sort().join('');
-  secondStr = secondStr.split('').sort().join('');
-  return firstStr === secondStr;
+  return firstStr.split('').sort().join('') === secondStr.split('').sort().join('');
 });
 console.log(compareStr('ABCD', 'DCAB'));
 
@@ -44,10 +41,12 @@ const reverseAEIOU = ((strs) => {
   const strsArry = Array.from(strs);
   const mother = 'aeiou';
   const cardinality = strs.match(/[aeiou]/ig).reverse();
-  for (let i = 0; i < strsArry.length; i++) {
+  let i = 0;
+  while (i < strsArry.length) {
     if (mother.indexOf(strsArry[i].toLowerCase()) !== -1) {
       strsArry[i] = cardinality.shift();
     }
+    i += 1;
   }
   return strsArry.join('');
 });
@@ -55,26 +54,29 @@ console.log(reverseAEIOU('aELLiOau'));
 
 
 // 5.給二進制字串，將其換算成對應的十進制數字，需自己寫function
-const binary = ((total) => {
-  let ValueBeforeConversion = 0;
-  for (let i = 0; i < total.length; i++) {
-    if (total[i] === '1') {
-      const exponent = total.length - i - 1;
-      ValueBeforeConversion += parseInt(Math.pow(2, exponent));
+// 反轉後再開始
+const binaryToDecimal = ((total) => {
+  let decimaltotal = 0;
+  Array.from(total).forEach((value, index) => {
+    if (value[index] === '1') {
+      const exponent = total.length - index - 1;
+      decimaltotal += (2 ** exponent);
     }
-  }
-  return ValueBeforeConversion;
+  });
+  return decimaltotal;
 });
-console.log(binary('11000'));
+console.log(binaryToDecimal('11000'));
 
 
 // 6. 將給定數字轉換成二進制字串。如果字串長度不足 8 位，則在前面補 0 到滿8位。
 const fillZero = ((strs) => {
-  let binaryStr = strs.toString(2);
-  for (let i = 0; i < 8 - binaryStr.length; i++) {
-    binaryStr = '0' + binaryStr;
+  const binaryStr = Array.from(strs.toString(2));
+  let i = 0;
+  while (i < 8 - binaryStr.length) {
+    binaryStr.unshift('0');
+    i += 1;
   }
-  return binaryStr;
+  return binaryStr.join('');
 });
 console.log(fillZero(25));
 
@@ -99,7 +101,7 @@ console.log(numberAddition(1234567890));
 // 8. 反轉一個int整數。
 const reverseInt = ((total) => {
   if (total.length === 1) return total;
-  const reverse = Math.abs(total).toString().split('').reverse().join('');
+  const reverse = Array.from(Math.abs(total).toString()).reverse().join('');
   return (Math.sign(total) < 0) ? reverse * (-1) : reverse;
 });
 console.log(reverseInt(1234567890));
