@@ -41,16 +41,16 @@ const reverseAEIOU = ((strs) => {
   const strsArry = Array.from(strs);
   const mother = 'aeiou';
   const cardinality = strs.match(/[aeiou]/ig).reverse();
-  let i = 0;
-  while (i < strsArry.length) {
-    if (mother.indexOf(strsArry[i].toLowerCase()) !== -1) {
-      strsArry[i] = cardinality.shift();
+  return strsArry.map((item) => {
+    if (mother.indexOf(item.toLowerCase()) !== -1) {
+      item = cardinality.shift();
     }
-    i += 1;
-  }
-  return strsArry.join('');
+
+    return item;
+  }).join('');
+  // return strsArry.join('');
 });
-console.log(reverseAEIOU());
+console.log(reverseAEIOU('hEllo'));
 
 
 // 5.給二進制字串，將其換算成對應的十進制數字，需自己寫function
@@ -71,16 +71,22 @@ console.log(binaryToDecimal());
 
 // 6. 將給定數字轉換成二進制字串。如果字串長度不足 8 位，則在前面補 0 到滿8位。
 const fillZero = ((strs) => {
-  if (!strs) return '';
-  const binaryStr = Array.from(strs.toString(2));
-  let i = 0;
-  while (i < 8 - binaryStr.length) {
-    binaryStr.unshift('0');
-    i += 1;
+  let abcArray = [];
+  let a = parseInt(strs, 10) / 2;
+  let b = parseInt(strs, 10) % 2;
+  abcArray.push(b);
+  if (a !== 0) {
+    fillZero(a.toString());
   }
-  return binaryStr.join('');
+  // const binaryStr = Array.from(strs.toString(2));
+  // let i = 0;
+  // while (i < 8 - binaryStr.length) {
+  //   binaryStr.unshift('0');
+  //   i += 1;
+  // }
+  return abcArray;
 });
-console.log(fillZero());
+console.log(fillZero(25));
 
 
 // 7.將一個數字每個位數相加，直到剩個位數為止。
@@ -89,10 +95,10 @@ const numberAddition = ((total) => {
   let strArray = Array.from(total.toString());
   if (strArray.length === 1) return total;
   let result = 0;
-  while (strArray.length > 1) {
+  strArray.forEach(() => {
     result = strArray.reduce((acc, val) => acc + parseInt(val, 10), 0);
     strArray = Array.from(result.toString());
-  }
+  });
   return result;
 });
 console.log(numberAddition());
