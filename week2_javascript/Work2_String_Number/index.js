@@ -1,8 +1,7 @@
 
 // 1.一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。(Bonnie修改題目為從字串後面找)
 const longestCommonWord = ((strs) => {
-  const reverse = Array.from(strs).reverse().join('');
-  const allStrs = reverse.split(',');
+  const allStrs = Array.from(strs).reverse().join('').split(',');
   if (allStrs.length < 2) return '';
   let compare = Array.from(allStrs[0]);
   allStrs.forEach((value, indexi) => {
