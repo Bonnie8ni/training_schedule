@@ -45,10 +45,8 @@ const reverseAEIOU = ((strs) => {
     if (mother.indexOf(item.toLowerCase()) !== -1) {
       item = cardinality.shift();
     }
-
     return item;
   }).join('');
-  // return strsArry.join('');
 });
 console.log(reverseAEIOU());
 
@@ -81,14 +79,15 @@ const fillZero = ((strs, modArray) => {
 });
 
 const binaryNumber = ((decimal) => {
+  if (!decimal) return '';
   let modArray = [];
   modArray = fillZero(decimal, modArray);
   while (modArray.length < 8) {
     modArray.unshift(0);
   }
-  return modArray;
+  return modArray.join('');
 });
-console.log(binaryNumber(25));
+console.log(binaryNumber(888));
 
 
 // 7.將一個數字每個位數相加，直到剩個位數為止。
