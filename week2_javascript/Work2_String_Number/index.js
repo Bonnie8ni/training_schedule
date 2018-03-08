@@ -5,7 +5,6 @@ const longestCommonWord = ((strs) => {
   const allStrs = reverse.split(',');
   if (allStrs.length < 2) return '';
   let compare = Array.from(allStrs[0]);
-
   allStrs.forEach((value, indexi) => {
     compare.forEach((item, indexj) => {
       if (compare[indexj] !== allStrs[indexi][indexj]) {
@@ -13,14 +12,6 @@ const longestCommonWord = ((strs) => {
       }
     });
   });
-
-  // for (let i = 0; i < allStrs.length; i++) {
-  //   for (let j = 0; j < compare.length; j++) {
-  //     if (compare[j] !== allStrs[i][j]) {
-  //       compare = compare.slice(0, j);
-  //     }
-  //   }
-  // }
   return compare.reverse().join('');
 });
 console.log(longestCommonWord('cebdaf,cebaf,cedfdfdaf'));
@@ -92,11 +83,8 @@ console.log(fillZero(25));
 // 7.將一個數字每個位數相加，直到剩個位數為止。
 const numberAddition = ((total) => {
   let strArray = Array.from(total.toString());
-
   if (strArray.length === 1) return total;
-
   let result = 0;
-
   while (strArray.length > 1) {
     result = strArray.reduce((acc, val) => acc + parseInt(val, 10), 0);
     strArray = Array.from(result.toString());
