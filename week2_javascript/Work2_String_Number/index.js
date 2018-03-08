@@ -1,19 +1,27 @@
 
 // 1.一個陣列中有許多個字串，寫一個function找出這些字串最長的共同字首。(Bonnie修改題目為從字串後面找)
 const longestCommonWord = ((strs) => {
-  const reverse = strs.split('').reverse().join('');
+  const reverse = Array.from(strs).reverse().join('');
   const allStrs = reverse.split(',');
   if (allStrs.length < 2) return '';
-  let compare = allStrs[0];
+  let compare = Array.from(allStrs[0]);
 
-  for (let i = 0; i < allStrs.length; i++) {
-    for (let j = 0; j < compare.length; j++) {
-      if (compare[j] !== allStrs[i][j]) {
-        compare = compare.slice(0, j);
+  allStrs.forEach((value, indexi) => {
+    compare.forEach((item, indexj) => {
+      if (compare[indexj] !== allStrs[indexi][indexj]) {
+        compare = compare.slice(0, indexj);
       }
-    }
-  }
-  return compare.split('').reverse().join('');
+    });
+  });
+
+  // for (let i = 0; i < allStrs.length; i++) {
+  //   for (let j = 0; j < compare.length; j++) {
+  //     if (compare[j] !== allStrs[i][j]) {
+  //       compare = compare.slice(0, j);
+  //     }
+  //   }
+  // }
+  return compare.reverse().join('');
 });
 console.log(longestCommonWord('cebdaf,cebaf,cedfdfdaf'));
 
