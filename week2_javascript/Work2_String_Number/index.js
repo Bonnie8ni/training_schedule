@@ -2,20 +2,20 @@
 // Bonnie修改題目為從字串後面找
 
 const longestCommonWord = ((strs) => {
-  let reverse = strs.split('').reverse().join('');
-  let allStrs = reverse.split(',');
+  const reverse = strs.split('').reverse().join('');
+  const allStrs = reverse.split(',');
   if (allStrs.length < 2) return '';
   let compare = allStrs[0];
 
   for (let i = 0; i < allStrs.length; i++) {
     for (let j = 0; j < compare.length; j++) {
-      if (compare[j] != allStrs[i][j]) {
+      if (compare[j] !== allStrs[i][j]) {
         compare = compare.slice(0, j);
       }
     }
   }
   return compare.split('').reverse().join('');
-})
+});
 console.log(longestCommonWord('cebdaf,cebaf,cedfdfdaf'));
 
 
