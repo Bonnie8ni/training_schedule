@@ -57,10 +57,10 @@ console.log(reverseAEIOU('aELLiOau'));
 // 反轉後再開始
 const binaryToDecimal = ((total) => {
   let decimaltotal = 0;
-  Array.from(total).forEach((value, index) => {
-    if (value[index] === '1') {
-      const exponent = total.length - index - 1;
-      decimaltotal += (2 ** exponent);
+  const binaryStrs = Array.from(total).reverse();
+  binaryStrs.forEach((value, index) => {
+    if (value === '1') {
+      decimaltotal += (2 ** index);
     }
   });
   return decimaltotal;
