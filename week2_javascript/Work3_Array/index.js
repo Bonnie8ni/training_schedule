@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-// 輸入陣列，輸出一個深層複製的陣列。兩者記憶體位置不能一樣。
+// 1.輸入陣列，輸出一個深層複製的陣列。兩者記憶體位置不能一樣。
 const copyArray = (value => value.slice());
 const a = [1, 2, 3];
 const b = copyArray(a);
@@ -19,5 +19,9 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
   .then((json) => {
     // 2.搜尋資料中id為特定的資料
     const chooseId = (item => json.filter(value => value.id === item));
-    console.log(chooseId(5));
+    // console.log(chooseId(5));
+
+    // 3. 模糊搜尋title包含特定文字的資料
+    const fuzzySearch = (keyword => json.filter(value => value.title.search(keyword) === 0));
+    // console.log(fuzzySearch('美好'));
   });
