@@ -24,4 +24,13 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 3. 模糊搜尋title包含特定文字的資料
     const fuzzySearch = (keyword => json.filter(value => value.title.search(keyword) === 0));
     // console.log(fuzzySearch('美好'));
+
+    // 4. 新增一筆id=99的資料(內容隨意)，於id=10和id=11中間
+    const addData = ((data) => {
+      json.splice(10, 0, data);
+      return json;
+    });
+    console.log(addData({
+      id: 99, img: 'xxx', title: 'xxx', desc: 'xxx', price: 100,
+    }));
   });
