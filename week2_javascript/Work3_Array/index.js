@@ -22,7 +22,7 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
       if (!item) return '';
       return json.find(value => value.id === item);
     });
-    //console.log(chooseId(5));
+    // console.log(chooseId(5));
 
 
     // 3. 模糊搜尋title包含特定文字的資料
@@ -30,23 +30,19 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
       if (!keyword) return '';
       return json.filter(value => value.title.search(keyword) !== -1);
     });
-    //console.log(fuzzySearch('美好'));
+    // console.log(fuzzySearch('美好'));
 
 
     // 4. 新增一筆id=99的資料(內容隨意)，於id=10和id=11中間
     // 更改題目為10之後
     const addData = ((data) => {
       if (!data) return '';
-      json.find((value) => {
-        if (value.id === 10) {
-          json.splice(value.id, 0, data);
-        }
-      });
-      return json;
+      let index = json.findIndex(value => value.id === 10);
+      json.splice(index + 1, 0, data);
     });
-    // console.log(addData({
-    //   id: 99, img: 'xxx', title: 'xxx', desc: 'xxx', price: 100,
-    // }));
+    console.log(addData({
+      id: 99, img: 'xxx', title: 'xxx', desc: 'xxx', price: 100,
+    }));
 
 
     // 5.修改id為特定的資料
