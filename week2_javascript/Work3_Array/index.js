@@ -34,9 +34,14 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
 
 
     // 4. 新增一筆id=99的資料(內容隨意)，於id=10和id=11中間
+    // 更改題目為10之後
     const addData = ((data) => {
       if (!data) return '';
-      json.splice(10, 0, data);
+      json.find((value) => {
+        if (value.id === 10) {
+          json.splice(value.id, 0, data);
+        }
+      });
       return json;
     });
     // console.log(addData({
@@ -47,16 +52,17 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 5.修改id為特定的資料
     const chooseIdChangData = ((item, attributes) => {
       if (!item || !attributes) return '';
+      let att = Object.assign(attributes);
       json.map((value) => {
         if (value.id === item) {
-          value.title = attributes.title;
-          value.desc = attributes.desc;
+          value.title = att.title;
+          value.desc = att.desc;
         }
         return value;
       });
       return json;
     });
-    // console.log(chooseIdChangData(3, { title: '修改title', desc: '修改desc' }));
+    console.log(chooseIdChangData(3, { title: '修改title', desc: '修改desc' }));
 
     // 6.刪除特定id的資料
     const deleteIdData = ((item) => {
