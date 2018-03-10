@@ -30,7 +30,7 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
       if (!keyword) return '';
       return json.filter(value => value.title.search(keyword) !== -1);
     });
-    console.log(fuzzySearch('美好'));
+    //console.log(fuzzySearch('美好'));
 
 
     // 4. 新增一筆id=99的資料(內容隨意)，於id=10和id=11中間
@@ -45,12 +45,12 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
 
 
     // 5.修改id為特定的資料
-    const chooseIdChangData = ((item, titleAndDesc) => {
-      json.filter((value) => {
-        if (!value) return '';
+    const chooseIdChangData = ((item, attributes) => {
+      if (!item || !attributes) return '';
+      json.map((value) => {
         if (value.id === item) {
-          value.title = titleAndDesc.title;
-          value.desc = titleAndDesc.desc;
+          value.title = attributes.title;
+          value.desc = attributes.desc;
         }
         return value;
       });
@@ -61,9 +61,8 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 6.刪除特定id的資料
     const deleteIdData = ((item) => {
       if (!item) return '';
-      json.filter((value) => {
+      json.forEach((value) => {
         if (value.id === item) json.splice(item - 1, 1);
-        return value;
       });
       // console.log(`已經刪除完 id 為 ${item} 的陣列`);
       // 驗證時上面這行要開
