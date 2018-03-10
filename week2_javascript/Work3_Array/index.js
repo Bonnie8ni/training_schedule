@@ -20,17 +20,17 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 2.搜尋資料中id為特定的資料
     const chooseId = ((item) => {
       if (!item) return '';
-      return json.filter(value => value.id === item);
+      return json.find(value => value.id === item);
     });
-    // console.log(chooseId(5));
+    //console.log(chooseId(5));
 
 
     // 3. 模糊搜尋title包含特定文字的資料
     const fuzzySearch = ((keyword) => {
       if (!keyword) return '';
-      return json.filter(value => value.title.search(keyword) === 0);
+      return json.filter(value => value.title.search(keyword) !== -1);
     });
-    // console.log(fuzzySearch('美好'));
+    console.log(fuzzySearch('美好'));
 
 
     // 4. 新增一筆id=99的資料(內容隨意)，於id=10和id=11中間
