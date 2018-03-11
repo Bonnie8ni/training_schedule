@@ -1,7 +1,14 @@
 // 1. deep clone object
 // 輸入物件，輸出一個深層複製的物件。兩者記憶體位置不能一樣。
+// ---------------------------------------------------------
+// ES5
+// const a = { text: 'aaa' };
+// const b = Object.assign({}, a);
+// b.text = 'bbb';
+// ---------------------------------------------------------
+// ES
 const a = { text: 'aaa' };
-const b = Object.assign({}, a);
+const b = { ...a };
 b.text = 'bbb';
 // console.log(b.text);
 // console.log(a.text);
