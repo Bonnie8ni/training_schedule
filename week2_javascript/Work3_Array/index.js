@@ -37,9 +37,10 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 更改題目為10之後
     const addData = ((data) => {
       if (!data) return '';
-      let index = json.findIndex(value => value.id === 10);
-      json.splice(index + 1, 0, data);
-      return json;
+      const newjson = json.slice();
+      const index = newjson.findIndex(value => value.id === 10);
+      newjson.splice(index + 1, 0, data);
+      return newjson;
     });
     // console.log(addData({
     //   id: 99, img: 'xxx', title: 'xxx', desc: 'xxx', price: 100,
@@ -49,19 +50,21 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     // 5.修改id為特定的資料
     const chooseIdChangData = ((index, modifyObject) => {
       if (!index || !modifyObject) return '';
-      Object.assign(json.find(value => value.id === index), modifyObject);
-      return json;
+      const newjson = json.slice();
+      Object.assign(newjson.find(value => value.id === index), modifyObject);
+      return newjson;
     });
     // console.log(chooseIdChangData(3, { title: '修改title', desc: '修改desc', price: 999 }));
 
     // 6.刪除特定id的資料
     const deleteIdData = ((item) => {
       if (!item) return '';
-      let index = json.findIndex(value => value.id === item);
-      json.splice(index, 1);
+      const newjson = json.slice();
+      let index = newjson.findIndex(value => value.id === item);
+      newjson.splice(index, 1);
       // console.log(`已經刪除完 id 為 ${item} 的陣列`);
       // 驗證時上面這行要開
-      return json;
+      return newjson;
     });
     // console.log(deleteIdData(5));
 
