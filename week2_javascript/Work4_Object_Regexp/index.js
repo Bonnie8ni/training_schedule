@@ -1,3 +1,16 @@
+// 請嘗試將b加入{id: 10}這個object
+const fetch = require('node-fetch');
+
+fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.json')
+  .then((res) => {
+    if (res.status >= 200 && res.status < 300) return res.json();
+    const error = new Error(res.statusText);
+    error.response = res;
+    throw error;
+  })
+  .then((json) => {
+  });
+
 // 1. deep clone object
 // 輸入物件，輸出一個深層複製的物件。兩者記憶體位置不能一樣。
 // ---------------------------------------------------------
@@ -6,10 +19,9 @@
 // const b = Object.assign({}, a);
 // b.text = 'bbb';
 // ---------------------------------------------------------
-// ES
+// ES5
 const a = { text: 'aaa' };
-const b = { ...a };
-b.text = 'bbb';
+const b = { ...a, text: 'bbb' };
 // console.log(b.text);
 // console.log(a.text);
 
