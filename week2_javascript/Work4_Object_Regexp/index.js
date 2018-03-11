@@ -1,8 +1,9 @@
 // 1. deep clone object
 // 輸入物件，輸出一個深層複製的物件。兩者記憶體位置不能一樣。
 const a = { text: 'aaa' };
-const b = Array.from(a).slice();
+const b = Object.assign({}, a);
 b.text = 'bbb';
+// console.log(b.text);
 // console.log(a.text);
 
 // 2. add a format prototype to Date
@@ -21,14 +22,11 @@ class Person {
     this.name = name;
     this.age = age;
   }
-  get sayhistrs() {
-    return this.sayhi();
-  }
   sayhi() {
     return `hi I'm ${this.name}, ${this.age} years old`;
   }
 }
-// const john = new Person('john', 18);
+const john = new Person('john', 18);
 // console.log(john.sayhi());
 
 // 4. regexp replace all
@@ -40,7 +38,7 @@ const changeStr = ((strs, changed, toCahnge) => (strs.replace(new RegExp(changed
 
 // 5. regexp condition match email format
 const verifyEmail = ((email) => {
-  if (email.match(/\S+@\S+/)) return true;
+  if (email.match(/\S+@\S+\.\S+/)) return true;
   return false;
 });
-// console.log(verifyEmail('Bonnie_Yu@Wistron.com'));
+// console.log(verifyEmail('Bonnie_Yu@Wistron'));
