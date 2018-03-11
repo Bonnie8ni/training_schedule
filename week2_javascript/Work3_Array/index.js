@@ -10,9 +10,8 @@ const fetch = require('node-fetch');
 // ---------------------------------------------------------
 // ES6
 const a = [1, 2, 3];
-const b = [...a];
-b.push(4);
-// console.log(a, b);
+const b = [...a, 4];
+console.log(a, b);
 
 
 // 用 fetch 取得陣列到程式中
