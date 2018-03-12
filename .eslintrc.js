@@ -6,5 +6,8 @@ module.exports = {
     "no-plusplus": [
       "error", {"allowForLoopAfterthoughts": true }
     ]
+  },
+  "env": {
+    "jest": true
   }
 };
