@@ -1,43 +1,22 @@
 const fetch = require('node-fetch');
 
-// 用 fetch 取得陣列到程式中
-fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.json')
-  .then((res) => {
-    if (res.status >= 200 && res.status < 300) return res.json();
-    const error = new Error(res.statusText);
-    error.response = res;
-    throw error;
-  })
-  .then((json) => {
-  });
 
-// 1.輸入陣列，輸出一個深層複製的陣列。兩者記憶體位置不能一樣。
-// ---------------------------------------------------------
-// ES5
-// const copyArray = (value => value.slice());
-// const a = [1, 2, 3];
-// const b = copyArray(a);
-// b.push(4);
-// ---------------------------------------------------------
-// ES6
-// 20180312 為了單元測試項目有更改題目
 const copyArray = ((value) => {
   if (!value) return [];
-  const a = [...value];
-  console.log(a);
-  const b = [...value, '4'];
-  return b;
+  if (typeof (value) !== 'string') return [];
+  if (!value.match(new RegExp(/[0-9]/))) return [];
+  return [...value, '4'];
 });
 // console.log(copyArray());
 
 
 // 2.搜尋資料中id為特定的資料
-const chooseId = ((item) => {
+const chooseId = ((json, item) => {
   if (!item) return '';
+  if (typeof (item) !== 'number') return '';
+  console.log(json.find(value => value.id === item));
   return json.find(value => value.id === item);
 });
-// console.log(chooseId(5));
-
 
 // 3. 模糊搜尋title包含特定文字的資料
 const fuzzySearch = ((keyword) => {
@@ -126,6 +105,19 @@ const sortByPrice = ((sort) => {
   return json;
 });
 // console.log(sortByPrice('desc'));
+
+
+// 用 fetch 取得陣列到程式中
+fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.json')
+  .then((res) => {
+    if (res.status >= 200 && res.status < 300) return res.json();
+    const error = new Error(res.statusText);
+    error.response = res;
+    throw error;
+  })
+  .then((json) => {
+    chooseId(json, 5);
+  });
 
 module.exports = [copyArray, chooseId, fuzzySearch, addData, chooseIdChangData,
   deleteIdData, sortByPrice];
