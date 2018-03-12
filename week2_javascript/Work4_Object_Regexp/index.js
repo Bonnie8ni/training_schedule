@@ -9,6 +9,13 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     throw error;
   })
   .then((json) => {
+    const changeDate = (() => {
+      const a = { text: 'aaa' };
+      const b = { ...a, text: 'bbb' };
+      Object.assign([...json].find(value => value.id === 10), b);
+      return json;
+    });
+    console.log(changeDate());
   });
 
 // 1. deep clone object
