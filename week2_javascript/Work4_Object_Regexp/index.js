@@ -15,7 +15,7 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
       Object.assign([...json].find(value => value.id === 10), b);
       return json;
     });
-    console.log(changeDate());
+    // console.log(changeDate());
   });
 
 // 1. deep clone object
@@ -68,3 +68,11 @@ const verifyEmail = ((email) => {
   return false;
 });
 // console.log(verifyEmail('Bonnie_Yu@Wistron'));
+
+// 請宣告一個object c 將a, b合起來
+const mergeStrs = (() => {
+  const a = { text: 'aaa' };
+  const b = { id: 10 };
+  return {...a, ...b};
+});
+// console.log(mergeStrs());
