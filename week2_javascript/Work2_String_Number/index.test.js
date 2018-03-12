@@ -1,4 +1,4 @@
-const [longestCommonWord, reverseStr, compareStr, reverseAEIOU, binaryToDecimal, 
+const [longestCommonWord, reverseStr, compareStr, reverseAEIOU, binaryToDecimal,
   binaryNumber, numberAddition, reverseInt] = require('./index');
 // ------------------------------------------------------------------
 // longestCommonWord

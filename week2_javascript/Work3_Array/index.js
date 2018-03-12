@@ -9,9 +9,15 @@ const fetch = require('node-fetch');
 // b.push(4);
 // ---------------------------------------------------------
 // ES6
-const a = [1, 2, 3];
-const b = [...a, 4];
-console.log(a, b);
+// 20180312 為了單元測試項目有更改題目
+const copyArray = ((value) => {
+  if (!value) return [];
+  if (typeof (value) !== 'string') return [];
+  const a = [...value];
+  const b = [...a, '4'];
+  return b;
+});
+// console.log(copyArray(''));
 
 
 // 用 fetch 取得陣列到程式中
@@ -83,7 +89,7 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
     });
     // console.log(chooseIdChangData(3, { title: '修改title', desc: '修改desc', price: 999 }));
 
-    
+
     // 6.刪除特定id的資料
     // ---------------------------------------------------------
     // ES5
@@ -118,4 +124,9 @@ fetch('https://raw.githubusercontent.com/ReactMaker/api_server/master/db/album.j
       return json;
     });
     // console.log(sortByPrice('desc'));
+
+    module.exports = [chooseId, fuzzySearch, addData, chooseIdChangData,
+      deleteIdData, sortByPrice];
   });
+
+module.exports = [copyArray];
