@@ -94,8 +94,9 @@ const compareStr = ((firstStr, secondStr) => {
 const reverseAEIOU = ((strs) => {
   if (!strs) return '';
   if (typeof (strs) !== 'string') return '';
-  const mother = 'aeiou';
+  if (strs.match(/[aeiou]/ig) === null) return strs;
   const cardinality = strs.match(/[aeiou]/ig).reverse();
+  const mother = 'aeiou';
   return [...strs].map((item) => {
     if (mother.indexOf(item.toLowerCase()) !== -1) {
       item = cardinality.shift();
@@ -126,7 +127,7 @@ const reverseAEIOU = ((strs) => {
 const binaryToDecimal = ((total) => {
   if (!total) return 0;
   if (typeof (total) !== 'string') return 0;
-  if (!total.match(new RegExp(/[0, 1]/))) return 0;
+  if (!total.match(/[0, 1]/)) return 0;
   let decimaltotal = 0;
   const binaryStrs = [...total].reverse();
   binaryStrs.forEach((value, index) => {
@@ -154,7 +155,7 @@ const binaryNumber = ((decimal) => {
   if (!decimal) return '';
   if (typeof (decimal) !== 'number') return '';
   let modArray = [];
-  modArray = fillZero(decimal, modArray);
+  modArray = fillZero(decimal, modArray).reverse();
   while (modArray.length < 8) {
     modArray.unshift(0);
   }
