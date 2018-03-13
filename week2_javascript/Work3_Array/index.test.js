@@ -1,6 +1,7 @@
 const [copyArray, chooseId, fuzzySearch, addData, chooseIdChangData,
   deleteIdData, sortByPrice] = require('./index');
 // ------------------------------------------------------------------
+// 原始資料
 const fakeData = [
   {
     id: 1,
@@ -83,6 +84,7 @@ const fakeData = [
     price: 2659,
   },
 ];
+// 比對用: 加了date後的答案
 const addDataAnswer = [
   {
     id: 1,
@@ -168,6 +170,7 @@ const addDataAnswer = [
     price: 2659,
   },
 ];
+// 比對用: 搜尋ID修改資料
 const changeDate = [
   {
     id: 1,
@@ -250,6 +253,7 @@ const changeDate = [
     price: 2659,
   },
 ];
+// 比對用: 刪除後的資料
 const deletAfterDate = [
   {
     id: 1,
@@ -325,8 +329,6 @@ const deletAfterDate = [
     price: 2659,
   },
 ];
-const nullObject = {};
-const nullArray = [];
 const compareId5 = {
   id: 5,
   img: 'https://unsplash.it/300/300?image=868',
@@ -334,28 +336,198 @@ const compareId5 = {
   desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
   price: 300,
 };
-const compareTitle = [{
-  id: 1,
-  img: 'https://unsplash.it/300/300?image=946',
-  title: '美好時光1',
-  desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
-  price: 200,
-  discount: true,
-},
-{
-  id: 2,
-  img: 'https://unsplash.it/300/300?image=944',
-  title: '美好時光2',
-  desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
-  price: 300,
-},
-{
-  id: 3,
-  img: 'https://unsplash.it/300/300?image=882',
-  title: '美好時光3',
-  desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
-  price: 400,
-}];
+const ascSorting = [
+  {
+    id: 1,
+    img: 'https://unsplash.it/300/300?image=946',
+    title: '美好時光1',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 200,
+    discount: true,
+  },
+  {
+    id: 7,
+    img: 'https://unsplash.it/300/300?image=1053',
+    title: '香草生活1',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 200,
+    discount: true,
+  },
+  {
+    id: 4,
+    img: 'https://unsplash.it/300/300?image=874',
+    title: '城市幻影1',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 250,
+    discount: true,
+  },
+  {
+    id: 5,
+    img: 'https://unsplash.it/300/300?image=868',
+    title: '城市幻影2',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 300,
+  },
+  {
+    id: 2,
+    img: 'https://unsplash.it/300/300?image=944',
+    title: '美好時光2',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 300,
+  },
+  {
+    id: 6,
+    img: 'https://unsplash.it/300/300?image=953',
+    title: '城市幻影3',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 350,
+  },
+  {
+    id: 3,
+    img: 'https://unsplash.it/300/300?image=882',
+    title: '美好時光3',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 400,
+  },
+  {
+    id: 8,
+    img: 'https://unsplash.it/300/300?image=940',
+    title: '香草生活1',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 400,
+  },
+  {
+    id: 9,
+    img: 'https://unsplash.it/300/300?image=798',
+    title: '香草生活2',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 600,
+  },
+  {
+    id: 10,
+    img: 'https://unsplash.it/300/300?image=1056',
+    title: '香草生活3',
+    desc: '生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 800,
+  },
+  {
+    id: 11,
+    img: 'https://unsplash.it/300/300?image=785',
+    title: 'Spa Life',
+    desc: '精選3000首100％spa音樂, 在人們回歸自然本質的風氣之下，生活更渴望也強調與大自然接近、與花草為伍。「SPA」乃源自於拉丁文的Solus Par Aqua',
+    price: 2659,
+  }
+];
+const descSorting = [
+  {
+    id: 11,
+    img: 'https://unsplash.it/300/300?image=785',
+    title: 'Spa Life',
+    desc: '精選3000首100％spa音樂, 在人們回歸自然本質的風氣之下，生活更渴望也強調與大自然接近、與花草為伍。「SPA」乃源自於拉丁文的Solus Par Aqua',
+    price: 2659,
+  },
+  {
+    id: 10,
+    img: 'https://unsplash.it/300/300?image=1056',
+    title: '香草生活3',
+    desc: '生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 800,
+  },
+  {
+    id: 9,
+    img: 'https://unsplash.it/300/300?image=798',
+    title: '香草生活2',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 600,
+  },
+  {
+    id: 3,
+    img: 'https://unsplash.it/300/300?image=882',
+    title: '美好時光3',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 400,
+  },
+  {
+    id: 8,
+    img: 'https://unsplash.it/300/300?image=940',
+    title: '香草生活1',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 400,
+  },
+  {
+    id: 6,
+    img: 'https://unsplash.it/300/300?image=953',
+    title: '城市幻影3',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 350,
+  },
+  {
+    id: 5,
+    img: 'https://unsplash.it/300/300?image=868',
+    title: '城市幻影2',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 300,
+  },
+  {
+    id: 2,
+    img: 'https://unsplash.it/300/300?image=944',
+    title: '美好時光2',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 300,
+  },
+  {
+    id: 4,
+    img: 'https://unsplash.it/300/300?image=874',
+    title: '城市幻影1',
+    desc: '如詩般迷炫的法文爵士好歌, 樸實無華且細膩的爵士樂編曲，凸顯了「幻影」專輯中歌詞的如詩美感',
+    price: 250,
+    discount: true,
+  },
+  {
+    id: 1,
+    img: 'https://unsplash.it/300/300?image=946',
+    title: '美好時光1',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 200,
+    discount: true,
+  },
+  {
+    id: 7,
+    img: 'https://unsplash.it/300/300?image=1053',
+    title: '香草生活1',
+    desc: '讓生命......自然伸展, 百分之百 純天然創作, 散發玫瑰、薰衣草、甜橙與波斯菊的音樂香氛',
+    price: 200,
+    discount: true,
+  },
+];
+const compareTitle = [
+  {
+    id: 1,
+    img: 'https://unsplash.it/300/300?image=946',
+    title: '美好時光1',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 200,
+    discount: true,
+  },
+  {
+    id: 2,
+    img: 'https://unsplash.it/300/300?image=944',
+    title: '美好時光2',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 300,
+  },
+  {
+    id: 3,
+    img: 'https://unsplash.it/300/300?image=882',
+    title: '美好時光3',
+    desc: '追求心靈養生走入自然，便走入了永恆。我們用音樂邀您進入自然之道，聆聽永恆。自然、和諧，讓人一聽就會放鬆心情、解除一切武裝的旋律',
+    price: 400,
+  },
+];
+const nullObject = {};
+const nullArray = [];
+
+
 // ------------------------------------------------------------------
 // copyArray
 describe('copyArray', () => {
@@ -437,18 +609,18 @@ const theChangeData = (3, {
 });
 describe('chooseIdChangData', () => {
   it('若輸入的值為空值，結果得空陣列', () => {
-    expect(chooseIdChangData(fakeData, '', '')).toEqual(nullArray);
+    expect(chooseIdChangData(fakeData, '', '')).toEqual(fakeData);
   });
   it('若輸入的index非數字，結果得空陣列', () => {
-    expect(chooseIdChangData(fakeData, '', theChangeData)).toEqual(nullArray);
+    expect(chooseIdChangData(fakeData, '', theChangeData)).toEqual(fakeData);
   });
   it('若輸入的modifyObject非object，結果得空陣列', () => {
-    expect(chooseIdChangData(fakeData, 3, '')).toEqual(nullArray);
+    expect(chooseIdChangData(fakeData, 3, '')).toEqual(fakeData);
   });
   it('若輸入找不到相對應的id，結果得空陣列', () => {
-    expect(chooseIdChangData(fakeData, 99, theChangeData)).toEqual(nullArray);
+    expect(chooseIdChangData(fakeData, 99, theChangeData)).toEqual(fakeData);
   });
-  it('若輸入找到相對應的id，結果得空陣列', () => {
+  it('若輸入找到相對應的id，結果得更換後的陣列', () => {
     expect(chooseIdChangData(fakeData, 3, theChangeData)).toEqual(changeDate);
   });
 });
@@ -461,18 +633,29 @@ describe('deleteIdData', () => {
   it('若輸入的值不為數字，結果得原始陣列', () => {
     expect(deleteIdData(fakeData, '5')).toEqual(fakeData);
   });
-  it('若輸入的值為正確值，結果得刪除後的陣列', () => {
+  it('若輸入找不到相對應的id，結果得原始陣列', () => {
+    expect(deleteIdData(fakeData, 85)).toEqual(fakeData);
+  });
+  it('若輸入找到相對應的id，結果得刪除後的陣列', () => {
     expect(deleteIdData(fakeData, 5)).toEqual(deletAfterDate);
   });
 });
-// // ----------------------------------------------------------------
-// // deleteIdData
-// test('sortByPrice() 若輸入為空值，結果得空值', () => {
-//   expect(sortByPrice(fakeData, '')).toBe('');
-// });
-// test('sortByPrice() 若輸入不為字串，結果得空值', () => {
-//   expect(sortByPrice(fakeData, 123)).toBe('');
-// });
-// test('sortByPrice() 若輸入值不為ase/desc，結果得其直', () => {
-//   expect(sortByPrice(fakeData, 'abc')).toBe('');
-// });
+// ----------------------------------------------------------------
+// sortByPrice
+describe('sortByPrice', () => {
+  it('若輸入的值為空值，結果得原始陣列', () => {
+    expect(sortByPrice(fakeData, '')).toEqual(fakeData);
+  });
+  it('若輸入的值不為字串，結果得原始陣列', () => {
+    expect(sortByPrice(fakeData, 5)).toEqual(fakeData);
+  });
+  it('若輸入的值不為排序的字串，結果得原始陣列', () => {
+    expect(sortByPrice(fakeData, 'ABC')).toEqual(fakeData);
+  });
+  it('若輸入的值為asc，結果得原始陣列', () => {
+    expect(sortByPrice(fakeData, 'ASC')).toEqual(ascSorting);
+  });
+  it('若輸入的值為desc，結果得原始陣列', () => {
+    expect(sortByPrice(fakeData, 'DESC')).toEqual(descSorting);
+  });
+});

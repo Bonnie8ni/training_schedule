@@ -61,16 +61,14 @@ const addData = ((json, data) => {
 // });
 // ---------------------------------------------------------
 // ES6
-const chooseIdChangData = ((json, index, modifyObject) => {
-  if (!index || !modifyObject) return [];
-  if (typeof (index) !== 'number') return [];
-  if (Object.prototype.toString.call(modifyObject) !== '[object Object]') return [];
-  const copyjson = Object.assign('', json);
-  const newjson = [...copyjson].find(value => value.id === index);
-  if (newjson === undefined) return [];
-  console.log(json);
-  Object.assign(newjson, modifyObject);
-  console.log(json);
+const chooseIdChangData = ((json, id, modifyObject) => {
+  if (!id || !modifyObject) return json;
+  if (typeof (id) !== 'number') return json;
+  if (Object.prototype.toString.call(modifyObject) !== '[object Object]') return json;
+  const index = json.findIndex(value => value.id === id);
+  if (index < 0) return json;
+  const copyjson = [...json];
+  copyjson[index] = Object.assign({}, copyjson[index], modifyObject);
   return copyjson;
 });
 
@@ -89,13 +87,13 @@ const chooseIdChangData = ((json, index, modifyObject) => {
 // });
 // ---------------------------------------------------------
 // ES6
-const deleteIdData = ((json, item) => {
-  if (!item) return json;
-  if (typeof (item) !== 'number') return json;
+const deleteIdData = ((json, id) => {
+  if (typeof (id) !== 'number') return json;
+  const index = json.findIndex(value => value.id === id);
+  if (index < 0) return json;
   const newjson = [...json];
-  let index = newjson.findIndex(value => value.id === item);
   newjson.splice(index, 1);
-  // console.log(`已經刪除完 id 為 ${item} 的陣列`);
+  // console.log(`已經刪除完 id 為 ${id} 的陣列`);
   // 驗證時上面這行要開
   return newjson;
 });
@@ -104,12 +102,16 @@ const deleteIdData = ((json, item) => {
 
 // 7.依照價格排序
 const sortByPrice = ((json, sort) => {
-  if (!sort) return '';
-  if (typeof (sort) !== 'string') return '';
-  if (sort === 'asc') json.sort((acc, cur) => (acc.price > cur.price ? 1 : -1));
-  else if (sort === 'desc') json.sort((acc, cur) => (acc.price > cur.price ? -1 : 1));
-  else return '';
-  return json;
+  if (!sort) return json;
+  if (typeof (sort) !== 'string') return json;
+  switch (sort.toUpperCase()) {
+    case 'ASC':
+      return json.sort((acc, cur) => (acc.price > cur.price ? 1 : -1));
+    case 'DESC':
+      return json.sort((acc, cur) => (acc.price > cur.price ? -1 : 1));
+    default:
+      return json;
+  }
 });
 
 
