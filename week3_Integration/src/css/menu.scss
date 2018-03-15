@@ -2,7 +2,10 @@
   color: #f3f3f3;
   background: #343434;
   min-height: 100vh;
-
+  ul, li{
+    padding: 0;
+    margin: 0;
+  }
   a{
     display: block;
     height: 60px;
@@ -36,15 +39,6 @@
         }
       }
     }
-    &:active{
-      background: #AE5555;
-      a{
-        color: #FFFFFF;
-      }
-      .group-header{
-          background: #FF6B6B;
-      }
-    }
     i{
       width: 28px;
       text-align: center;
@@ -62,7 +56,14 @@
         position: relative;
         padding: 0 0 0 58px;
         border-bottom: 1px solid #343434;
-        &:active{
+      }
+    }
+    &.active{
+      background: #AE5555;
+      a{
+        display: block;
+        color: #FFFFFF;
+        &.focus{
           &:after{
             position: absolute;
             right: 0;
@@ -74,6 +75,9 @@
             content: '';
           }
         }
+      }
+      .group-header{
+          background: #FF6B6B;
       }
     }
   }
