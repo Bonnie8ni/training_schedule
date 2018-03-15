@@ -1,7 +1,31 @@
+@import './reset.css';
+@import './menu.scss';
+@import './ctrl.scss';
+@import './list.scss';
 @import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-#app {
-    height: 100vh;
-    background: #000;
-    color: #fff;
+body {
+    background: #e8e8e8;
+    font-family: "微軟正黑體", "Microsoft JhengHei";
+    font-size: 12pt;
+}
+a, a:hover{
+    color:#666;
+    text-decoration: none;
+}
+*, *:before, *:after {
+    box-sizing: border-box; 
+}
+#container{
+    display: flex;
+    #menu{
+        flex-basis: 266px;
+    }
+    #content{
+        flex: 1;
+        font-size: 11pt;
+        & > div{
+          padding: 0 2%;
+        }
+    }
 }
