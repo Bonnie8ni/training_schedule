@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "webpack-dev-server --port 8000 --hot --open --inline --env development",
+    "start": "webpack-dev-server --port 9000 --hot --open --inline --env development",
     "build": "npm run clean && webpack -p --progress --colors --env production"
   },
   "repository": {

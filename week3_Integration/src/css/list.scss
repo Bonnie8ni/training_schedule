@@ -59,6 +59,9 @@
         font-size: 15pt;
         background: none;
         color:#3B3B3B;
+        &.disabled {
+          color:#999;
+        }
       }
     }
   }
