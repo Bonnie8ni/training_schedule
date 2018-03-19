@@ -3,29 +3,41 @@
 @import './ctrl.scss';
 @import './list.scss';
 @import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+%padding-left {
+    padding: 0 2%;
+}
 
 body {
     background: #e8e8e8;
     font-family: "微軟正黑體", "Microsoft JhengHei";
     font-size: 12pt;
 }
-a, a:hover{
-    color:#666;
+
+a,
+a:hover {
+    color: #666;
     text-decoration: none;
 }
-*, *:before, *:after {
-    box-sizing: border-box; 
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }
-#container{
+
+#container {
     display: flex;
-    #menu{
+    #menu {
         flex-basis: 266px;
     }
-    #content{
+    #content {
         flex: 1;
         font-size: 11pt;
-        & > div{
-          padding: 0 2%;
+        & > div {
+            @extend %padding-left;
         }
+    }
+    .page {
+        @extend %padding-left;
     }
 }

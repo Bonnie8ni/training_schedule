@@ -1,45 +1,19 @@
-.grid-group{
-  text-align: center;
-  margin: 1% 0 0 0;
-
-  .row-id{flex-basis: 100px;}
-  .row-model{flex-basis: 100px;}
-  .row-status{flex-basis: 100px;}
-  .row-temp{flex-basis: 150px;}
-  .row-address{flex-basis: 400px;}
-  .row-region{flex-basis: 100px;}
-  .row-details{flex-basis: 100px;}
-  .row-steup{flex-basis: 200px;}
-
-  .grid-header{
-    color: #fff;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-around;
-    background: #343434;
-    padding: 15px 0;
-    border-radius: 5px;
-  }
-  .grid-list{
+.grid-group {
+    text-align: center;
     margin: 1% 0 0 0;
-    .light{
-      color:#fff;
-      display: inline-block;
-      width: 60px;
-      border-radius: 5px;
+    .row-id {
+        flex-basis: 100px;
     }
-    .status-error{
-      border-left: 5px solid #FF6B6B;
-      .light{ background:#FF6B6B; }
+    .row-model {
+        flex-basis: 100px;
     }
-    .status-online{
-      border-left: 5px solid #36B974;
-      .light{ background:#36B974; }
+    .row-status {
+        flex-basis: 100px;
     }
-    .status-offline{
-      border-left: 5px solid #727171;
-      .light{ background:#727171; }
+    .row-temp {
+        flex-basis: 150px;
     }
+<<<<<<< Updated upstream
     .grid-row{
       display: flex;
       padding: 20px 0;
@@ -63,34 +37,106 @@
           color:#999;
         }
       }
+=======
+    .row-address {
+        flex-basis: 400px;
+>>>>>>> Stashed changes
     }
-  }
+    .row-region {
+        flex-basis: 100px;
+    }
+    .row-details {
+        flex-basis: 100px;
+    }
+    .row-steup {
+        flex-basis: 200px;
+    }
+    .grid-header {
+        color: #fff;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-around;
+        background: #343434;
+        padding: 15px 0;
+        border-radius: 5px;
+    }
+    .grid-list {
+        margin: 1% 0 0 0;
+        .light {
+            color: #fff;
+            display: inline-block;
+            width: 60px;
+            border-radius: 5px;
+        }
+        .status-error {
+            border-left: 5px solid #FF6B6B;
+            .light {
+                background: #FF6B6B;
+            }
+        }
+        .status-online {
+            border-left: 5px solid #36B974;
+            .light {
+                background: #36B974;
+            }
+        }
+        .status-offline {
+            border-left: 5px solid #727171;
+            .light {
+                background: #727171;
+            }
+        }
+        .grid-row {
+            display: flex;
+            padding: 20px 0;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid #D7D7D7;
+            &:nth-child(2n + 1) {
+                background: #F4F4F4;
+            }
+            .row-address {
+                text-align: left;
+            }
+            .btn-delete {
+                margin: 0 0 0 10%;
+            }
+            button {
+                font-size: 15pt;
+                background: none;
+                color: #3B3B3B;
+                &.disabled {
+                    color: #999;
+                }
+            }
+        }
+    }
 }
-.page{
-  padding: 0 2%;
-  margin: 1% 0 0 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  .pagination{
-    margin: 0 0 0 15px;
-    .page-link{
-      padding:0.4rem 0.75rem;
-      border-radius: 0;
+
+.page {
+    margin: 1% 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    .pagination {
+        margin: 0 0 0 15px;
+        .page-link {
+            padding: 0.4rem 0.75rem;
+            border-radius: 0;
+        }
+        a {
+            font-size: 10pt;
+            color: #000;
+            background: none;
+            border: 1px solid #D7D7D7;
+            &:hover {
+                color: #fff;
+                background: #343434;
+            }
+            &.action {
+                color: #fff;
+                background: #343434;
+            }
+        }
     }
-    a{
-      font-size: 10pt;
-      color:#000;
-      background: none;
-      border: 1px solid #D7D7D7;
-      &:hover{
-        color:#fff;
-        background:#343434;
-      }
-      &.active{
-        color:#fff;
-        background:#343434;
-      }
-    }
-  }
 }
