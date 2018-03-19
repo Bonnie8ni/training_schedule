@@ -33,7 +33,7 @@ a:hover {
     #content {
         flex: 1;
         font-size: 11pt;
-        & > div {
+        &>div {
             @extend %padding-left;
         }
     }
