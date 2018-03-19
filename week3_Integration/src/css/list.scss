@@ -13,29 +13,8 @@
     .row-temp {
         flex-basis: 150px;
     }
-    .grid-row{
-      display: flex;
-      padding: 20px 0;
-      justify-content: space-around;
-      align-items: center;
-      border-bottom: 1px solid #D7D7D7;
-      &:nth-child(2n + 1){
-        background:#F4F4F4;
-      }
-      .row-address{
-        text-align: left;
-      }
-      .btn-delete{
-        margin: 0 0 0 10%;
-      }
-      button{
-        font-size: 15pt;
-        background: none;
-        color:#3B3B3B;
-        &.disabled {
-          color:#999;
-        }
-      }
+    .row-address {
+        flex-basis: 400px;
     }
     .row-region {
         flex-basis: 100px;
@@ -45,6 +24,27 @@
     }
     .row-steup {
         flex-basis: 200px;
+    }
+    .grid-row {
+        display: flex;
+        padding: 20px 0;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid #D7D7D7;
+        &:nth-child(2n + 1) {
+            background: #F4F4F4;
+        }
+        .btn-delete {
+            margin: 0 0 0 10%;
+        }
+        button {
+            font-size: 15pt;
+            background: none;
+            color: #3B3B3B;
+            &.disabled {
+                color: #999;
+            }
+        }
     }
     .grid-header {
         color: #fff;
