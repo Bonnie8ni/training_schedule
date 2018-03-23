@@ -1,6 +1,6 @@
 const uuidv4 = require('uuid/v4');
 
-const menuData = [
+const MenuData = [
   {
     menuId: uuidv4(),
     menuName: 'Dealer Management',
@@ -151,4 +151,4 @@ const menuData = [
   },
 ];
 
-module.exports = menuData;
+module.exports = MenuData;

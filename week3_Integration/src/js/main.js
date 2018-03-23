@@ -1,8 +1,7 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
-import Card from './menu/Card';
-// import Li from './menu/Li';
-import menuData from './menu/menuData';
+import MenuCard from './menu/MenuCard';
+import menuData from './menu/MenuData';
 
 // hot reload for development
 if (process.env.NODE_ENV !== 'production') {
@@ -11,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 $().ready(() => {
   menuData.forEach((menu) => {
-    const $Card = new Card(menu);
-    $('#menu').append($Card.render());
+    const $MenuCard = new MenuCard(menu);
+    $('#menu').append($MenuCard.render());
   });
 });
