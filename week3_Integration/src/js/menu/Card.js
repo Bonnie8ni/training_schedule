@@ -17,8 +17,11 @@ export default class Card {
     this.Card = $GroupCard;
 
     $GroupCard.click(() => {
-      console.log($tpGroupCard.find('.group-card').hasClass());
-      $GroupCard.addClass('active');
+      $('.group-card').removeClass('active');
+      $GroupCard.toggleClass('active');
+    });
+    $groupHard.click(() => {
+      $('a').removeClass('focus');
     });
   }
 

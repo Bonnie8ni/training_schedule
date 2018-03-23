@@ -7,7 +7,8 @@ export default class Li {
     this.Li = $li;
 
     $a.click(() => {
-      $a.removeClass('focus');
+      $('a').removeClass('focus');
+      $a.addClass('focus');
     });
   }
 
