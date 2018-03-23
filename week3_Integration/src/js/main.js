@@ -1,7 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
-
-// import Button from './Button';
+import Menu from './menu/Menu';
 
 // hot reload for development
 if (process.env.NODE_ENV !== 'production') {
@@ -9,14 +8,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 $().ready(() => {
-  // const $button1 = new Button();
-  // const $button2 = new Button('danger');
+  const $Menu = new Menu();
 
-  // const $buttons = $('<div>')
-  //   .append($button1.render())
-  //   .append($button2.render());
-
-  // $('#app')
-  //   .append($('<div>').html('This is Jquery Webpack'))
-  //   .append($buttons);
+  $('#container')
+    .append($Menu.render());
 });
