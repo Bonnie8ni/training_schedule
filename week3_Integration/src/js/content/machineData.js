@@ -1,4 +1,4 @@
-const machineDate = [{
+const MachineData = [{
   id: 1,
   model: 'AK1',
   status: 0,
@@ -9,7 +9,7 @@ const machineDate = [{
 }, {
   id: 2,
   model: 'AK2',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -17,7 +17,7 @@ const machineDate = [{
 }, {
   id: 3,
   model: 'AK3',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -33,7 +33,7 @@ const machineDate = [{
 }, {
   id: 5,
   model: 'AK5',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -41,7 +41,7 @@ const machineDate = [{
 }, {
   id: 6,
   model: 'AK6',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -57,7 +57,7 @@ const machineDate = [{
 }, {
   id: 8,
   model: 'AK8',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -65,7 +65,7 @@ const machineDate = [{
 }, {
   id: 9,
   model: 'AK9',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -81,7 +81,7 @@ const machineDate = [{
 }, {
   id: 11,
   model: 'AK11',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -89,7 +89,7 @@ const machineDate = [{
 }, {
   id: 12,
   model: 'AK12',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -105,7 +105,7 @@ const machineDate = [{
 }, {
   id: 14,
   model: 'AK14',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -113,7 +113,7 @@ const machineDate = [{
 }, {
   id: 15,
   model: 'AK15',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -129,7 +129,7 @@ const machineDate = [{
 }, {
   id: 17,
   model: 'AK17',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -137,7 +137,7 @@ const machineDate = [{
 }, {
   id: 18,
   model: 'AK18',
-  status: 0,
+  status: 2,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
@@ -153,11 +153,11 @@ const machineDate = [{
 }, {
   id: 20,
   model: 'AK20',
-  status: 0,
+  status: 1,
   temperature: 33,
   address: '141 Neoma Brooks',
   region: 'Hackettberg',
   disable: false,
 }];
 
-module.exports = [machineDate];
+module.exports = MachineData;

@@ -20,6 +20,7 @@ export default class MenuCard {
       $('.group-card').removeClass('active');
       $groupCard.toggleClass('active');
     });
+
     $groupHeader.click(() => {
       $('a').removeClass('focus');
     });

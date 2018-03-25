@@ -59,67 +59,48 @@
                     <a href="#"><i class="stack-background"><i class="fas fa-plus"></i></i>Add Machine</a>
                 </div>
             </div>
-            <div class="grid-group">
-                <div class="grid-header">
-                    <div class="row-id">Device ID</div>
-                    <div class="row-model">Model</div>
-                    <div class="row-status">Status</div>
-                    <div class="row-temp">Machine Temp</div>
-                    <div class="row-address">Address</div>
-                    <div class="row-region">Region</div>
-                    <div class="row-details">Details</div>
-                    <div class="row-steup">Steup</div>
+            <template id="tp-grid-group">
+                <div>
+                    <div class="grid-group">
+                        <div class="grid-header">
+                            <div class="row-id">Device ID</div>
+                            <div class="row-model">Model</div>
+                            <div class="row-status">Status</div>
+                            <div class="row-temp">Machine Temp</div>
+                            <div class="row-address">Address</div>
+                            <div class="row-region">Region</div>
+                            <div class="row-details">Details</div>
+                            <div class="row-steup">Steup</div>
+                        </div>
+                        <div class="grid-list">
+                        </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="row-id"></div>
+                        <div class="row-model"></div>
+                        <div class="row-status"></div>
+                        <div class="row-temp"></div>
+                        <div class="row-address"></div>
+                        <div class="row-region"></div>
+                        <div class="row-details"></div>
+                        <div class="row-steup"></div>
+                    </div>
                 </div>
-                <div class="grid-list">
-                    <div class="grid-row status-error">
-                        <div class="row-id">001</div>
-                        <div class="row-model">AK1</div>
-                        <div class="row-status"><span class="light">Error</span></div>
-                        <div class="row-temp">4°C</div>
-                        <div class="row-address">台北大安區大安里新生南路二段新生路1號21樓(大安森林公園-西側)</div>
-                        <div class="row-region">大安區</div>
-                        <div class="row-details"><button class="btn btn-details disabled"><i class="fas fa-file-alt"></i></button></div>
-                        <div class="row-steup"><button class="btn btn-edit disabled"><i class="fas fa-pencil-alt"></i></button><button class="btn btn-delete disabled"><i class="fas fa-trash-alt"></i></button></div>
+            </template>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Detail</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="grid-row status-online">
-                        <div class="row-id">001</div>
-                        <div class="row-model">AK1</div>
-                        <div class="row-status"><span class="light">online</span></div>
-                        <div class="row-temp">4°C</div>
-                        <div class="row-address">台北大安區大安里新生南路二段新生路1號21樓(大安森林公園-西側)</div>
-                        <div class="row-region">大安區</div>
-                        <div class="row-details"><button class="btn btn-details"><i class="fas fa-file-alt"></i></button></div>
-                        <div class="row-steup"><button class="btn btn-edit"><i class="fas fa-pencil-alt"></i></button><button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button></div>
+                    <div class="modal-body">
                     </div>
-                    <div class="grid-row status-offline">
-                        <div class="row-id">001</div>
-                        <div class="row-model">AK1</div>
-                        <div class="row-status"><span class="light">offline</span></div>
-                        <div class="row-temp">4°C</div>
-                        <div class="row-address">台北大安區大安里新生南路二段新生路1號21樓(大安森林公園-西側)</div>
-                        <div class="row-region">大安區</div>
-                        <div class="row-details"><button class="btn btn-details"><i class="fas fa-file-alt"></i></button></div>
-                        <div class="row-steup"><button class="btn btn-edit"><i class="fas fa-pencil-alt"></i></button><button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                     </div>
-                    <div class="grid-row status-online">
-                        <div class="row-id">001</div>
-                        <div class="row-model">AK1</div>
-                        <div class="row-status"><span class="light">online</span></div>
-                        <div class="row-temp">4°C</div>
-                        <div class="row-address">台北大安區大安里新生南路二段新生路1號21樓(大安森林公園-西側)</div>
-                        <div class="row-region">大安區</div>
-                        <div class="row-details"><button class="btn btn-details"><i class="fas fa-file-alt"></i></button></div>
-                        <div class="row-steup"><button class="btn btn-edit"><i class="fas fa-pencil-alt"></i></button><button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button></div>
-                    </div>
-                    <div class="grid-row status-error">
-                        <div class="row-id">001</div>
-                        <div class="row-model">AK1</div>
-                        <div class="row-status"><span class="light">Error</span></div>
-                        <div class="row-temp">4°C</div>
-                        <div class="row-address">台北大安區大安里新生南路二段新生路1號21樓(大安森林公園-西側)</div>
-                        <div class="row-region">大安區</div>
-                        <div class="row-details"><button class="btn btn-details"><i class="fas fa-file-alt"></i></button></div>
-                        <div class="row-steup"><button class="btn btn-edit"><i class="fas fa-pencil-alt"></i></button><button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button></div>
                     </div>
                 </div>
             </div>
