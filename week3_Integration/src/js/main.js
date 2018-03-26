@@ -20,3 +20,4 @@ $().ready(() => {
   const $GridGroup = new GridGroup();
   $('#content').append($GridGroup.render());
 });
+
