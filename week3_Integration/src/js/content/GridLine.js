@@ -1,5 +1,3 @@
-import ModalDialog from '../modal/ModalDialog';
-
 const STATUS = {
   0: {
     style: 'status-online',
@@ -39,9 +37,12 @@ export default class GridLine {
 
     // 明細點擊後
     $btnDetail.click(() => {
-      $('#exampleModalCenter').remove();
-      const $ModalDialog = new ModalDialog('detail', MachineData);
-      $('#content').append($ModalDialog.render());
+      $('.modal-title').text('Details');
+      $('.btn-primary').hide();
+      $('.modal-body').html('');
+      $.each(MachineData, (key, value) => {
+        $('.modal-body').append(`<div class="detailRow"><p class="detailTitle">${key}：</p><p class="detailText">${value}</p>`);
+      });
     });
   }
 
