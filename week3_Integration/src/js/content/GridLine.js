@@ -1,5 +1,20 @@
 import ModalDialog from '../modal/ModalDialog';
 
+const STATUS = {
+  0: {
+    light: 'status-online',
+    data: 'Online',
+  },
+  1: {
+    light: 'status-offline',
+    data: 'Offline',
+  },
+  2: {
+    light: 'status-error',
+    data: 'Error',
+  },
+};
+
 export default class GridLine {
   constructor(MachineData) {
     const $tpGridGroup = $($('#tp-grid-group').html());
@@ -9,16 +24,10 @@ export default class GridLine {
     const $btnDelete = $GridRow.find('.btn-delete');
 
     // 變更Status顯示方式
-    if (MachineData.status === 0) {
-      $GridRow.addClass('status-online');
-      $GridRow.find('.row-status').addClass('light').text('Online');
-    } else if (MachineData.status === 1) {
-      $GridRow.addClass('status-offline');
-      $GridRow.find('.row-status').addClass('light').text('Offline');
-    } else {
-      $GridRow.addClass('status-error');
-      $GridRow.find('.row-status').addClass('light').text('Error');
-    }
+    const { light, data } = STATUS[MachineData.status];
+    $GridRow.addClass(light);
+    $GridRow.find('.row-status').addClass('light').text(data);
+
     $GridRow.find('.row-id').text(MachineData.id);
     $GridRow.find('.row-model').text(MachineData.model);
     $GridRow.find('.row-temp').text(MachineData.temperature);
@@ -31,6 +40,7 @@ export default class GridLine {
 
     // 明細點擊後
     $btnDetail.click(() => {
+      $('.modal').remove();
       const $ModalDialog = new ModalDialog('detail', MachineData);
       $('#content').append($ModalDialog.render());
     });
