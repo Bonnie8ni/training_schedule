@@ -17,6 +17,9 @@ const STATUS = {
 
 export default class GridLine {
   constructor(MachineData) {
+    const {
+      id, model, temperature, address, region,
+    } = MachineData;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
     const $btnDetail = $GridRow.find('.btn-details');
@@ -28,11 +31,11 @@ export default class GridLine {
     $GridRow.addClass(light);
     $GridRow.find('.row-status').addClass('light').text(data);
 
-    $GridRow.find('.row-id').text(MachineData.id);
-    $GridRow.find('.row-model').text(MachineData.model);
-    $GridRow.find('.row-temp').text(MachineData.temperature);
-    $GridRow.find('.row-address').text(MachineData.address);
-    $GridRow.find('.row-region').text(MachineData.region);
+    $GridRow.find('.row-id').text(id);
+    $GridRow.find('.row-model').text(model);
+    $GridRow.find('.row-temp').text(temperature);
+    $GridRow.find('.row-address').text(address);
+    $GridRow.find('.row-region').text(region);
     $GridRow.find('.row-details').append($btnDetail);
     $GridRow.find('.row-steup').append($btnEdit).append($btnDelete);
 
@@ -40,7 +43,7 @@ export default class GridLine {
 
     // 明細點擊後
     $btnDetail.click(() => {
-      $('.modal').remove();
+      $('#exampleModalCenter').remove();
       const $ModalDialog = new ModalDialog('detail', MachineData);
       $('#content').append($ModalDialog.render());
     });
