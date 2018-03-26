@@ -39,10 +39,10 @@ export default class GridLine {
     $btnDetail.click(() => {
       $('.modal-title').text('Details');
       $('.btn-primary').hide();
-      $('.modal-body').html('');
-      $.each(MachineData, (key, value) => {
-        $('.modal-body').append(`<div class="detailRow"><p class="detailTitle">${key}：</p><p class="detailText">${value}</p>`);
-      });
+      const detailRow = Object.keys(MachineData).map(key => (
+        `<div class="detailRow"><p class="detailTitle">${key}：</p><p class="detailText">${MachineData[key]}</p></div>`
+      ));
+      $('.modal-body').html(detailRow.join(''));
     });
   }
 
