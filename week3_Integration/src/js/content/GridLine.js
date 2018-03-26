@@ -2,16 +2,16 @@ import ModalDialog from '../modal/ModalDialog';
 
 const STATUS = {
   0: {
-    light: 'status-online',
-    data: 'Online',
+    style: 'status-online',
+    name: 'Online',
   },
   1: {
-    light: 'status-offline',
-    data: 'Offline',
+    style: 'status-offline',
+    name: 'Offline',
   },
   2: {
-    light: 'status-error',
-    data: 'Error',
+    style: 'status-error',
+    name: 'Error',
   },
 };
 
@@ -23,21 +23,17 @@ export default class GridLine {
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
     const $btnDetail = $GridRow.find('.btn-details');
-    const $btnEdit = $GridRow.find('.btn-edit');
-    const $btnDelete = $GridRow.find('.btn-delete');
 
     // 變更Status顯示方式
-    const { light, data } = STATUS[MachineData.status];
-    $GridRow.addClass(light);
-    $GridRow.find('.row-status').addClass('light').text(data);
+    const { style, name } = STATUS[MachineData.status];
+    $GridRow.addClass(style);
+    $GridRow.find('.row-status').addClass('light').text(name);
 
     $GridRow.find('.row-id').text(id);
     $GridRow.find('.row-model').text(model);
     $GridRow.find('.row-temp').text(temperature);
     $GridRow.find('.row-address').text(address);
     $GridRow.find('.row-region').text(region);
-    $GridRow.find('.row-details').append($btnDetail);
-    $GridRow.find('.row-steup').append($btnEdit).append($btnDelete);
 
     this.GridLine = $GridRow;
 

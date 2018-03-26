@@ -1,4 +1,4 @@
-import MachineData from '../../db/MachineData';
+import MachineData from '../../api/MachineData';
 import GridLine from './GridLine';
 
 export default class GridGroup {

@@ -4,8 +4,8 @@ export default class ModalDialog {
     const $modalTitle = $tpModalDialog.find('.modal-title');
     const $modalBody = $tpModalDialog.find('.modal-body');
     const $modalFooter = $tpModalDialog.find('.modal-footer');
-    const $btnSecondary = $modalFooter.find('.btn.btn-secondary');
     const $btnPrimary = $modalFooter.find('.btn.btn-primary');
+    // const $btnSecondary = $modalFooter.find('.btn.btn-secondary');
 
     // 點入狀態若維明細按鈕
     if (status === 'detail') {
@@ -17,7 +17,7 @@ export default class ModalDialog {
           .append($('<p class="detailText">').append(`${value}`)));
       });
     }
-    console.log($modalTitle, $modalBody, $modalFooter, $btnSecondary, $btnPrimary);
+
     this.ModalDialog = $tpModalDialog;
   }
   render() {
