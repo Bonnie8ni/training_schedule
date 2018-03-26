@@ -9,10 +9,10 @@ export default class ModalDialog {
 
     // 點入狀態若維明細按鈕
     if (status === 'detail') {
-      $modalTitle.text('Detials');
+      $modalTitle.text('Details');
       $btnPrimary.hide();
       $.each(MachineData, (key, value) => {
-        $modalBody.append($('<p>').append($('<span class="DetialTitle">').append(`${key.toUpperCase()}：${value}`)));
+        $modalBody.append($('<p>').append($('<span class="DetailTitle">').append(`${key.toUpperCase()}：${value}`)));
       });
     }
     console.log($modalTitle, $modalBody, $modalFooter, $btnSecondary, $btnPrimary);
