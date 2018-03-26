@@ -11,25 +11,6 @@
     <div id="container">
         <nav id="menu">
             <h1><a href="#">SVM LOGO</a></h1>
-            <template id="tp-group-card">
-                <div>
-                    <div class="group-card">
-                        <div class="group-header">
-                            <a href="#">
-                                <i class="fa"></i>
-                                <span class="header-name"></span>
-                            </a>
-                        </div>
-                        <ul class="group-link">
-                        </ul>
-                    </div>
-                    <div class="group-li">
-                        <li>
-                            <a href="#"></a>
-                        </li>
-                    </div>
-                </div>
-            </template>
         </nav>
         <div id="content">
             <div class="top-link">
@@ -43,80 +24,24 @@
             <div class="title">
                 Machine List
             </div>
-            <div class="controls">
-                <div class="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="keyword">
-                        <div class="input-group-append">
-                            <button class="btn btn-selfstyle" type="button">Search</button>
+            <template id="tp-controls">
+                <div class="controls">
+                    <div class="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="keyword">
+                            <div class="input-group-append">
+                                <button class="btn btn-selfstyle" type="button">Search</button>
+                            </div>
+                        </div>
+                        <div class="advanced-search">
+                            <a href="#"><i class="stack-background"><i class="fas fa-search-plus"></i></i>Advanced Search</a>
                         </div>
                     </div>
-                    <div class="advanced-search">
-                        <a href="#"><i class="stack-background"><i class="fas fa-search-plus"></i></i>Advanced Search</a>
-                    </div>
-                </div>
-                <div class="add-machine">
-                    <a href="#"><i class="stack-background"><i class="fas fa-plus"></i></i>Add Machine</a>
-                </div>
-            </div>
-            <template id="tp-grid-group">
-                <div>
-                    <div class="grid-group">
-                        <div class="grid-header">
-                            <div class="row-id">Device ID</div>
-                            <div class="row-model">Model</div>
-                            <div class="row-status">Status</div>
-                            <div class="row-temp">Machine Temp</div>
-                            <div class="row-address">Address</div>
-                            <div class="row-region">Region</div>
-                            <div class="row-details">Details</div>
-                            <div class="row-steup">Steup</div>
-                        </div>
-                        <div class="grid-list">
-                        </div>
-                    </div>
-                    <div class="grid-row">
-                        <div class="row-id"></div>
-                        <div class="row-model"></div>
-                        <div class="row-status"></div>
-                        <div class="row-temp"></div>
-                        <div class="row-address"></div>
-                        <div class="row-region"></div>
-                        <div class="row-details">
-                            <button class="btn btn-details" data-toggle="modal" data-target="#exampleModalCenter">
-                            <i class="fas fa-file-alt"></i>
-                            </button>
-                        </div>
-                        <div class="row-steup">
-                            <button class="btn btn-edit">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn btn-delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
+                    <div class="add-machine" data-toggle="modal" data-target="#exampleModalCenter">
+                        <a href="#"><i class="stack-background"><i class="fas fa-plus"></i></i>Add Machine</a>
                     </div>
                 </div>
             </template>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
             <div class="page">
                 <div class="quantity">3 Models</div>
                 <nav aria-label="Page navigation example">
@@ -150,6 +75,83 @@
                         </li>
                     </ul>
                 </nav>
+            </div>
+        </div>
+    </div>
+    <template id="tp-group-card">
+        <div>
+            <div class="group-card">
+                <div class="group-header">
+                    <a href="#">
+                        <i class="fa"></i>
+                        <span class="header-name"></span>
+                    </a>
+                </div>
+                <ul class="group-link">
+                </ul>
+            </div>
+            <div class="group-li">
+                <li>
+                    <a href="#"></a>
+                </li>
+            </div>
+        </div>
+    </template>
+    <template id="tp-grid-group">
+        <div>
+            <div class="grid-group">
+                <div class="grid-header">
+                    <div class="row-id">Device ID</div>
+                    <div class="row-model">Model</div>
+                    <div class="row-status">Status</div>
+                    <div class="row-temp">Machine Temp</div>
+                    <div class="row-address">Address</div>
+                    <div class="row-region">Region</div>
+                    <div class="row-details">Details</div>
+                    <div class="row-steup">Steup</div>
+                </div>
+                <div class="grid-list">
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="row-id"></div>
+                <div class="row-model"></div>
+                <div class="row-status"></div>
+                <div class="row-temp"></div>
+                <div class="row-address"></div>
+                <div class="row-region"></div>
+                <div class="row-details">
+                    <button class="btn btn-details" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fas fa-file-alt"></i>
+                    </button>
+                </div>
+                <div class="row-steup">
+                    <button class="btn btn-edit">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="btn btn-delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
             </div>
         </div>
     </div>
