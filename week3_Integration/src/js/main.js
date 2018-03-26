@@ -1,6 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
-import MenuData from './menu/MenuData';
+import MenuData from '../db/MenuData';
 import MenuCard from './menu/MenuCard';
 import GridGroup from './content/GridGroup';
 

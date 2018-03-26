@@ -12,7 +12,9 @@ export default class ModalDialog {
       $modalTitle.text('Details');
       $btnPrimary.hide();
       $.each(MachineData, (key, value) => {
-        $modalBody.append($('<p>').append($('<span class="DetailTitle">').append(`${key.toUpperCase()}：${value}`)));
+        $modalBody.append($('<div class="detailRow">')
+          .append($('<p class="detailTitle">').append(`${key.toUpperCase()}：`))
+          .append($('<p class="detailText">').append(`${value}`)));
       });
     }
     console.log($modalTitle, $modalBody, $modalFooter, $btnSecondary, $btnPrimary);
