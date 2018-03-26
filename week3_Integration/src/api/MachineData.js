@@ -5,7 +5,7 @@ const MachineData = [{
   temperature: 18,
   address: 'No.98, Dayong Rd., Yancheng Dist., Kaohsiung City 803, Taiwan (R.O.C.)',
   region: 'Yancheng',
-  disable: false,
+  disable: true,
 }, {
   id: 2,
   model: 'AK2',
@@ -13,7 +13,7 @@ const MachineData = [{
   temperature: 20,
   address: 'No.98, Dayong Rd., Yancheng Dist., Kaohsiung City 803, Taiwan (R.O.C.)',
   region: 'Yancheng',
-  disable: false,
+  disable: true,
 }, {
   id: 3,
   model: 'AK3',

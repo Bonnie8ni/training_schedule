@@ -39,6 +39,8 @@ export default class Featurs {
         const $GridLine = new GridLine(lineData);
         $('.grid-list').append($GridLine.render());
       });
+
+      // 關閉視窗
       $('#exampleModalCenter').modal('hide');
     });
 

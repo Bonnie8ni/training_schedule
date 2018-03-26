@@ -16,7 +16,7 @@ const STATUS = {
 export default class GridLine {
   constructor(MachineData) {
     const {
-      id, model, temperature, address, region,
+      id, model, temperature, address, region, disable,
     } = MachineData;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
@@ -34,6 +34,13 @@ export default class GridLine {
     $GridRow.find('.row-region').text(region);
 
     this.GridLine = $GridRow;
+
+    // 依照狀態鎖定按鈕
+    if (disable === true) {
+      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
+    }
 
     // 明細點擊後
     $btnDetail.click(() => {
