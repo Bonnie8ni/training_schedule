@@ -1,4 +1,4 @@
-import MenuLi from './MenuLi';
+import MenuItem from './MenuItem';
 
 export default class MenuCard {
   constructor(menu) {
@@ -10,8 +10,8 @@ export default class MenuCard {
     $groupHeader.find('.header-name').text(`${menu.menuName}`);
 
     menu.subMenu.forEach((submenu) => {
-      const $MenuLi = new MenuLi(submenu);
-      $groupLink.append($MenuLi.render());
+      const $MenuItem = new MenuItem(submenu);
+      $groupLink.append($MenuItem.render());
     });
 
     this.MenuCard = $groupCard;

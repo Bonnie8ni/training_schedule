@@ -1,3 +1,5 @@
+import ModalDialog from './ModalDialog';
+
 export default class GridLine {
   constructor(MachineData) {
     const $btnDetail = $('<button class="btn btn-primary btn-details" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-file-alt"></i></button>');
@@ -5,6 +7,8 @@ export default class GridLine {
     const $btnDelete = $('<button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>');
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
+
+    // 變更Status顯示方式
     if (MachineData.status === 0) {
       $GridRow.addClass('status-online');
       $GridRow.find('.row-status').addClass('light').text('Online');
@@ -25,8 +29,10 @@ export default class GridLine {
 
     this.GridLine = $GridRow;
 
+    // 明細點擊後
     $btnDetail.click(() => {
-      $('.modal-body').text($GridRow.text());
+      const $ModalDialog = new ModalDialog();
+      $ModalDialog.popover('show');
     });
   }
 

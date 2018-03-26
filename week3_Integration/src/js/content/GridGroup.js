@@ -7,6 +7,7 @@ export default class GridGroup {
     const $GridGroup = $tpGridGroup.find('.grid-group');
     const $GridList = $tpGridGroup.find('.grid-list');
 
+    // 依照資料長度長出多少GridLine
     MachineData.forEach((lineData) => {
       const $GridLine = new GridLine(lineData);
       $GridList.append($GridLine.render());
