@@ -19,11 +19,11 @@ export default class GridLine {
       $GridRow.addClass('status-error');
       $GridRow.find('.row-status').addClass('light').text('Error');
     }
-    $GridRow.find('.row-id').text(`${MachineData.id}`);
-    $GridRow.find('.row-model').text(`${MachineData.model}`);
-    $GridRow.find('.row-temp').text(`${MachineData.temperature}`);
-    $GridRow.find('.row-address').text(`${MachineData.address}`);
-    $GridRow.find('.row-region').text(`${MachineData.region}`);
+    $GridRow.find('.row-id').text(MachineData.id);
+    $GridRow.find('.row-model').text(MachineData.model);
+    $GridRow.find('.row-temp').text(MachineData.temperature);
+    $GridRow.find('.row-address').text(MachineData.address);
+    $GridRow.find('.row-region').text(MachineData.region);
     $GridRow.find('.row-details').append($btnDetail);
     $GridRow.find('.row-steup').append($btnEdit).append($btnDelete);
 
@@ -31,8 +31,8 @@ export default class GridLine {
 
     // 明細點擊後
     $btnDetail.click(() => {
-      const $ModalDialog = new ModalDialog();
-      $ModalDialog.popover('show');
+      const $ModalDialog = new ModalDialog('detail', MachineData);
+      $('.controls').append($ModalDialog.render());
     });
   }
 
