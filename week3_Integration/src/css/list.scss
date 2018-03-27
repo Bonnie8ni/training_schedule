@@ -146,6 +146,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
+    .rowsPerPage{
+        margin: 0 5px 0 0;
+    }
     .pagination {
         margin: 0 0 0 15px;
         .page-link {

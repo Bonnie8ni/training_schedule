@@ -14,7 +14,7 @@ export default class Features {
       const detailRow = Object.keys(MachineData[0]).map(key => (
         `<div class="detailRow">
           <p class="detailTitle">${key.toUpperCase()}：</p>
-          <input class="add-${key} border"></input>
+          <input class="add-${key} add-check border"/>
         </div>`
       ));
       $('.modal-body').html(detailRow.join(''));
@@ -31,10 +31,15 @@ export default class Features {
       const addDisable = $('.add-disable').val();
 
       // 輸入資料不可空白
-      if (addId.trim().length === 0 || addModel.trim().length === 0 || addStatus.trim().length === 0 || addTemperature.trim().length === 0 || addAddress.trim().length === 0 || addRegion.trim().length === 0 || addDisable.trim().length === 0) {
-        alert('請輸入完整資料');
-        return;
-      }
+      $('.add-check').each((index) => {
+        let verificationItem = $($('.add-check')[index]).val().trim().length;
+        if (verificationItem === 0) {
+          verificationItem = 1;
+          alert('請輸入完整資料');
+          return false;
+        }
+        return false;
+      });
 
       // 狀態輸入0-2以外的錯誤
       if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
