@@ -83,6 +83,7 @@ export default class GridLine {
     // 按鈕初始值
     $inputDisplay();
 
+    console.log(disable);
     // 依照狀態鎖定按鈕
     if (disable === true) {
       $GridRow.find('.btn-details').attr('disabled', true);
@@ -96,7 +97,7 @@ export default class GridLine {
       $('.btn-primary').hide();
       const detailRow = Object.keys(lineData).map(key => (
         `<div class="detailRow">
-          <p class="detailTitle">${key}：</p>
+          <p class="detailTitle">${key.toUpperCase()}：</p>
           <p class="detailText">${lineData[key]}</p>
         </div>`
       ));

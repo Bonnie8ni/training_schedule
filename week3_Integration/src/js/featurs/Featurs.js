@@ -12,7 +12,7 @@ export default class Featurs {
       $('.btn-primary').show();
       const detailRow = Object.keys(MachineData[0]).map(key => (
         `<div class="detailRow">
-          <p class="detailTitle">${key}：</p>
+          <p class="detailTitle">${key.toUpperCase()}：</p>
           <input class="add-${key} border"></input>
         </div>`
       ));
@@ -21,11 +21,35 @@ export default class Featurs {
 
     // 新增機台-儲存
     $('.btn-primary').click(() => {
-      console.log($('.add-id').val().length);
+      // 輸入資料不可空白
       if ($('.add-id').val().length === 0 || $('.add-model').val().length === 0 || $('.add-status').val().length === 0 || $('.add-temperature').val().length === 0 || $('.add-address').val().length === 0 || $('.add-region').val().length === 0 || $('.add-disable').val().length === 0) {
         alert('請輸入完整資料');
         return;
       }
+
+      // 狀態輸入0-2以外的錯誤
+      if ($('.add-status').val().match(/[0-2]/) === null) {
+        alert('【Status 錯誤】只可輸入 0 or 1 or 2');
+        return;
+      }
+
+      // 狀態輸入超過1位數的錯誤
+      if ($('.add-status').val().length > 1) {
+        alert('【Status 錯誤】字數只可輸入1位');
+        return;
+      }
+
+      // Status輸入錯誤
+      if ($('.add-disable').val().toLowerCase() !== 'true' && $('.add-disable').val().toLowerCase() !== 'false') {
+        alert('【Disable 錯誤】只可輸入 true or false');
+        return;
+      }
+
+      // 轉換字串變成布林
+      let stringToBoolen = Boolean();
+      if ($('.add-disable').val().toLowerCase() === 'true') { stringToBoolen = true; }
+      if ($('.add-disable').val().toLowerCase() === 'false') { stringToBoolen = false; }
+
       const machine = {
         id: $('.add-id').val(),
         model: $('.add-model').val(),
@@ -33,7 +57,7 @@ export default class Featurs {
         temperature: $('.add-temperature').val(),
         address: $('.add-address').val(),
         region: $('.add-region').val(),
-        disable: $('.add-disable').val(),
+        disable: stringToBoolen,
       };
 
       // 將資料新增進API裡
