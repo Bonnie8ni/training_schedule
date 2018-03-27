@@ -29,10 +29,10 @@ export default class GridLine {
     const $btnOk = $GridRow.find('.btn-check');
     const $rowAddress = $GridRow.find('.row-address');
     const $spanAddress = $rowAddress.find('.span-address');
-    const $inputAddress = $rowAddress.find('.input-address');
+    const $editAddress = $rowAddress.find('.edit-address');
     const $rowRegion = $GridRow.find('.row-region');
     const $spanRegion = $rowRegion.find('.span-region');
-    const $inputRegion = $rowRegion.find('.input-region');
+    const $editRegion = $rowRegion.find('.edit-region');
 
     // 變更Status顯示方式
     const { style, name } = STATUS[lineData.status];
@@ -43,9 +43,9 @@ export default class GridLine {
     $GridRow.find('.row-model').text(model);
     $GridRow.find('.row-temp').text(temperature);
     $spanAddress.text(address);
-    $inputAddress.val(address).hide();
+    $editAddress.val(address).hide();
     $spanRegion.text(region);
-    $inputRegion.val(region).hide();
+    $editRegion.val(region).hide();
 
     this.GridLine = $GridRow;
 
@@ -59,8 +59,8 @@ export default class GridLine {
         $btnOk.hide();
         $spanAddress.show();
         $spanRegion.show();
-        $inputAddress.hide();
-        $inputRegion.hide();
+        $editAddress.hide();
+        $editRegion.hide();
         $('.btn-details').removeClass('disabled');
         $('.btn-edit').removeClass('disabled');
         $('.btn-delete').removeClass('disabled');
@@ -72,8 +72,8 @@ export default class GridLine {
         $btnOk.show();
         $spanAddress.hide();
         $spanRegion.hide();
-        $inputAddress.show();
-        $inputRegion.show();
+        $editAddress.show();
+        $editRegion.show();
         $('.btn-details').addClass('disabled');
         $('.btn-edit').addClass('disabled');
         $('.btn-delete').addClass('disabled');
@@ -111,21 +111,21 @@ export default class GridLine {
     // 取消編輯功能
     $btnCancle.click(() => {
       $inputDisplay(false);
-      $inputAddress.val($spanAddress.text());
-      $inputRegion.val($spanRegion.text());
+      $editAddress.val($spanAddress.text());
+      $editRegion.val($spanRegion.text());
     });
 
     // 確定編輯功能
     $btnOk.click(() => {
       $inputDisplay(false);
-      $spanAddress.text($inputAddress.val());
-      $spanRegion.text($inputRegion.val());
+      $spanAddress.text($editAddress.val());
+      $spanRegion.text($editRegion.val());
 
       // 找尋修改id的位置
       const index = MachineData.findIndex(line => line.id === id);
       // 將編輯的資料覆蓋原本的資料
-      MachineData[index].address = $inputAddress.val();
-      MachineData[index].region = $inputAddress.val();
+      MachineData[index].address = $editAddress.val();
+      MachineData[index].region = $editRegion.val();
     });
 
     // 刪除功能
