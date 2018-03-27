@@ -83,7 +83,6 @@ export default class GridLine {
     // 按鈕初始值
     $inputDisplay();
 
-    console.log(disable);
     // 依照狀態鎖定按鈕
     if (disable === true) {
       $GridRow.find('.btn-details').attr('disabled', true);
