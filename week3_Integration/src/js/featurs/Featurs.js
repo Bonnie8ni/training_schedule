@@ -11,7 +11,7 @@ export default class Featurs {
       $('.modal-title').text('Add');
       $('.btn-primary').show();
       const detailRow = Object.keys(MachineData[0]).map(key => (
-        `<div class="detailRow"><p class="detailTitle">${key}：</p><input class="input-${key} border-bottom"></input></div>`
+        `<div class="detailRow"><p class="detailTitle">${key}：</p><input class="input-${key} border"></input></div>`
       ));
       $('.modal-body').html(detailRow.join(''));
     });
@@ -28,14 +28,14 @@ export default class Featurs {
         disable: $('.input-disable').val(),
       };
 
-      // 組出新的資料
-      const NewMachineData = [...MachineData, machine];
+      // 將資料新增進API裡
+      MachineData.push(machine);
 
       // 清空現有列表畫面
       $('.grid-list').html('');
 
       // 重長GridRow
-      NewMachineData.forEach((lineData) => {
+      MachineData.forEach((lineData) => {
         const $GridLine = new GridLine(lineData);
         $('.grid-list').append($GridLine.render());
       });
