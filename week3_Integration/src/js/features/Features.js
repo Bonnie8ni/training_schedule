@@ -14,7 +14,7 @@ export default class Features {
       const detailRow = Object.keys(MachineData[0]).map(key => (
         `<div class="detailRow">
           <p class="detailTitle">${key.toUpperCase()}：</p>
-          <input class="add-${key} add-check border"/>
+          <input class="add-${key} add-check border" id="${key.toUpperCase()}"/>
         </div>`
       ));
       $('.modal-body').html(detailRow.join(''));
@@ -31,15 +31,29 @@ export default class Features {
       const addDisable = $('.add-disable').val();
 
       // 輸入資料不可空白
+      let allAddTitle = [];
       $('.add-check').each((index) => {
-        let verificationItem = $($('.add-check')[index]).val().trim().length;
+        const verificationItem = $($('.add-check')[index]).val().trim().length;
         if (verificationItem === 0) {
-          verificationItem = 1;
-          alert('請輸入完整資料');
-          return false;
+          const addTitle = $($('.add-check')[index])[0].id;
+          allAddTitle = [...allAddTitle, `${addTitle}：沒有輸入\n`];
         }
-        return false;
+        return;
       });
+      if (allAddTitle.length !== 0) {
+        alert(allAddTitle.join(''));
+      }
+
+      // 輸入資料不可空白
+      // $('.add-check').each((index) => {
+      //   let verificationItem = $($('.add-check')[index]).val().trim().length;
+      //   if (verificationItem === 0) {
+      //     verificationItem = 1;
+      //     alert('請輸入完整資料');
+      //     return false;
+      //   }
+      //   return false;
+      // });
 
       // 狀態輸入0-2以外的錯誤
       if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
