@@ -24,58 +24,6 @@
             <div class="title">
                 Machine List
             </div>
-            <template id="tp-controls">
-                <div class="controls">
-                    <div class="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="keyword">
-                            <div class="input-group-append">
-                                <button class="btn btn-selfstyle" type="button">Search</button>
-                            </div>
-                        </div>
-                        <div class="advanced-search">
-                            <a href="#"><i class="stack-background"><i class="fas fa-search-plus"></i></i>Advanced Search</a>
-                        </div>
-                    </div>
-                    <div class="add-machine" data-toggle="modal" data-target="#exampleModalCenter">
-                        <a href="#"><i class="stack-background"><i class="fas fa-plus"></i></i>Add Machine</a>
-                    </div>
-                </div>
-            </template>
-            <div class="page">
-                <div class="quantity">3 Models</div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
     <template id="tp-group-card">
@@ -94,6 +42,30 @@
                 <li>
                     <a href="#"></a>
                 </li>
+            </div>
+        </div>
+    </template>
+    <template id="tp-controls">
+        <div class="controls">
+            <div class="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-selfstyle" type="button">Search</button>
+                    </div>
+                </div>
+                <div class="advanced-search">
+                    <a href="#">
+                        <i class="stack-background">
+                            <i class="fas fa-search-plus"></i>
+                        </i>Advanced Search</a>
+                </div>
+            </div>
+            <div class="add-machine" data-toggle="modal" data-target="#exampleModalCenter">
+                <a href="#">
+                    <i class="stack-background">
+                        <i class="fas fa-plus"></i>
+                    </i>Add Machine</a>
             </div>
         </div>
     </template>
@@ -148,6 +120,56 @@
             </div>
         </div>
     </template>
+    <template id="tp-page">
+        <div class="page">
+            <div class="quantity"><span class="rowsPerPage">10</span>Models</div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">
+                                <i class="fas fa-angle-double-left"></i>
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">
+                                <i class="fas fa-angle-left"></i>
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link active" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">
+                                <i class="fas fa-angle-right"></i>
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">
+                                <i class="fas fa-angle-double-right"></i>
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </template>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -161,7 +183,7 @@
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary btn-save">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </div>

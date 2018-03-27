@@ -2,8 +2,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
 import MenuData from '../api/MenuData';
 import MenuCard from './menu/MenuCard';
-import Featurs from './featurs/Featurs';
+import Features from './features/Features';
 import GridGroup from './content/GridGroup';
+import Pagination from './features/Pagination';
 
 // hot reload for development
 if (process.env.NODE_ENV !== 'production') {
@@ -18,11 +19,15 @@ $().ready(() => {
   });
 
   // 帶入功能區
-  const $Featurs = new Featurs();
-  $('#content').append($Featurs.render());
+  const $Features = new Features();
+  $('#content').append($Features.render());
 
   // 帶入列表
   const $GridGroup = new GridGroup();
   $('#content').append($GridGroup.render());
+
+  // 帶入分頁
+  const $Pagination = new Pagination();
+  $('#content').append($Pagination.render());
 });
 

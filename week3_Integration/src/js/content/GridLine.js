@@ -93,7 +93,7 @@ export default class GridLine {
     // 明細功能
     $btnDetail.click(() => {
       $('.modal-title').text('Details');
-      $('.btn-primary').hide();
+      $('.btn-save').hide();
       const detailRow = Object.keys(lineData).map(key => (
         `<div class="detailRow">
           <p class="detailTitle">${key.toUpperCase()}：</p>
