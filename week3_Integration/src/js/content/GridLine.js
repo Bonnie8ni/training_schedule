@@ -108,15 +108,23 @@ export default class GridLine {
       $inputDisplay(true);
     });
 
-    // 取消編輯功能
+    // 編輯功能-取消
     $btnCancle.click(() => {
       $inputDisplay(false);
       $editAddress.val($spanAddress.text());
       $editRegion.val($spanRegion.text());
     });
 
-    // 確定編輯功能
+    // 編輯功能-確定
     $btnOk.click(() => {
+      if ($editAddress.val().trim().length === 0) {
+        alert('【Address 錯誤】請輸入完整資料');
+        return;
+      }
+      if ($editRegion.val().trim().length === 0) {
+        alert('【Region 錯誤】請輸入完整資料');
+        return;
+      }
       $inputDisplay(false);
       $spanAddress.text($editAddress.val());
       $spanRegion.text($editRegion.val());

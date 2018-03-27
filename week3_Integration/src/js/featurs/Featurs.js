@@ -22,7 +22,7 @@ export default class Featurs {
     // 新增機台-儲存
     $('.btn-primary').click(() => {
       // 輸入資料不可空白
-      if ($('.add-id').val().length === 0 || $('.add-model').val().length === 0 || $('.add-status').val().length === 0 || $('.add-temperature').val().length === 0 || $('.add-address').val().length === 0 || $('.add-region').val().length === 0 || $('.add-disable').val().length === 0) {
+      if ($('.add-id').val().trim().length === 0 || $('.add-model').val().trim().length === 0 || $('.add-status').val().trim().length === 0 || $('.add-temperature').val().trim().length === 0 || $('.add-address').val().trim().length === 0 || $('.add-region').val().trim().length === 0 || $('.add-disable').val().trim().length === 0) {
         alert('請輸入完整資料');
         return;
       }
