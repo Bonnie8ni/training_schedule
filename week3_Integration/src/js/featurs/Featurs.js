@@ -11,21 +11,29 @@ export default class Featurs {
       $('.modal-title').text('Add');
       $('.btn-primary').show();
       const detailRow = Object.keys(MachineData[0]).map(key => (
-        `<div class="detailRow"><p class="detailTitle">${key}：</p><input class="input-${key} border"></input></div>`
+        `<div class="detailRow">
+          <p class="detailTitle">${key}：</p>
+          <input class="add-${key} border"></input>
+        </div>`
       ));
       $('.modal-body').html(detailRow.join(''));
     });
 
     // 新增機台-儲存
     $('.btn-primary').click(() => {
+      console.log($('.add-id').val().length);
+      if ($('.add-id').val().length === 0 || $('.add-model').val().length === 0 || $('.add-status').val().length === 0 || $('.add-temperature').val().length === 0 || $('.add-address').val().length === 0 || $('.add-region').val().length === 0 || $('.add-disable').val().length === 0) {
+        alert('請輸入完整資料');
+        return;
+      }
       const machine = {
-        id: $('.input-id').val(),
-        model: $('.input-model').val(),
-        status: $('.input-status').val(),
-        temperature: $('.input-temperature').val(),
-        address: $('.input-address').val(),
-        region: $('.input-region').val(),
-        disable: $('.input-disable').val(),
+        id: $('.add-id').val(),
+        model: $('.add-model').val(),
+        status: $('.add-status').val(),
+        temperature: $('.add-temperature').val(),
+        address: $('.add-address').val(),
+        region: $('.add-region').val(),
+        disable: $('.add-disable').val(),
       };
 
       // 將資料新增進API裡

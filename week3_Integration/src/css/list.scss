@@ -15,9 +15,15 @@
     }
     .row-address {
         flex-basis: 400px;
+        .input-address {
+            width: 100%;
+        }
     }
     .row-region {
         flex-basis: 100px;
+        .input-region {
+            width: 100%;
+        }
     }
     .row-details {
         flex-basis: 100px;
@@ -34,7 +40,8 @@
         &:nth-child(2n + 1) {
             background: #F4F4F4;
         }
-        .btn-delete {
+        .btn-delete,
+        .btn-check {
             margin: 0 0 0 10%;
         }
         button {
@@ -45,6 +52,9 @@
                 i {
                     color: #999;
                 }
+            }
+            &.disabled {
+                color: #999;
             }
         }
     }
