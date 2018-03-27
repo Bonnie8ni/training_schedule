@@ -61,9 +61,9 @@ export default class GridLine {
         $spanRegion.show();
         $editAddress.hide();
         $editRegion.hide();
-        $('.btn-details').removeClass('disabled');
-        $('.btn-edit').removeClass('disabled');
-        $('.btn-delete').removeClass('disabled');
+        $('.btn-details').removeClass('disabled').attr('disabled', false);
+        $('.btn-edit').removeClass('disabled').attr('disabled', false);
+        $('.btn-delete').removeClass('disabled').attr('disabled', false);
       } else {
         $btnDetail.hide();
         $btnEdit.hide();
@@ -74,9 +74,9 @@ export default class GridLine {
         $spanRegion.hide();
         $editAddress.show();
         $editRegion.show();
-        $('.btn-details').addClass('disabled');
-        $('.btn-edit').addClass('disabled');
-        $('.btn-delete').addClass('disabled');
+        $('.btn-details').addClass('disabled').attr('disabled', true);
+        $('.btn-edit').addClass('disabled').attr('disabled', true);
+        $('.btn-delete').addClass('disabled').attr('disabled', true);
       }
     });
 
