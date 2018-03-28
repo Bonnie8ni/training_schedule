@@ -39,12 +39,13 @@ export default class Features {
         if (verificationItem === 0) {
           // 找出input的id(我將id,model,status,temp,address,region,disable 塞在input#id裡)
           const addTitle = $($('.add-check')[index])[0].id;
-          allAddTitle = [...allAddTitle, `${addTitle}：沒有輸入\n`];
+          allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
         }
         return;
       });
       if (allAddTitle.length !== 0) {
         alert(allAddTitle.join(''));
+        return;
       }
 
       // 狀態輸入0-2以外的錯誤

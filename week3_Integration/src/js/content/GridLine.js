@@ -115,14 +115,28 @@ export default class GridLine {
 
     // 編輯功能-確定
     $btnOk.click(() => {
-      if ($editAddress.val().trim().length === 0) {
-        alert('【Address 錯誤】請輸入完整資料');
+      // 輸入資料不可空白
+      let allAddTitle = [];
+      $GridRow.find('.edit-check').each((index) => {
+        // 找出新增資料長度
+        const verificationItem = $($GridRow.find('.edit-check')[index]).val().length;
+        // 若有資料
+        if (verificationItem === 0) {
+          // 找出input的id(我將address,region 塞在input#id裡)
+          const addTitle = $($GridRow.find('.edit-check')[index])[0].id;
+          allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
+        }
+        return;
+      });
+      if (allAddTitle.length !== 0) {
+        alert(allAddTitle.join(''));
         return;
       }
-      if ($editRegion.val().trim().length === 0) {
-        alert('【Region 錯誤】請輸入完整資料');
-        return;
-      }
+      // if ($editAddress.val().trim().length === 0 || $editRegion.val().trim().length === 0) {
+      //   alert('請輸入完整資料');
+      //   return;
+      // }
+
       $inputDisplay(false);
       $spanAddress.text($editAddress.val());
       $spanRegion.text($editRegion.val());
