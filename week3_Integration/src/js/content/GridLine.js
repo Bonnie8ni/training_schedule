@@ -132,10 +132,6 @@ export default class GridLine {
         alert(allAddTitle.join(''));
         return;
       }
-      // if ($editAddress.val().trim().length === 0 || $editRegion.val().trim().length === 0) {
-      //   alert('請輸入完整資料');
-      //   return;
-      // }
 
       $inputDisplay(false);
       $spanAddress.text($editAddress.val());
@@ -155,15 +151,8 @@ export default class GridLine {
       if (!confirm) return;
       // 確定後將資料刪除
       MachineData.splice(MachineData.findIndex(alldata => alldata.id === id), 1);
-
-      // 清空現有列表畫面
-      $('.grid-list').html('');
-
-      // 重長GridRow
-      MachineData.forEach((line) => {
-        const $GridLine = new GridLine(line);
-        $('.grid-list').append($GridLine.render());
-      });
+      // 確定後將物件刪除
+      $btnDelete.parent().parent().remove();
     });
   }
 

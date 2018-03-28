@@ -71,14 +71,12 @@ export default class Features {
         disable: addDisable.toLowerCase() === 'true',
       };
 
-      // 將資料新增進API裡
+      // 確定後將資料新增
       MachineData.push(machine);
-
-      // 畫面新增資料
+      // 確定後將物件新增
       const $GridLine = new GridLine(machine);
       $('.grid-list').append($GridLine.render());
-
-      // 關閉視窗
+      // 關閉視窗新增視窗
       $('#exampleModalCenter').modal('hide');
     });
 
