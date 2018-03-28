@@ -21,13 +21,14 @@ export default class Features {
 
     // 新增機台-儲存
     $('.btn-save').click(() => {
-      const $addId = $('.add-id').val();
-      const $addModel = $('.add-model').val();
-      const $addTemperature = $('.add-temperature').val();
-      const $addAddress = $('.add-address').val();
-      const $addRegion = $('.add-region').val();
-      this.addStatus = $('.add-status').val();
-      this.addDisable = $('.add-disable').val();
+      const $modalModel = $('.modal-model');
+      const $addId = $modalModel.find('.add-id').val();
+      const $addModel = $modalModel.find('.add-model').val();
+      const $addTemperature = $modalModel.find('.add-temperature').val();
+      const $addAddress = $modalModel.find('.add-address').val();
+      const $addRegion = $modalModel.find('.add-region').val();
+      this.addStatus = $modalModel.find('.add-status').val();
+      this.addDisable = $modalModel.find('.add-disable').val();
 
       // 驗證編輯輸入框資料是否正確
       if (!this.verification()) return;
