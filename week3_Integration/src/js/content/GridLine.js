@@ -149,6 +149,7 @@ export default class GridLine {
     });
   }
 
+  // 驗證輸入資料
   verification() {
     const { $GridRow } = this;
     // 輸入資料不可空白
