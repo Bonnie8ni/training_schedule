@@ -32,7 +32,7 @@ export default class Features {
 
       // 驗證編輯輸入框資料是否正確
       this.verification();
-      // 確認sessionStorage值
+      // 確認verificationResult值
       if (verificationResult) return;
 
       // 新增資料結構
