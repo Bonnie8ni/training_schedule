@@ -1,15 +1,20 @@
-// import MachineData from '../../api/MachineData';
+import MachineData from '../../api/MachineData';
 // import GridLine from '../content/GridLine';
 
 export default class Pagination {
   constructor() {
     const $tpPage = $($('#tp-page').html());
-    const $pagination = $tpPage.find('.pagination');
-    const $rowsPerPage = $tpPage.find('.rowsPerPage');
-    console.log($pagination, $rowsPerPage);
-    // const $pagination = $tpPage.find('.pagination');
+    const $page = $tpPage.find('.page');
+    const $pagination = $page.find('.pagination');
+    const $pagePrev = $pagination.find('.page-prev');
+    console.log($pagePrev);
 
-    this.Pagination = $tpPage;
+    const pageSize = $page.find('.rowsPerPage').text();
+    const pagesCount = MachineData.length;
+    const totalPages = Math.ceil(pagesCount / pageSize);
+    console.log(totalPages);
+
+    this.Pagination = $page;
   }
   render() {
     return this.Pagination;

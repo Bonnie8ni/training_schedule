@@ -140,34 +140,3 @@
         margin: 0;
     }
 }
-
-.page {
-    margin: 1% 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: baseline;
-    .rowsPerPage{
-        margin: 0 5px 0 0;
-    }
-    .pagination {
-        margin: 0 0 0 15px;
-        .page-link {
-            padding: 0.4rem 0.75rem;
-            border-radius: 0;
-        }
-        a {
-            font-size: 10pt;
-            color: #000;
-            background: none;
-            border: 1px solid #D7D7D7;
-            &:hover {
-                color: #fff;
-                background: #343434;
-            }
-            &.action {
-                color: #fff;
-                background: #343434;
-            }
-        }
-    }
-}

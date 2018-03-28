@@ -68,3 +68,35 @@
     text-align: right;
   }
 }
+
+.page {
+  margin: 1% 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  .rowsPerPage{
+      margin: 0 5px 0 0;
+  }
+  .pagination {
+      margin: 0 0 0 15px;
+      a {
+          display: inline-block;
+          text-align: center;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 10pt;
+          color: #000;
+          background: none;
+          border: 1px solid #D7D7D7;
+          &:hover {
+              color: #fff;
+              background: #343434;
+          }
+          &.active {
+              color: #fff;
+              background: #343434;
+          }
+      }
+  }
+}

@@ -121,53 +121,45 @@
         </div>
     </template>
     <template id="tp-page">
-        <div class="page">
-            <div class="quantity"><span class="rowsPerPage">10</span>Models</div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">
-                                <i class="fas fa-angle-double-left"></i>
-                            </span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">
-                                <i class="fas fa-angle-left"></i>
-                            </span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link active" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">
-                                <i class="fas fa-angle-right"></i>
-                            </span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">
-                                <i class="fas fa-angle-double-right"></i>
-                            </span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div>
+            <div class="page">
+                <div class="quantity"><span class="rowsPerPage">10</span>Models</div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-top">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="page-prev">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">
+                                    <i class="fas fa-angle-left"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="page-next">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="page-end">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <li class="page-item">
+                <a href="#"></a>
+            </li>
         </div>
     </template>
     <div class="modal fade modal-model" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
