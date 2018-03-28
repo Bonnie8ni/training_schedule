@@ -41,7 +41,7 @@ export default class Features {
     const $addRegion = $modalModel.find('.add-region').val();
     this.addStatus = $modalModel.find('.add-status').val();
     this.addDisable = $modalModel.find('.add-disable').val();
-    debugger;
+
     // 驗證編輯輸入框資料是否正確
     if (!this.verificationFunc()) return;
 
