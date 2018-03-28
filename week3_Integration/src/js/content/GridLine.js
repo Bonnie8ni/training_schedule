@@ -22,6 +22,7 @@ export default class GridLine {
     } = lineData;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
+    this.$GridRow = $tpGridGroup.find('.grid-row');
     const $btnDetail = $GridRow.find('.btn-details');
     const $btnEdit = $GridRow.find('.btn-edit');
     const $btnDelete = $GridRow.find('.btn-delete');
@@ -38,7 +39,6 @@ export default class GridLine {
     const { style, name } = STATUS[lineData.status];
     $GridRow.addClass(style);
     $GridRow.find('.row-status').addClass('light').text(name);
-
     $GridRow.find('.row-id').text(id);
     $GridRow.find('.row-model').text(model);
     $GridRow.find('.row-temp').text(temperature);
@@ -62,9 +62,11 @@ export default class GridLine {
         $spanRegion.show();
         $editAddress.hide();
         $editRegion.hide();
-        $('.btn-details').removeClass('disabled').attr('disabled', false);
-        $('.btn-edit').removeClass('disabled').attr('disabled', false);
-        $('.btn-delete').removeClass('disabled').attr('disabled', false);
+        if (disable !== false) {
+          $('.btn-details').attr('disabled', false);
+          $('.btn-edit').attr('disabled', false);
+          $('.btn-delete').attr('disabled', false);
+        }
       } else {
         $btnDetail.hide();
         $btnEdit.hide();
@@ -75,17 +77,18 @@ export default class GridLine {
         $spanRegion.hide();
         $editAddress.show();
         $editRegion.show();
-        $('.btn-details').addClass('disabled').attr('disabled', true);
-        $('.btn-edit').addClass('disabled').attr('disabled', true);
-        $('.btn-delete').addClass('disabled').attr('disabled', true);
+        if (disable !== false) {
+          $('.btn-details').attr('disabled', true);
+          $('.btn-edit').attr('disabled', true);
+          $('.btn-delete').attr('disabled', true);
+        }
       }
     });
 
-    // 依照狀態鎖定按鈕
     if (disable === true) {
-      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
-      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
-      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-details').attr('disabled', true);
+      $GridRow.find('.btn-edit').attr('disabled', true);
+      $GridRow.find('.btn-delete').attr('disabled', true);
     }
 
     // 明細功能
@@ -115,24 +118,14 @@ export default class GridLine {
 
     // 編輯功能-確定
     $btnOk.click(() => {
-      // 輸入資料不可空白
-      let allAddTitle = [];
-      $GridRow.find('.edit-check').each((index) => {
-        // 找出新增資料長度
-        const verificationItem = $($GridRow.find('.edit-check')[index]).val().length;
-        // 若有資料
-        if (verificationItem === 0) {
-          // 找出input的id(我將address,region 塞在input#id裡)
-          const addTitle = $($GridRow.find('.edit-check')[index])[0].id;
-          allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
-        }
-        return;
-      });
-      if (allAddTitle.length !== 0) {
-        alert(allAddTitle.join(''));
-        return;
-      }
+      // 清空sessionStorage
+      sessionStorage.setItem('verification', '');
+      // 驗證編輯輸入框資料是否正確
+      this.verification();
+      // 確認sessionStorage值
+      if (sessionStorage.getItem('verification') === '1') return;
 
+      // 確認按鈕狀態
       $inputDisplay(false);
       $spanAddress.text($editAddress.val());
       $spanRegion.text($editRegion.val());
@@ -154,6 +147,29 @@ export default class GridLine {
       // 確定後將物件刪除
       $btnDelete.parent().parent().remove();
     });
+  }
+
+  verification() {
+    const { $GridRow } = this;
+    // 輸入資料不可空白
+    let allAddTitle = [];
+    $GridRow.find('.edit-check').each((index) => {
+      // 找出新增資料長度
+      const verificationItem = $($GridRow.find('.edit-check')[index]).val().length;
+      // 若有資料
+      if (verificationItem === 0) {
+        // 找出input的id(我將address,region 塞在input#id裡)
+        const addTitle = $($GridRow.find('.edit-check')[index])[0].id;
+        allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
+      }
+      return;
+    });
+    if (allAddTitle.length !== 0) {
+      // 若有錯誤在sessionStorage登記1
+      sessionStorage.setItem('verification', '1');
+      alert(allAddTitle.join(''));
+      return;
+    }
   }
 
   render() {
