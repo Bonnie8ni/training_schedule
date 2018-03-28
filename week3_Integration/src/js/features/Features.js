@@ -1,6 +1,7 @@
 import MachineData from '../../api/MachineData';
 import GridLine from '../content/GridLine';
 
+let verificationResult;
 export default class Features {
   constructor() {
     const $tpControls = $($('#tp-controls').html());
@@ -21,29 +22,27 @@ export default class Features {
 
     // 新增機台-儲存
     $('.btn-save').click(() => {
-      this.addId = $('.add-id').val();
-      this.addModel = $('.add-model').val();
+      const $addId = $('.add-id').val();
+      const $addModel = $('.add-model').val();
+      const $addTemperature = $('.add-temperature').val();
+      const $addAddress = $('.add-address').val();
+      const $addRegion = $('.add-region').val();
       this.addStatus = $('.add-status').val();
-      this.addTemperature = $('.add-temperature').val();
-      this.addAddress = $('.add-address').val();
-      this.addRegion = $('.add-region').val();
       this.addDisable = $('.add-disable').val();
 
-      // 清空sessionStorage
-      sessionStorage.setItem('verification', '');
       // 驗證編輯輸入框資料是否正確
       this.verification();
       // 確認sessionStorage值
-      if (sessionStorage.getItem('verification') === '1') return;
+      if (verificationResult) return;
 
       // 新增資料結構
       const machine = {
-        id: this.addId,
-        model: this.addModel,
+        id: $addId,
+        model: $addModel,
         status: this.addStatus,
-        temperature: this.addTemperature,
-        address: this.addAddress,
-        region: this.addRegion,
+        temperature: $addTemperature,
+        address: $addAddress,
+        region: $addRegion,
         disable: this.addDisable.toLowerCase() === 'true',
       };
 
@@ -74,29 +73,21 @@ export default class Features {
         const addTitle = $($('.add-check')[index])[0].id;
         allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
       }
-      return;
     });
+    // 顯示在同個Alert裡
     if (allAddTitle.length !== 0) {
-      // 若有錯誤在sessionStorage登記1
-      sessionStorage.setItem('verification', '1');
+      verificationResult = true;
       alert(allAddTitle.join(''));
-      return;
     }
-
-    // 狀態輸入0-2以外的錯誤
-    if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
-      // 若有錯誤在sessionStorage登記1
-      sessionStorage.setItem('verification', '1');
-      alert('【Status 錯誤】只可輸入0或1或2，字數只可輸入1位');
-      return;
-    }
-
     // Status輸入錯誤
+    if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
+      verificationResult = true;
+      alert('【Status 錯誤】只可輸入0或1或2，字數只可輸入1位');
+    }
+    // Disable輸入錯誤
     if (addDisable.toLowerCase() !== 'true' && addDisable.toLowerCase() !== 'false') {
-      // 若有錯誤在sessionStorage登記1
-      sessionStorage.setItem('verification', '1');
+      verificationResult = true;
       alert('【Disable 錯誤】只可輸入 true or false');
-      return;
     }
   }
   render() {

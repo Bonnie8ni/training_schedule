@@ -14,7 +14,7 @@ const STATUS = {
     name: 'Error',
   },
 };
-
+let verificationResult;
 export default class GridLine {
   constructor(lineData) {
     const {
@@ -22,7 +22,7 @@ export default class GridLine {
     } = lineData;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
-    this.$GridRow = $tpGridGroup.find('.grid-row');
+    this.$GridRow = $GridRow;
     const $btnDetail = $GridRow.find('.btn-details');
     const $btnEdit = $GridRow.find('.btn-edit');
     const $btnDelete = $GridRow.find('.btn-delete');
@@ -114,12 +114,10 @@ export default class GridLine {
 
     // 編輯功能-確定
     $btnOk.click(() => {
-      // 清空sessionStorage
-      sessionStorage.setItem('verification', '');
       // 驗證編輯輸入框資料是否正確
       this.verification();
       // 確認sessionStorage值
-      if (sessionStorage.getItem('verification') === '1') return;
+      if (verificationResult) return;
 
       // 確認按鈕狀態
       $inputDisplay(false);
@@ -141,7 +139,7 @@ export default class GridLine {
       // 確定後將資料刪除
       MachineData.splice(MachineData.findIndex(alldata => alldata.id === id), 1);
       // 確定後將物件刪除
-      $btnDelete.parent().parent().remove();
+      $GridRow.remove();
     });
   }
 
@@ -152,20 +150,18 @@ export default class GridLine {
     let allAddTitle = [];
     $GridRow.find('.edit-check').each((index) => {
       // 找出新增資料長度
-      const verificationItem = $($GridRow.find('.edit-check')[index]).val().length;
+      const checkItem = $($GridRow.find('.edit-check')[index]).val().length;
       // 若有資料
-      if (verificationItem === 0) {
+      if (checkItem === 0) {
         // 找出input的id(我將address,region 塞在input#id裡)
         const addTitle = $($GridRow.find('.edit-check')[index])[0].id;
         allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
       }
-      return;
     });
+    // 顯示在同個Alert裡
     if (allAddTitle.length !== 0) {
-      // 若有錯誤在sessionStorage登記1
-      sessionStorage.setItem('verification', '1');
+      verificationResult = true;
       alert(allAddTitle.join(''));
-      return;
     }
   }
 

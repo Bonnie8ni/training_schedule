@@ -38,6 +38,7 @@ a:hover {
         }
     }
     .page {
+        margin: 20px 0;
         @extend %padding-left;
     }
 }
