@@ -33,8 +33,11 @@ export default class Features {
       // 輸入資料不可空白
       let allAddTitle = [];
       $('.add-check').each((index) => {
+        // 找出新增資料長度
         const verificationItem = $($('.add-check')[index]).val().trim().length;
+        // 若有資料
         if (verificationItem === 0) {
+          // 找出input的id(我將id,model,status,temp,address,region,disable 塞在input#id裡)
           const addTitle = $($('.add-check')[index])[0].id;
           allAddTitle = [...allAddTitle, `${addTitle}：沒有輸入\n`];
         }
@@ -56,6 +59,7 @@ export default class Features {
         return;
       }
 
+      // 新增資料結構
       const machine = {
         id: addId,
         model: addModel,
