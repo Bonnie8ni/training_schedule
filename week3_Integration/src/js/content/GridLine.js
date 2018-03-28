@@ -62,11 +62,9 @@ export default class GridLine {
         $spanRegion.show();
         $editAddress.hide();
         $editRegion.hide();
-        if (disable !== false) {
-          $('.btn-details').attr('disabled', false);
-          $('.btn-edit').attr('disabled', false);
-          $('.btn-delete').attr('disabled', false);
-        }
+        $('.btn-details').attr('disabled', false);
+        $('.btn-edit').attr('disabled', false);
+        $('.btn-delete').attr('disabled', false);
       } else {
         $btnDetail.hide();
         $btnEdit.hide();
@@ -77,18 +75,16 @@ export default class GridLine {
         $spanRegion.hide();
         $editAddress.show();
         $editRegion.show();
-        if (disable !== false) {
-          $('.btn-details').attr('disabled', true);
-          $('.btn-edit').attr('disabled', true);
-          $('.btn-delete').attr('disabled', true);
-        }
+        $('.btn-details').attr('disabled', true);
+        $('.btn-edit').attr('disabled', true);
+        $('.btn-delete').attr('disabled', true);
       }
     });
 
     if (disable === true) {
-      $GridRow.find('.btn-details').attr('disabled', true);
-      $GridRow.find('.btn-edit').attr('disabled', true);
-      $GridRow.find('.btn-delete').attr('disabled', true);
+      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
     }
 
     // 明細功能
