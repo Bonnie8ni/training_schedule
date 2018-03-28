@@ -74,20 +74,20 @@ export default class Features {
         allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
       }
     });
-    // 顯示在同個Alert裡
-    if (allAddTitle.length !== 0) {
-      verificationResult = true;
-      alert(allAddTitle.join(''));
-    }
     // Status輸入錯誤
     if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
       verificationResult = true;
-      alert('【Status 錯誤】只可輸入0或1或2，字數只可輸入1位');
+      allAddTitle = [...allAddTitle, 'STATUS：只可輸入0或1或2，字數只可輸入1位\n'];
     }
     // Disable輸入錯誤
     if (addDisable.toLowerCase() !== 'true' && addDisable.toLowerCase() !== 'false') {
       verificationResult = true;
-      alert('【Disable 錯誤】只可輸入 true or false');
+      allAddTitle = [...allAddTitle, 'DISABLE：只可輸入 true or false\n'];
+    }
+    // 顯示在同個Alert裡
+    if (allAddTitle.length !== 0) {
+      verificationResult = true;
+      alert(allAddTitle.join(''));
     }
   }
   render() {
