@@ -14,7 +14,6 @@ const STATUS = {
     name: 'Error',
   },
 };
-let verificationResult;
 export default class GridLine {
   constructor(lineData) {
     const {
@@ -115,9 +114,7 @@ export default class GridLine {
     // 編輯功能-確定
     $btnOk.click(() => {
       // 驗證編輯輸入框資料是否正確
-      this.verification();
-      // 確認verificationResult值
-      if (verificationResult) return;
+      if (!this.verification()) return;
 
       // 確認按鈕狀態
       $inputDisplay(false);
@@ -146,6 +143,7 @@ export default class GridLine {
   // 驗證輸入資料
   verification() {
     const { $GridRow } = this;
+    let isPass = true;
     // 輸入資料不可空白
     let allAddTitle = [];
     $GridRow.find('.edit-check').each((index) => {
@@ -156,13 +154,16 @@ export default class GridLine {
         // 找出input的id(我將address,region 塞在input#id裡)
         const addTitle = $($GridRow.find('.edit-check')[index])[0].id;
         allAddTitle = [...allAddTitle, `${addTitle}：請輸入完整資料\n`];
+        isPass = false;
       }
     });
     // 顯示在同個Alert裡
     if (allAddTitle.length !== 0) {
-      verificationResult = true;
       alert(allAddTitle.join(''));
+      isPass = false;
     }
+
+    return isPass;
   }
 
   render() {
