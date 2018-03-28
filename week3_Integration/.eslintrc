@@ -15,6 +15,7 @@
     "max-len": 0,
     "no-useless-return": 0,
     "no-useless-escape": 0,
-    "global-require": 0
+    "global-require": 0,
+    "class-methods-use-this": 0
   }
 }

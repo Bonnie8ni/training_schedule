@@ -7,17 +7,7 @@ export default class Features {
     const $addMachine = $tpControls.find('.add-machine');
 
     // 新增機台
-    $addMachine.click(() => {
-      $('.modal-title').text('Add');
-      $('.btn-save').show();
-      const detailRow = Object.keys(MachineData[0]).map(key => (
-        `<div class="detailRow">
-          <p class="detailTitle">${key.toUpperCase()}：</p>
-          <input class="add-${key} add-check border" id="${key.toUpperCase()}"/>
-        </div>`
-      ));
-      $('.modal-body').html(detailRow.join(''));
-    });
+    $addMachine.click(this.addMachineFunc());
 
     // 新增機台-儲存
     $('.btn-save').click(() => {
@@ -54,6 +44,18 @@ export default class Features {
     });
 
     this.Features = $tpControls;
+  }
+
+  // 新增機台
+  addMachineFunc() {
+    $('.btn-save').show();
+    const detailRow = Object.keys(MachineData[0]).map(key => (
+      `<div class="detailRow">
+          <p class="detailTitle">${key.toUpperCase()}：</p>
+          <input class="add-${key} add-check border" id="${key.toUpperCase()}"/>
+        </div>`
+    ));
+    $('.modal-body').html(detailRow.join(''));
   }
 
   // 驗證輸入資料
