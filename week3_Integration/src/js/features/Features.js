@@ -44,17 +44,6 @@ export default class Features {
         alert(allAddTitle.join(''));
       }
 
-      // 輸入資料不可空白
-      // $('.add-check').each((index) => {
-      //   let verificationItem = $($('.add-check')[index]).val().trim().length;
-      //   if (verificationItem === 0) {
-      //     verificationItem = 1;
-      //     alert('請輸入完整資料');
-      //     return false;
-      //   }
-      //   return false;
-      // });
-
       // 狀態輸入0-2以外的錯誤
       if (addStatus.match(/[0-2]/) === null || addStatus.length > 1) {
         alert('【Status 錯誤】只可輸入0或1或2，字數只可輸入1位');
@@ -80,14 +69,9 @@ export default class Features {
       // 將資料新增進API裡
       MachineData.push(machine);
 
-      // 清空現有列表畫面
-      $('.grid-list').html('');
-
-      // 重長GridRow
-      MachineData.forEach((lineData) => {
-        const $GridLine = new GridLine(lineData);
-        $('.grid-list').append($GridLine.render());
-      });
+      // 畫面新增資料
+      const $GridLine = new GridLine(machine);
+      $('.grid-list').append($GridLine.render());
 
       // 關閉視窗
       $('#exampleModalCenter').modal('hide');

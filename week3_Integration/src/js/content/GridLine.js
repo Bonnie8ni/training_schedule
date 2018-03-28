@@ -46,9 +46,10 @@ export default class GridLine {
     $editAddress.val(address).hide();
     $spanRegion.text(region);
     $editRegion.val(region).hide();
+    $btnCancle.hide();
+    $btnOk.hide();
 
     this.GridLine = $GridRow;
-
     // 按鈕是否 disable
     const $inputDisplay = ((isShow = false) => {
       if (!isShow) {
@@ -80,14 +81,11 @@ export default class GridLine {
       }
     });
 
-    // 按鈕初始值
-    $inputDisplay();
-
     // 依照狀態鎖定按鈕
     if (disable === true) {
-      $GridRow.find('.btn-details').attr('disabled', true);
-      $GridRow.find('.btn-edit').attr('disabled', true);
-      $GridRow.find('.btn-delete').attr('disabled', true);
+      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
     }
 
     // 明細功能
