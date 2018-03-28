@@ -7,40 +7,13 @@ export default class Features {
     const $addMachine = $tpControls.find('.add-machine');
 
     // 新增機台
-    $addMachine.click(this.addMachineFunc());
+    $addMachine.click(() => {
+      this.addMachineFunc();
+    });
 
     // 新增機台-儲存
     $('.btn-save').click(() => {
-      const $modalModel = $('.modal-model');
-      const $addId = $modalModel.find('.add-id').val();
-      const $addModel = $modalModel.find('.add-model').val();
-      const $addTemperature = $modalModel.find('.add-temperature').val();
-      const $addAddress = $modalModel.find('.add-address').val();
-      const $addRegion = $modalModel.find('.add-region').val();
-      this.addStatus = $modalModel.find('.add-status').val();
-      this.addDisable = $modalModel.find('.add-disable').val();
-
-      // 驗證編輯輸入框資料是否正確
-      if (!this.verification()) return;
-
-      // 新增資料結構
-      const machine = {
-        id: $addId,
-        model: $addModel,
-        status: this.addStatus,
-        temperature: $addTemperature,
-        address: $addAddress,
-        region: $addRegion,
-        disable: this.addDisable.toLowerCase() === 'true',
-      };
-
-      // 確定後將資料新增
-      MachineData.push(machine);
-      // 確定後將物件新增
-      const $GridLine = new GridLine(machine);
-      $('.grid-list').append($GridLine.render());
-      // 關閉視窗新增視窗
-      $('#exampleModalCenter').modal('hide');
+      this.saveAddMachineFunc();
     });
 
     this.Features = $tpControls;
@@ -58,8 +31,42 @@ export default class Features {
     $('.modal-body').html(detailRow.join(''));
   }
 
+  // 新增機台-儲存
+  saveAddMachineFunc() {
+    const $modalModel = $('.modal-model');
+    const $addId = $modalModel.find('.add-id').val();
+    const $addModel = $modalModel.find('.add-model').val();
+    const $addTemperature = $modalModel.find('.add-temperature').val();
+    const $addAddress = $modalModel.find('.add-address').val();
+    const $addRegion = $modalModel.find('.add-region').val();
+    this.addStatus = $modalModel.find('.add-status').val();
+    this.addDisable = $modalModel.find('.add-disable').val();
+    debugger;
+    // 驗證編輯輸入框資料是否正確
+    if (!this.verificationFunc()) return;
+
+    // 新增資料結構
+    const machine = {
+      id: $addId,
+      model: $addModel,
+      status: this.addStatus,
+      temperature: $addTemperature,
+      address: $addAddress,
+      region: $addRegion,
+      disable: this.addDisable.toLowerCase() === 'true',
+    };
+
+    // 確定後將資料新增
+    MachineData.push(machine);
+    // 確定後將物件新增
+    const $GridLine = new GridLine(machine);
+    $('.grid-list').append($GridLine.render());
+    // 關閉視窗新增視窗
+    $('#exampleModalCenter').modal('hide');
+  }
+
   // 驗證輸入資料
-  verification() {
+  verificationFunc() {
     const { addStatus, addDisable } = this;
     let isPass = true;
 

@@ -17,8 +17,9 @@ const STATUS = {
 export default class GridLine {
   constructor(lineData) {
     const {
-      id, model, temperature, address, region, disable,
+      id, model, temperature, address, region,
     } = lineData;
+    this.lineData = lineData;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
     this.$GridRow = $GridRow;
@@ -28,11 +29,11 @@ export default class GridLine {
     const $btnCancle = $GridRow.find('.btn-cancle');
     const $btnOk = $GridRow.find('.btn-check');
     const $rowAddress = $GridRow.find('.row-address');
-    const $spanAddress = $rowAddress.find('.span-address');
-    const $editAddress = $rowAddress.find('.edit-address');
     const $rowRegion = $GridRow.find('.row-region');
-    const $spanRegion = $rowRegion.find('.span-region');
-    const $editRegion = $rowRegion.find('.edit-region');
+    this.$spanAddress = $rowAddress.find('.span-address');
+    this.$editAddress = $rowAddress.find('.edit-address');
+    this.$spanRegion = $rowRegion.find('.span-region');
+    this.$editRegion = $rowRegion.find('.edit-region');
 
     // 變更Status顯示方式
     const { style, name } = STATUS[lineData.status];
@@ -41,26 +42,26 @@ export default class GridLine {
     $GridRow.find('.row-id').text(id);
     $GridRow.find('.row-model').text(model);
     $GridRow.find('.row-temp').text(temperature);
-    $spanAddress.text(address);
-    $editAddress.val(address).hide();
-    $spanRegion.text(region);
-    $editRegion.val(region).hide();
+    this.$spanAddress.text(address);
+    this.$editAddress.val(address).hide();
+    this.$spanRegion.text(region);
+    this.$editRegion.val(region).hide();
     $btnCancle.hide();
     $btnOk.hide();
 
     this.GridLine = $GridRow;
     // 按鈕是否 disable
-    const $inputDisplay = ((isShow = false) => {
+    this.$inputDisplay = ((isShow = false) => {
       if (!isShow) {
         $btnDetail.show();
         $btnEdit.show();
         $btnDelete.show();
         $btnCancle.hide();
         $btnOk.hide();
-        $spanAddress.show();
-        $spanRegion.show();
-        $editAddress.hide();
-        $editRegion.hide();
+        this.$spanAddress.show();
+        this.$spanRegion.show();
+        this.$editAddress.hide();
+        this.$editRegion.hide();
         $('.btn-details').attr('disabled', false);
         $('.btn-edit').attr('disabled', false);
         $('.btn-delete').attr('disabled', false);
@@ -70,78 +71,111 @@ export default class GridLine {
         $btnDelete.hide();
         $btnCancle.show();
         $btnOk.show();
-        $spanAddress.hide();
-        $spanRegion.hide();
-        $editAddress.show();
-        $editRegion.show();
+        this.$spanAddress.hide();
+        this.$spanRegion.hide();
+        this.$editAddress.show();
+        this.$editRegion.show();
         $('.btn-details').attr('disabled', true);
         $('.btn-edit').attr('disabled', true);
         $('.btn-delete').attr('disabled', true);
       }
     });
 
-    if (disable === true) {
-      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
-      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
-      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
-    }
+    // 判斷按鈕顯示隱藏
+    this.checkDisableFunc();
 
     // 明細功能
     $btnDetail.click(() => {
-      $('.modal-title').text('Details');
-      $('.btn-save').hide();
-      const detailRow = Object.keys(lineData).map(key => (
-        `<div class="detailRow">
-          <p class="detailTitle">${key.toUpperCase()}：</p>
-          <p class="detailText">${lineData[key]}</p>
-        </div>`
-      ));
-      $('.modal-body').html(detailRow.join(''));
+      this.showDetailsFunc();
     });
 
     // 編輯功能
     $btnEdit.click(() => {
-      $inputDisplay(true);
-    });
-
-    // 編輯功能-取消
-    $btnCancle.click(() => {
-      $inputDisplay(false);
-      $editAddress.val($spanAddress.text());
-      $editRegion.val($spanRegion.text());
+      this.$inputDisplay(true);
     });
 
     // 編輯功能-確定
     $btnOk.click(() => {
-      // 驗證編輯輸入框資料是否正確
-      if (!this.verification()) return;
+      this.saveEditGridlineFunc();
+    });
 
-      // 確認按鈕狀態
-      $inputDisplay(false);
-      $spanAddress.text($editAddress.val());
-      $spanRegion.text($editRegion.val());
-
-      // 找尋修改id的位置
-      const index = MachineData.findIndex(line => line.id === id);
-      // 將編輯的資料覆蓋原本的資料
-      MachineData[index].address = $editAddress.val();
-      MachineData[index].region = $editRegion.val();
+    // 編輯功能-取消
+    $btnCancle.click(() => {
+      this.cancleEditGridlineFunc();
     });
 
     // 刪除功能
     $btnDelete.click(() => {
-      // 刪除前詢問是否要刪除
-      const confirm = window.confirm('Are you sure you want to delete this data?');
-      if (!confirm) return;
-      // 確定後將資料刪除
-      MachineData.splice(MachineData.findIndex(alldata => alldata.id === id), 1);
-      // 確定後將物件刪除
-      $GridRow.remove();
+      this.deleteGridlineFunc();
     });
   }
 
+  // 判斷按鈕顯示隱藏
+  checkDisableFunc() {
+    const { lineData, $GridRow } = this;
+    if (lineData.disable === true) {
+      $GridRow.find('.btn-details').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-edit').addClass('disabled').attr('disabled', true);
+      $GridRow.find('.btn-delete').addClass('disabled').attr('disabled', true);
+    }
+  }
+
+  // 顯示明細
+  showDetailsFunc() {
+    const { lineData } = this;
+    $('.modal-title').text('Details');
+    $('.btn-save').hide();
+    const detailRow = Object.keys(lineData).map(key => (
+      `<div class="detailRow">
+        <p class="detailTitle">${key.toUpperCase()}：</p>
+        <p class="detailText">${lineData[key]}</p>
+      </div>`
+    ));
+    $('.modal-body').html(detailRow.join(''));
+  }
+
+  // 編輯-儲存
+  saveEditGridlineFunc() {
+    const {
+      $spanAddress, $editAddress, $spanRegion, $editRegion, $inputDisplay, lineData,
+    } = this;
+    // 驗證編輯輸入框資料是否正確
+    if (!this.verificationFunc()) return;
+
+    // 確認按鈕狀態
+    $inputDisplay(false);
+    $spanAddress.text($editAddress.val());
+    $spanRegion.text($editRegion.val());
+
+    // 找尋修改id的位置
+    const index = MachineData.findIndex(line => line.id === lineData.id);
+    // 將編輯的資料覆蓋原本的資料
+    MachineData[index].address = $editAddress.val();
+    MachineData[index].region = $editRegion.val();
+  }
+
+  // 編輯-取消
+  cancleEditGridlineFunc() {
+    const { $inputDisplay, $editAddress, $editRegion } = this;
+    $inputDisplay(false);
+    $editAddress.val(this.$spanAddress.text());
+    $editRegion.val(this.$spanRegion.text());
+  }
+
+  // 刪除資料
+  deleteGridlineFunc() {
+    const { $GridRow, lineData } = this;
+    // 刪除前詢問是否要刪除
+    const confirm = window.confirm('Are you sure you want to delete this data?');
+    if (!confirm) return;
+    // 確定後將資料刪除
+    MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    // 確定後將物件刪除
+    $GridRow.remove();
+  }
+
   // 驗證輸入資料
-  verification() {
+  verificationFunc() {
     const { $GridRow } = this;
     let isPass = true;
     // 輸入資料不可空白
