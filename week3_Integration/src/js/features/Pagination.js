@@ -61,24 +61,20 @@ export default class Pagination {
 
   // 切換頁面
   changePage() {
-    const { rowsPerPage, nowPage, totalPage } = this;
-    if (nowPage <= totalPage) {
-      $('.page-item.active').removeClass('active');
-      $($('.page-item')[nowPage - 1]).addClass('active');
+    const { rowsPerPage, nowPage } = this;
+    $('.page-item.active').removeClass('active');
+    $($('.page-item')[nowPage - 1]).addClass('active');
 
-      $('.grid-row').remove();
-      const endPage = nowPage * rowsPerPage;
-      const startPage = endPage - rowsPerPage;
+    $('.grid-row').remove();
+    const endPage = nowPage * rowsPerPage;
+    const startPage = endPage - rowsPerPage;
 
-      MachineData.forEach((lineData, index) => {
-        if (index >= startPage && index < endPage) {
-          const $GridLine = new GridLine(lineData);
-          $('.grid-list').append($GridLine.render());
-        }
-      });
-    } else {
-      return;
-    }
+    MachineData.forEach((lineData, index) => {
+      if (index >= startPage && index < endPage) {
+        const $GridLine = new GridLine(lineData);
+        $('.grid-list').append($GridLine.render());
+      }
+    });
   }
 
   render() {
