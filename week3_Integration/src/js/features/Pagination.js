@@ -49,27 +49,29 @@ export default class Pagination {
       $pageEnd, $rowsPerPage, PER_PAGE_STORAGE,
     } = this;
     let { pageLine } = this;
+
     $('.grid-row').remove();
+    $('.page-item').remove();
+    pageLine = [];
+    $rowsPerPage.text(MachineData.length);
+
     const endPage = PER_PAGE_STORAGE.currentPage * PER_PAGE_STORAGE.pageSize;
     const startPage = endPage - PER_PAGE_STORAGE.pageSize;
 
     MachineData.forEach((lineData, index) => {
+      // 重長page
+      const pageNumber = index / PER_PAGE_STORAGE.pageSize;
+      const $pageItem = new Perpage(pageNumber);
+      if (index % PER_PAGE_STORAGE.pageSize === 0) {
+        pageLine.push($pageItem.render());
+      }
+      // 重長Row
       if (index >= startPage && index < endPage) {
         const $GridLine = new GridLine(lineData);
         $('.grid-list').append($GridLine.render());
       }
     });
 
-    $('.page-item').remove();
-    pageLine = [];
-    MachineData.forEach((data, index) => {
-      const pageNumber = index / PER_PAGE_STORAGE.pageSize;
-      const $pageItem = new Perpage(pageNumber);
-      if (index % PER_PAGE_STORAGE.pageSize === 0) {
-        pageLine.push($pageItem.render());
-      }
-    });
-    $rowsPerPage.text(MachineData.length);
     $pagination
       .append($pageTop)
       .append($pagePrev)
