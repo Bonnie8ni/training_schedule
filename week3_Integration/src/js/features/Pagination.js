@@ -27,23 +27,21 @@ export default class Pagination {
     });
 
     $pageTop.click(() => {
-      PER_PAGE_STORAGE.currentPage = 1;
+      this.nowPage = 1;
       this.changePage();
     });
     $pagePrev.click(() => {
-      if (this.nowPage > 0 && this.nowPage <= this.totalPage) {
-        this.nowPage -= 1;
-        this.changePage();
-      }
+      if (this.nowPage === 1) return;
+      this.nowPage -= 1;
+      this.changePage();
     });
     $pageNext.click(() => {
-      if (this.nowPage > 0 && this.nowPage + 1 <= this.totalPage) {
-        this.nowPage += 1;
-        this.changePage();
-      }
+      if (this.nowPage === this.totalPage) return;
+      this.nowPage += 1;
+      this.changePage();
     });
     $pageEnd.click(() => {
-      PER_PAGE_STORAGE.currentPage = MachineData.length;
+      this.nowPage = this.totalPage;
       this.changePage();
     });
 
