@@ -6,68 +6,52 @@ export default class Pagination {
   constructor(PER_PAGE_STORAGE) {
     const $tpPage = $($('#tp-page').html());
     const $page = $tpPage.find('.page');
-    const $pagination = $page.find('.pagination');
-    const $pageTop = $tpPage.find('.page-top');
-    const $pagePrev = $tpPage.find('.page-prev');
-    const $pageNext = $tpPage.find('.page-next');
-    const $pageEnd = $tpPage.find('.page-end');
+    this.$pagination = $page.find('.pagination');
+    this.$rowsPerPage = $page.find('.rowsPerPage');
+    this.$pageTop = $tpPage.find('.page-top');
+    this.$pagePrev = $tpPage.find('.page-prev');
+    this.$pageNext = $tpPage.find('.page-next');
+    this.$pageEnd = $tpPage.find('.page-end');
+    this.PER_PAGE_STORAGE = PER_PAGE_STORAGE;
+    this.pageLine = [];
 
-    this.rowsPerPage = PER_PAGE_STORAGE.pageSize;
-    this.nowPage = PER_PAGE_STORAGE.currentPage;
-    this.totalPage = Math.ceil(MachineData.length / this.rowsPerPage);
-    const pageLine = [];
+    this.changePage();
 
-    MachineData.map((data, index) => {
-      const pageNumber = index / this.rowsPerPage;
-      const $pageItem = new Perpage(pageNumber);
-      if (index % this.rowsPerPage === 0) {
-        pageLine.push($pageItem.render());
-      }
-      return pageLine;
-    });
-
-    $pageTop.click(() => {
-      this.nowPage = 1;
+    this.$pageTop.click(() => {
+      PER_PAGE_STORAGE.currentPage = 1;
       this.changePage();
     });
-    $pagePrev.click(() => {
-      if (this.nowPage === 1) return;
-      this.nowPage -= 1;
+    this.$pagePrev.click(() => {
+      if (PER_PAGE_STORAGE.currentPage === 1) return;
+      PER_PAGE_STORAGE.currentPage -= 1;
       this.changePage();
     });
-    $pageNext.click(() => {
-      if (this.nowPage === this.totalPage) return;
-      this.nowPage += 1;
+    this.$pageNext.click(() => {
+      if (PER_PAGE_STORAGE.currentPage === Math.ceil(MachineData.length / PER_PAGE_STORAGE.pageSize)) return;
+      PER_PAGE_STORAGE.currentPage += 1;
       this.changePage();
     });
-    $pageEnd.click(() => {
-      this.nowPage = this.totalPage;
+    this.$pageEnd.click(() => {
+      PER_PAGE_STORAGE.currentPage = Math.ceil(MachineData.length / PER_PAGE_STORAGE.pageSize);
       this.changePage();
     });
 
-    $pagination
-      .append($pageTop)
-      .append($pagePrev)
-      .append(pageLine)
-      .append($pageNext)
-      .append($pageEnd);
-
-    $pagination.find('a').click((e) => {
+    this.$pagination.find('a').click((e) => {
       e.preventDefault();
     });
-
     this.Pagination = $page;
   }
 
   // 切換頁面
   changePage() {
-    const { rowsPerPage, nowPage } = this;
-    $('.page-item.active').removeClass('active');
-    $($('.page-item')[nowPage - 1]).addClass('active');
-
+    const {
+      $pagination, $pageTop, $pagePrev, $pageNext,
+      $pageEnd, $rowsPerPage, PER_PAGE_STORAGE,
+    } = this;
+    let { pageLine } = this;
     $('.grid-row').remove();
-    const endPage = nowPage * rowsPerPage;
-    const startPage = endPage - rowsPerPage;
+    const endPage = PER_PAGE_STORAGE.currentPage * PER_PAGE_STORAGE.pageSize;
+    const startPage = endPage - PER_PAGE_STORAGE.pageSize;
 
     MachineData.forEach((lineData, index) => {
       if (index >= startPage && index < endPage) {
@@ -75,6 +59,26 @@ export default class Pagination {
         $('.grid-list').append($GridLine.render());
       }
     });
+
+    $('.page-item').remove();
+    pageLine = [];
+    MachineData.forEach((data, index) => {
+      const pageNumber = index / PER_PAGE_STORAGE.pageSize;
+      const $pageItem = new Perpage(pageNumber);
+      if (index % PER_PAGE_STORAGE.pageSize === 0) {
+        pageLine.push($pageItem.render());
+      }
+    });
+    $rowsPerPage.text(MachineData.length);
+    $pagination
+      .append($pageTop)
+      .append($pagePrev)
+      .append(pageLine)
+      .append($pageNext)
+      .append($pageEnd);
+
+    $('.page-item.active').removeClass('active');
+    $($('.page-item')[PER_PAGE_STORAGE.currentPage - 1]).addClass('active');
   }
 
   render() {
