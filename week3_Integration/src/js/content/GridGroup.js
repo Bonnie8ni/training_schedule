@@ -13,6 +13,13 @@ export default class GridGroup {
       $GridList.append($GridLine.render());
     });
 
+
+    $GridList.children().hide();
+    const rowsPerPage = $($('#tp-page').html()).find('.rowsPerPage').text();
+    for (let i = 0; i < rowsPerPage; i++) {
+      $($GridList.children()[i]).show();
+    }
+
     this.GridGroup = $GridGroup;
   }
 

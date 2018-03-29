@@ -1,12 +1,12 @@
-.top-link{
+.top-link {
   height: 55px;
   background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #D7D7D7;
-  .user-information{
-    .user-photo{
+  .user-information {
+    .user-photo {
       text-align: right;
       display: inline-block;
       width: 40px;
@@ -16,19 +16,21 @@
     }
   }
 }
-.title{
+
+.title {
   margin: 2% 0 0 0;
   color: #666;
   font-size: 18pt;
   font-weight: bold;
 }
-.controls{
+
+.controls {
   display: flex;
   justify-content: space-between;
   margin: 1.5% 0 0 0;
-  .stack-background{
+  .stack-background {
     font-size: 13pt;
-    color:#000;
+    color: #000;
     background: #fff;
     display: inline-block;
     text-align: center;
@@ -38,32 +40,32 @@
     line-height: 35px;
     margin: 0 5px 0 0;
   }
-  .search{
+  .search {
     display: flex;
     flex: 8;
-    .input-group{
+    .input-group {
       flex: 3;
-      input[type="text"]{
+      input[type="text"] {
         font-size: 11pt;
         border: 1px solid #D7D7D7;
-        &::-webkit-input-placeholder{
-          color:#C9C9C9;
+        &::-webkit-input-placeholder {
+            color: #C9C9C9;
         }
       }
-      .btn-selfstyle{
-        color:#595757;
-        padding: 0 15px;
-        font-size: 10pt;
-        background:#fff;
-        border: 1px solid #D7D7D7;
+      .btn-selfstyle {
+          color: #595757;
+          padding: 0 15px;
+          font-size: 10pt;
+          background: #fff;
+          border: 1px solid #D7D7D7;
       }
     }
-    .advanced-search{
+    .advanced-search {
       flex: 2;
       margin: 0 0 0 10px;
     }
   }
-  .add-machine{
+  .add-machine {
     flex: 2;
     text-align: right;
   }
@@ -74,29 +76,44 @@
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
-  .rowsPerPage{
-      margin: 0 5px 0 0;
+  .rowsPerPage {
+    margin: 0 5px 0 0;
   }
   .pagination {
-      margin: 0 0 0 15px;
-      a {
-          display: inline-block;
-          text-align: center;
-          width: 30px;
-          height: 30px;
-          line-height: 30px;
-          font-size: 10pt;
-          color: #000;
-          background: none;
-          border: 1px solid #D7D7D7;
-          &:hover {
-              color: #fff;
-              background: #343434;
-          }
-          &.active {
-              color: #fff;
-              background: #343434;
-          }
+    margin: 0 0 0 15px;
+    a {
+      display: inline-block;
+      text-align: center;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 10pt;
+      color: #000;
+      background: none;
+      border: 1px solid #D7D7D7;
+      &:hover {
+        color: #fff;
+        background: #343434;
       }
+    }
+    .page-item {
+      &.active {
+        a {
+          color: #fff;
+          background: #343434;
+        }
+      }
+    }
+    .disabled {
+      a {
+        i {
+            color: #ddd;
+        }
+        &:hover {
+            background: none;
+            cursor: default;
+        }
+      }
+    }
   }
 }

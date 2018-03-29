@@ -4,41 +4,41 @@
 @import './list.scss';
 @import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 %padding-left {
-    padding: 0 2%;
+  padding: 0 2%;
 }
 
 body {
-    background: #e8e8e8;
-    font-family: "微軟正黑體", "Microsoft JhengHei";
-    font-size: 12pt;
+  background: #e8e8e8;
+  font-family: "微軟正黑體", "Microsoft JhengHei";
+  font-size: 12pt;
 }
 
 a,
 a:hover {
-    color: #666;
-    text-decoration: none;
+  color: #666;
+  text-decoration: none;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #container {
-    display: flex;
-    #menu {
-        flex-basis: 266px;
+  display: flex;
+  #menu {
+    flex-basis: 266px;
+  }
+  #content {
+    flex: 1;
+    font-size: 11pt;
+    &>div {
+      @extend %padding-left;
     }
-    #content {
-        flex: 1;
-        font-size: 11pt;
-        &>div {
-            @extend %padding-left;
-        }
-    }
-    .page {
-        margin: 20px 0;
-        @extend %padding-left;
-    }
+  }
+  .page {
+    margin: 20px 0;
+    @extend %padding-left;
+  }
 }
