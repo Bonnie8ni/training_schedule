@@ -1,45 +1,49 @@
 import MachineData from '../../api/MachineData';
 import Perpage from './Perpage';
+import GridLine from '../content/GridLine';
 
 export default class Pagination {
-  constructor() {
+  constructor(PER_PAGE_STORAGE) {
     const $tpPage = $($('#tp-page').html());
     const $page = $tpPage.find('.page');
-    const $rowsPerPage = $page.find('.rowsPerPage').text();
     const $pagination = $page.find('.pagination');
     const $pageTop = $tpPage.find('.page-top');
     const $pagePrev = $tpPage.find('.page-prev');
     const $pageNext = $tpPage.find('.page-next');
     const $pageEnd = $tpPage.find('.page-end');
+
+    this.rowsPerPage = PER_PAGE_STORAGE.pageSize;
+    this.nowPage = PER_PAGE_STORAGE.currentPage;
+    this.totalPage = Math.ceil(MachineData.length / this.rowsPerPage);
     const pageLine = [];
 
     MachineData.map((data, index) => {
-      const pageNumber = index / $rowsPerPage;
-      const $pageItem = new Perpage(index, pageNumber, $rowsPerPage);
-      if (index % $rowsPerPage === 0) {
+      const pageNumber = index / this.rowsPerPage;
+      const $pageItem = new Perpage(pageNumber);
+      if (index % this.rowsPerPage === 0) {
         pageLine.push($pageItem.render());
       }
       return pageLine;
     });
 
     $pageTop.click(() => {
-      $('.page-item.active').removeClass('active');
-      $('.page-item').removeClass('active').first().addClass('active');
+      PER_PAGE_STORAGE.currentPage = 1;
       this.changePage();
     });
     $pagePrev.click(() => {
-      if ($('.page-item').first().hasClass('active')) return;
-      $('.page-item.active').removeClass('active').prev().addClass('active');
-      this.changePage();
+      if (this.nowPage > 0 && this.nowPage <= this.totalPage) {
+        this.nowPage -= 1;
+        this.changePage();
+      }
     });
     $pageNext.click(() => {
-      if ($('.page-item').last().hasClass('active')) return;
-      $('.page-item.active').removeClass('active').next().addClass('active');
-      this.changePage();
+      if (this.nowPage > 0 && this.nowPage + 1 <= this.totalPage) {
+        this.nowPage += 1;
+        this.changePage();
+      }
     });
     $pageEnd.click(() => {
-      $('.page-item.active').removeClass('active');
-      $('.page-item').removeClass('active').last().addClass('active');
+      PER_PAGE_STORAGE.currentPage = MachineData.length;
       this.changePage();
     });
 
@@ -57,15 +61,25 @@ export default class Pagination {
     this.Pagination = $page;
   }
 
+  // 切換頁面
   changePage() {
-    console.log(MachineData);
-    $('.grid-row').hide();
-    const rowsPerPage = $($('#tp-page').html()).find('.rowsPerPage').text();
-    const cardinal = parseInt($('.page-item.active').text(), 10);
-    const end = cardinal * rowsPerPage;
-    const start = end - rowsPerPage;
-    for (let i = start; i < end; i++) {
-      $($('.grid-row')[i]).show();
+    const { rowsPerPage, nowPage, totalPage } = this;
+    if (nowPage <= totalPage) {
+      $('.page-item.active').removeClass('active');
+      $($('.page-item')[nowPage - 1]).addClass('active');
+
+      $('.grid-row').remove();
+      const endPage = nowPage * rowsPerPage;
+      const startPage = endPage - rowsPerPage;
+
+      MachineData.forEach((lineData, index) => {
+        if (index >= startPage && index < endPage) {
+          const $GridLine = new GridLine(lineData);
+          $('.grid-list').append($GridLine.render());
+        }
+      });
+    } else {
+      return;
     }
   }
 

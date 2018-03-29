@@ -11,6 +11,11 @@ if (process.env.NODE_ENV !== 'production') {
   require('../index.html');
 }
 
+const PER_PAGE_STORAGE = {
+  pageSize: 8,
+  currentPage: 1,
+};
+
 $().ready(() => {
   // 帶入選單
   MenuData.forEach((menu) => {
@@ -23,11 +28,11 @@ $().ready(() => {
   $('#content').append($Features.render());
 
   // 帶入列表
-  const $GridGroup = new GridGroup();
+  const $GridGroup = new GridGroup(PER_PAGE_STORAGE);
   $('#content').append($GridGroup.render());
 
   // 帶入分頁
-  const $Pagination = new Pagination();
+  const $Pagination = new Pagination(PER_PAGE_STORAGE);
   $('#content').append($Pagination.render());
 });
 
