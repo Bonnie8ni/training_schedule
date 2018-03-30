@@ -15,11 +15,12 @@ const STATUS = {
   },
 };
 export default class GridLine {
-  constructor(lineData) {
+  constructor(lineData, PAGE_STORAGE) {
     const {
       id, model, temperature, address, region,
     } = lineData;
     this.lineData = lineData;
+    this.PAGE_STORAGE = PAGE_STORAGE;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
     this.$GridRow = $GridRow;
@@ -164,14 +165,19 @@ export default class GridLine {
 
   // 刪除資料
   deleteGridlineFunc() {
-    const { $GridRow, lineData } = this;
+    const { lineData, PAGE_STORAGE } = this;
+    const pageLine = [];
     // 刪除前詢問是否要刪除
     const confirm = window.confirm('Are you sure you want to delete this data?');
     if (!confirm) return;
     // 確定後將資料刪除
     MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
-    // 確定後將物件刪除
-    $GridRow.remove();
+    // 重新長出列表和分頁
+    PAGE_STORAGE.allDataLength = MachineData.length;
+    PAGE_STORAGE.reloadRowPage(pageLine);
+    $('.page-next').before(pageLine);
+    $('.page-item.active').removeClass('active');
+    $($('.page-item')[PAGE_STORAGE.currentPage - 1]).addClass('active');
   }
 
   // 驗證輸入資料

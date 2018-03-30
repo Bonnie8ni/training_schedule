@@ -1,10 +1,10 @@
 import MachineData from '../../api/MachineData';
-import GridLine from '../content/GridLine';
 
 export default class Features {
-  constructor() {
+  constructor(PAGE_STORAGE) {
     const $tpControls = $($('#tp-controls').html());
     const $addMachine = $tpControls.find('.add-machine');
+    this.PAGE_STORAGE = PAGE_STORAGE;
 
     // 新增機台
     $addMachine.click(() => {
@@ -33,6 +33,7 @@ export default class Features {
 
   // 新增機台-儲存
   saveAddMachineFunc() {
+    const { PAGE_STORAGE } = this;
     const $modalModel = $('.modal-model');
     const $addId = $modalModel.find('.add-id').val();
     const $addModel = $modalModel.find('.add-model').val();
@@ -58,9 +59,13 @@ export default class Features {
 
     // 確定後將資料新增
     MachineData.push(machine);
-    // 確定後將物件新增
-    const $GridLine = new GridLine(machine);
-    $('.grid-list').append($GridLine.render());
+    // 重新長出列表和分頁
+    const pageLine = [];
+    PAGE_STORAGE.allDataLength = MachineData.length;
+    PAGE_STORAGE.reloadRowPage(pageLine);
+    $('.page-next').before(pageLine);
+    $('.page-item.active').removeClass('active');
+    $($('.page-item')[PAGE_STORAGE.currentPage - 1]).addClass('active');
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
   }
