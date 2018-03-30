@@ -10,6 +10,9 @@ export default class Perpage {
     const $pageItem = $tpPage.find('.page-item');
     const $pageLink = $pageItem.find('.th-page-link');
     perDefult.name = pageIndex + 1;
+    if (PageStorage.totalPage() < PageStorage.currentPage) {
+      PageStorage.currentPage -= 1;
+    }
     if (PageStorage.currentPage === perDefult.name) {
       perDefult.active = true;
     } else {

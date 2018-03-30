@@ -28,8 +28,8 @@ const PageStorage = {
       }
     });
     // 重新帶入資料總筆數
-    console.log($('.page-next'));
     $('.rowsPerPage').text(PageStorage.allDataLength);
+    $('.page-next').before(pageLine);
     return pageLine;
   },
 };
