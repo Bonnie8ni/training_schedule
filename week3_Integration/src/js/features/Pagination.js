@@ -55,8 +55,8 @@ export default class Pagination {
     pageLine = [];
     $rowsPerPage.text(MachineData.length);
 
-    const endPage = PER_PAGE_STORAGE.currentPage * PER_PAGE_STORAGE.pageSize;
-    const startPage = endPage - PER_PAGE_STORAGE.pageSize;
+    this.startPage = PER_PAGE_STORAGE.startPage();
+    this.endPage = PER_PAGE_STORAGE.endPage();
 
     MachineData.forEach((lineData, index) => {
       // 重長page
@@ -66,12 +66,11 @@ export default class Pagination {
         pageLine.push($pageItem.render());
       }
       // 重長Row
-      if (index >= startPage && index < endPage) {
+      if (index >= this.startPage && index < this.endPage) {
         const $GridLine = new GridLine(lineData);
         $('.grid-list').append($GridLine.render());
       }
     });
-
     $pagination
       .append($pageTop)
       .append($pagePrev)

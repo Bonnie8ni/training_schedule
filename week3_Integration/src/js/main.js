@@ -1,6 +1,7 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
 import MenuData from '../api/MenuData';
+import MachineData from '../api/MachineData';
 import MenuCard from './menu/MenuCard';
 import Features from './features/Features';
 import GridGroup from './content/GridGroup';
@@ -14,6 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 const PER_PAGE_STORAGE = {
   pageSize: 8,
   currentPage: 1,
+  allDataLength: MachineData.length,
+  totalPage: () => (Math.ceil(PER_PAGE_STORAGE.allDataLength / PER_PAGE_STORAGE.pageSize)),
+  startPage: () => (PER_PAGE_STORAGE.pageSize * PER_PAGE_STORAGE.currentPage) - PER_PAGE_STORAGE.pageSize,
+  endPage: () => PER_PAGE_STORAGE.pageSize * PER_PAGE_STORAGE.currentPage,
 };
 
 $().ready(() => {
