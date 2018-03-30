@@ -1,67 +1,46 @@
 import MachineData from '../../api/MachineData';
+import PageStorage from './PageStorage';
 
 export default class Pagination {
-  constructor(PAGE_STORAGE) {
+  constructor() {
     const $tpPage = $($('#tp-page').html());
     const $page = $tpPage.find('.page');
-    this.$pagination = $page.find('.pagination');
-    this.$rowsPerPage = $page.find('.rowsPerPage');
-    this.$pageTop = $tpPage.find('.page-top');
-    this.$pagePrev = $tpPage.find('.page-prev');
-    this.$pageNext = $tpPage.find('.page-next');
-    this.$pageEnd = $tpPage.find('.page-end');
-    this.PAGE_STORAGE = PAGE_STORAGE;
-    this.pageLine = [];
+    const $pagination = $page.find('.pagination');
+    const $pageTop = $page.find('.page-top');
+    const $pagePrev = $page.find('.page-prev');
+    const $pageNext = $page.find('.page-next');
+    const $pageEnd = $page.find('.page-end');
 
-    this.changePage();
+    $pageNext.before(PageStorage.reloadRowPage());
 
-    this.$pageTop.click(() => {
-      PAGE_STORAGE.currentPage = 1;
-      this.changePage();
+    $pageTop.click(() => {
+      PageStorage.currentPage = 1;
+      PageStorage.reloadRowPage();
+      $('.page-next').before(PageStorage.reloadRowPage());
     });
-    this.$pagePrev.click(() => {
-      if (PAGE_STORAGE.currentPage === 1) return;
-      PAGE_STORAGE.currentPage -= 1;
-      this.changePage();
+    $pagePrev.click(() => {
+      if (PageStorage.currentPage === 1) return;
+      PageStorage.currentPage -= 1;
+      PageStorage.reloadRowPage();
+      $('.page-next').before(PageStorage.reloadRowPage());
     });
-    this.$pageNext.click(() => {
-      if (PAGE_STORAGE.currentPage === Math.ceil(MachineData.length / PAGE_STORAGE.pageSize)) return;
-      PAGE_STORAGE.currentPage += 1;
-      this.changePage();
+    $pageNext.click(() => {
+      if (PageStorage.currentPage === Math.ceil(MachineData.length / PageStorage.pageSize)) return;
+      PageStorage.currentPage += 1;
+      PageStorage.reloadRowPage();
+      $('.page-next').before(PageStorage.reloadRowPage());
     });
-    this.$pageEnd.click(() => {
-      PAGE_STORAGE.currentPage = Math.ceil(MachineData.length / PAGE_STORAGE.pageSize);
-      this.changePage();
+    $pageEnd.click(() => {
+      PageStorage.currentPage = Math.ceil(MachineData.length / PageStorage.pageSize);
+      PageStorage.reloadRowPage();
+      $('.page-next').before(PageStorage.reloadRowPage());
     });
 
-    this.$pagination.find('a').click((e) => {
+    $pagination.find('a').click((e) => {
       e.preventDefault();
     });
+
     this.Pagination = $page;
-  }
-
-  // 切換頁面
-  changePage() {
-    const {
-      $pagination, $pageTop, $pagePrev, $pageNext,
-      $pageEnd, $rowsPerPage, PAGE_STORAGE,
-    } = this;
-    let { pageLine } = this;
-    pageLine = [];
-    PAGE_STORAGE.reloadRowPage(pageLine);
-
-    // 帶入總筆數
-    $rowsPerPage.text(PAGE_STORAGE.allDataLength);
-
-    $pagination
-      .append($pageTop)
-      .append($pagePrev)
-      .append(pageLine)
-      .append($pageNext)
-      .append($pageEnd);
-
-    $('.page-item.active').removeClass('active');
-    $($('.page-item')[PAGE_STORAGE.currentPage - 1]).addClass('active');
   }
 
   render() {

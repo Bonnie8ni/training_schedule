@@ -1,10 +1,11 @@
 import MachineData from '../../api/MachineData';
+import PageStorage from './PageStorage';
 
 export default class Features {
-  constructor(PAGE_STORAGE) {
+  constructor() {
     const $tpControls = $($('#tp-controls').html());
     const $addMachine = $tpControls.find('.add-machine');
-    this.PAGE_STORAGE = PAGE_STORAGE;
+    this.pageStorage = PageStorage;
 
     // 新增機台
     $addMachine.click(() => {
@@ -33,7 +34,7 @@ export default class Features {
 
   // 新增機台-儲存
   saveAddMachineFunc() {
-    const { PAGE_STORAGE } = this;
+    const { pageStorage } = this;
     const $modalModel = $('.modal-model');
     const $addId = $modalModel.find('.add-id').val();
     const $addModel = $modalModel.find('.add-model').val();
@@ -60,12 +61,9 @@ export default class Features {
     // 確定後將資料新增
     MachineData.push(machine);
     // 重新長出列表和分頁
-    const pageLine = [];
-    PAGE_STORAGE.allDataLength = MachineData.length;
-    PAGE_STORAGE.reloadRowPage(pageLine);
-    $('.page-next').before(pageLine);
-    $('.page-item.active').removeClass('active');
-    $($('.page-item')[PAGE_STORAGE.currentPage - 1]).addClass('active');
+    pageStorage.allDataLength = MachineData.length;
+    pageStorage.reloadRowPage();
+    $('.page-next').before(PageStorage.reloadRowPage());
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
   }
