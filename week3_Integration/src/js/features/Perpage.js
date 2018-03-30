@@ -1,11 +1,9 @@
-import PageStorage from './PageStorage';
-
 const perDefult = {
   name: '',
   active: false,
 };
 export default class Perpage {
-  constructor(pageIndex) {
+  constructor(pageIndex, PageStorage) {
     const $tpPage = $($('#tp-page').html());
     const $pageItem = $tpPage.find('.page-item');
     const $pageLink = $pageItem.find('.th-page-link');
@@ -34,9 +32,10 @@ export default class Perpage {
     $pageItem.click((e) => {
       e.preventDefault();
       PageStorage.currentPage = parseInt($pageItem.text(), 10);
-      $('.page-next').before(PageStorage.reloadRowPage());
+      PageStorage.reloadRowPage();
     });
     this.Perpage = $pageItem;
+    return PageStorage.currentPage;
   }
   render() {
     return this.Perpage;

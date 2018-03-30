@@ -1,37 +1,64 @@
 import MachineData from '../../api/MachineData';
-import PageStorage from './PageStorage';
+import Perpage from '../features/Perpage';
+import GridLine from '../content/GridLine';
 
 export default class Pagination {
   constructor() {
     const $tpPage = $($('#tp-page').html());
     const $page = $tpPage.find('.page');
     const $pagination = $page.find('.pagination');
-    const $rowsPerPage = $page.find('.rowsPerPage');
     const $pageTop = $page.find('.page-top');
     const $pagePrev = $page.find('.page-prev');
     const $pageNext = $page.find('.page-next');
     const $pageEnd = $page.find('.page-end');
 
-    $pageNext.before(PageStorage.reloadRowPage());
-    $rowsPerPage.text(PageStorage.allDataLength);
+    this.PageStorage = {
+      pageSize: 8,
+      currentPage: 1,
+      allDataLength: () => MachineData.length,
+      totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
+      startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
+      endPage: () => this.PageStorage.pageSize * this.PageStorage.currentPage,
+      reloadRowPage: () => {
+        $('.grid-row').remove();
+        $('.page-item').remove();
+        // 重長page
+        const pageLine = [];
+        MachineData.forEach((data, index) => {
+          if (index + 1 > this.PageStorage.totalPage()) return;
+          const $pageItem = new Perpage(index, this.PageStorage);
+          pageLine.push($pageItem.render());
+        });
+        // 重長Row
+        MachineData.forEach((lineData, index) => {
+          if (index >= this.PageStorage.startPage() && index < this.PageStorage.endPage()) {
+            const $GridLine = new GridLine(lineData, this.PageStorage);
+            $('.grid-list').append($GridLine.render());
+          }
+        });
+        // 重新帶入資料總筆數
+        $('.rowsPerPage').text(this.PageStorage.allDataLength);
+        $('.page-next').before(pageLine);
+      },
+    };
 
     $pageTop.click(() => {
-      PageStorage.currentPage = 1;
-      PageStorage.reloadRowPage();
+      this.PageStorage.currentPage = 1;
+      this.PageStorage.reloadRowPage();
     });
     $pagePrev.click(() => {
-      if (PageStorage.currentPage === 1) return;
-      PageStorage.currentPage -= 1;
-      PageStorage.reloadRowPage();
+      if (this.PageStorage.currentPage === 1) return;
+      this.PageStorage.currentPage -= 1;
+      this.PageStorage.reloadRowPage();
     });
     $pageNext.click(() => {
-      if (PageStorage.currentPage === Math.ceil(MachineData.length / PageStorage.pageSize)) return;
-      PageStorage.currentPage += 1;
-      PageStorage.reloadRowPage();
+      if (this.PageStorage.currentPage === Math.ceil(MachineData.length / this.PageStorage.pageSize)) return;
+      this.PageStorage.currentPage += 1;
+      this.PageStorage.reloadRowPage();
     });
     $pageEnd.click(() => {
-      PageStorage.currentPage = Math.ceil(MachineData.length / PageStorage.pageSize);
-      PageStorage.reloadRowPage();
+      this.PageStorage.currentPage = Math.ceil(MachineData.length / this.PageStorage.pageSize);
+      this.PageStorage.reloadRowPage();
     });
 
     $pagination.find('a').click((e) => {

@@ -1,11 +1,10 @@
 import MachineData from '../../api/MachineData';
-import PageStorage from './PageStorage';
+import Pagination from './Pagination';
 
 export default class Features {
   constructor() {
     const $tpControls = $($('#tp-controls').html());
     const $addMachine = $tpControls.find('.add-machine');
-    this.pageStorage = PageStorage;
 
     // 新增機台
     $addMachine.click(() => {
@@ -34,7 +33,6 @@ export default class Features {
 
   // 新增機台-儲存
   saveAddMachineFunc() {
-    const { pageStorage } = this;
     const $modalModel = $('.modal-model');
     const $addId = $modalModel.find('.add-id').val();
     const $addModel = $modalModel.find('.add-model').val();
@@ -61,9 +59,8 @@ export default class Features {
     // 確定後將資料新增
     MachineData.push(machine);
     // 重新長出列表和分頁
-    pageStorage.allDataLength = MachineData.length;
+    const pageStorage = new Pagination().PageStorage;
     pageStorage.reloadRowPage();
-    $('.page-next').before(PageStorage.reloadRowPage());
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
   }

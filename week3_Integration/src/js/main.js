@@ -28,5 +28,6 @@ $().ready(() => {
   // 帶入分頁
   const $Pagination = new Pagination();
   $('#content').append($Pagination.render());
+  $Pagination.PageStorage.reloadRowPage();
 });
 

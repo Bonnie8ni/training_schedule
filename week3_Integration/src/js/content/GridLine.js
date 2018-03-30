@@ -1,5 +1,4 @@
 import MachineData from '../../api/MachineData';
-import PageStorage from '../features/PageStorage';
 
 const STATUS = {
   0: {
@@ -16,11 +15,12 @@ const STATUS = {
   },
 };
 export default class GridLine {
-  constructor(lineData) {
+  constructor(lineData, PageStorage) {
     const {
       id, model, temperature, address, region,
     } = lineData;
     this.lineData = lineData;
+    this.pageStorage = PageStorage;
     const $tpGridGroup = $($('#tp-grid-group').html());
     const $GridRow = $tpGridGroup.find('.grid-row');
     this.$GridRow = $GridRow;
@@ -165,15 +165,14 @@ export default class GridLine {
 
   // 刪除資料
   deleteGridlineFunc() {
-    const { lineData } = this;
+    const { lineData, pageStorage } = this;
     // 刪除前詢問是否要刪除
     const confirm = window.confirm('Are you sure you want to delete this data?');
     if (!confirm) return;
     // 確定後將資料刪除
     MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
     // 重新長出列表和分頁
-    PageStorage.allDataLength = MachineData.length;
-    $('.page-next').before(PageStorage.reloadRowPage());
+    pageStorage.reloadRowPage();
   }
 
   // 驗證輸入資料
