@@ -5,6 +5,8 @@ export default class Features {
   constructor() {
     const $tpControls = $($('#tp-controls').html());
     const $addMachine = $tpControls.find('.add-machine');
+    const $btnSearch = $tpControls.find('.btn-search');
+    this.$inputKeyword = $tpControls.find('.input-keyword');
 
     // 新增機台
     $addMachine.click(() => {
@@ -14,6 +16,11 @@ export default class Features {
     // 新增機台-儲存
     $('.btn-save').click(() => {
       this.saveAddMachineFunc();
+    });
+
+    // 搜尋資料
+    $btnSearch.click(() => {
+      this.searchData();
     });
 
     this.Features = $tpControls;
@@ -65,6 +72,15 @@ export default class Features {
     $('#exampleModalCenter').modal('hide');
   }
 
+  // 搜尋資料
+  searchData() {
+    const $Pagination = new Pagination();
+    const { $inputKeyword } = this;
+    const newDataCombination = MachineData.filter(data => data.address.search($inputKeyword.val()) !== -1);
+    console.log(newDataCombination);
+    $Pagination.PageStorage.reloadRowPage();
+  }
+
   // 驗證輸入資料
   verificationFunc() {
     const { addStatus, addDisable } = this;
@@ -98,9 +114,9 @@ export default class Features {
       alert(allAddTitle.join(''));
       isPass = false;
     }
-
     return isPass;
   }
+
   render() {
     return this.Features;
   }
