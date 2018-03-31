@@ -76,8 +76,8 @@ export default class Features {
   searchData() {
     const $Pagination = new Pagination();
     const { $inputKeyword } = this;
-    const newDataCombination = MachineData.filter(data => data.address.search($inputKeyword.val()) !== -1);
-    console.log(newDataCombination);
+    const newDataCombination = MachineData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
+    $Pagination.PageStorage.machineData = newDataCombination;
     $Pagination.PageStorage.reloadRowPage();
   }
 

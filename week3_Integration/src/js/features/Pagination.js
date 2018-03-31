@@ -15,7 +15,8 @@ export default class Pagination {
     this.PageStorage = {
       pageSize: 8,
       currentPage: 1,
-      allDataLength: () => MachineData.length,
+      machineData: MachineData,
+      allDataLength: () => this.PageStorage.machineData.length,
       totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
       startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
       endPage: () => this.PageStorage.pageSize * this.PageStorage.currentPage,
@@ -24,13 +25,13 @@ export default class Pagination {
         $('.page-item').remove();
         // 重長page
         const pageLine = [];
-        MachineData.forEach((data, index) => {
+        this.PageStorage.machineData.forEach((data, index) => {
           if (index + 1 > this.PageStorage.totalPage()) return;
           const $pageItem = new Perpage(index, this.PageStorage);
           pageLine.push($pageItem.render());
         });
         // 重長Row
-        MachineData.forEach((lineData, index) => {
+        this.PageStorage.machineData.forEach((lineData, index) => {
           if (index >= this.PageStorage.startPage() && index < this.PageStorage.endPage()) {
             const $GridLine = new GridLine(lineData, this.PageStorage);
             $('.grid-list').append($GridLine.render());
