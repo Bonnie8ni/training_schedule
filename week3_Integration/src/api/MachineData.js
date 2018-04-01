@@ -19,7 +19,7 @@ const MachineData = [{
   model: 'AK3',
   status: 2,
   temperature: 16,
-  address: '100台北市中正區汀州路三段116-1號',
+  address: '100台北市大同區汀州路三段116-1號',
   region: '中正區',
   disable: false,
 }, {
@@ -35,7 +35,7 @@ const MachineData = [{
   model: 'AK5',
   status: 1,
   temperature: 13,
-  address: '104台北市中山區四平街40號',
+  address: '104台北市大同區四平街40號',
   region: '中山區',
   disable: false,
 }, {
@@ -51,7 +51,7 @@ const MachineData = [{
   model: 'AK7',
   status: 0,
   temperature: 2,
-  address: '106台北市大安區師大路137號',
+  address: '106台北市大同區師大路137號',
   region: '大安區',
   disable: false,
 }, {
@@ -67,7 +67,7 @@ const MachineData = [{
   model: 'AK9',
   status: 2,
   temperature: 18,
-  address: '110台北市信義區基隆路二段107-3號',
+  address: '110台北市大同區基隆路二段107-3號',
   region: '信義區',
   disable: false,
 }, {
@@ -99,7 +99,7 @@ const MachineData = [{
   model: 'AK13',
   status: 0,
   temperature: 32,
-  address: '100台北市中正區杭州南路一段95號',
+  address: '100台北市大同區杭州南路一段95號',
   region: '中正區',
   disable: false,
 }, {
@@ -131,7 +131,7 @@ const MachineData = [{
   model: 'AK17',
   status: 1,
   temperature: 31,
-  address: '108台北市萬華區康定路195號',
+  address: '108台北市大同區康定路195號',
   region: '萬華區',
   disable: false,
 }, {
@@ -139,7 +139,7 @@ const MachineData = [{
   model: 'AK18',
   status: 2,
   temperature: 30,
-  address: '112台北市北投區裕民一路23號',
+  address: '112台北市大同區裕民一路23號',
   region: '北投區',
   disable: false,
 }, {
