@@ -102,8 +102,7 @@ export default class Features {
     pageStorage.reloadRowPage();
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
-    $('body').removeClass('modal-open');
-    $('body').removeAttr('style');
+    $('body').removeAttr('class').removeAttr('style');
     $('.modal-backdrop').remove();
   }
 
