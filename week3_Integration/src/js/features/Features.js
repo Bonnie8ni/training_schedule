@@ -1,12 +1,26 @@
 import MachineData from '../../api/MachineData';
-import Pagination from './Pagination';
 
 export default class Features {
-  constructor() {
+  constructor(PageStorage) {
+    this.pageStorage = PageStorage;
     const $tpControls = $($('#tp-controls').html());
     const $addMachine = $tpControls.find('.add-machine');
-    const $btnSearch = $tpControls.find('.btn-search');
-    this.$inputKeyword = $tpControls.find('.input-keyword');
+    const $modalModel = $tpControls.find('.modal-model');
+    this.$btnSave = $modalModel.find('.btn-save');
+    this.$modalBody = $modalModel.find('.modal-body');
+    this.$modalTitle = $modalModel.find('.modal-title');
+
+    const $search = $tpControls.find('.search');
+    const $btnSearch = $search.find('.btn-search');
+    const $advancedSearch = $search.find('.advanced-search');
+    this.$inputKeyword = $search.find('.input-keyword');
+    const $advancedSearchBox = $search.find('.advanced-search-box');
+    this.$inputAdvanceKeyword = $search.find('.input-advanced-keyword');
+    this.$selectSearch = $search.find('.select-search');
+    const $btnAdvancedClose = $search.find('.btn-advanced-close');
+    const $btnAdvancedSearch = $search.find('.btn-advanced-search');
+
+    $advancedSearchBox.hide();
 
     // 新增機台
     $addMachine.click(() => {
@@ -14,7 +28,7 @@ export default class Features {
     });
 
     // 新增機台-儲存
-    $('.btn-save').click(() => {
+    this.$btnSave.click(() => {
       this.saveAddMachineFunc();
     });
 
@@ -23,23 +37,42 @@ export default class Features {
       this.searchData();
     });
 
+    // 進階搜尋
+    $advancedSearch.click(() => {
+      $advancedSearchBox.show();
+    });
+
+    // 進階搜尋-關閉
+    $btnAdvancedClose.click(() => {
+      this.$inputAdvanceKeyword.val('');
+      $advancedSearchBox.hide();
+    });
+
+    // 進階搜尋-搜尋
+    $btnAdvancedSearch.click(() => {
+      this.searchAdvancedData();
+    });
+
     this.Features = $tpControls;
   }
 
   // 新增機台
   addMachineFunc() {
-    $('.btn-save').show();
+    const { $modalTitle, $btnSave, $modalBody } = this;
+    $modalTitle.text('Add');
+    $btnSave.show();
     const detailRow = Object.keys(MachineData[0]).map(key => (
       `<div class="detailRow">
           <p class="detailTitle">${key.toUpperCase()}：</p>
           <input class="add-${key} add-check border" id="${key.toUpperCase()}"/>
         </div>`
     ));
-    $('.modal-body').html(detailRow.join(''));
+    $modalBody.html(detailRow.join(''));
   }
 
   // 新增機台-儲存
   saveAddMachineFunc() {
+    const { pageStorage } = this;
     const $modalModel = $('.modal-model');
     const $addId = $modalModel.find('.add-id').val();
     const $addModel = $modalModel.find('.add-model').val();
@@ -64,21 +97,31 @@ export default class Features {
     };
 
     // 確定後將資料新增
-    MachineData.push(machine);
+    pageStorage.machineData.push(machine);
     // 重新長出列表和分頁
-    const pageStorage = new Pagination().PageStorage;
     pageStorage.reloadRowPage();
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
+    $('body').removeClass('modal-open');
+    $('body').removeAttr('style');
+    $('.modal-backdrop').remove();
   }
 
   // 搜尋資料
   searchData() {
-    const $Pagination = new Pagination();
+    const { pageStorage } = this;
     const { $inputKeyword } = this;
     const newDataCombination = MachineData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
-    $Pagination.PageStorage.machineData = newDataCombination;
-    $Pagination.PageStorage.reloadRowPage();
+    pageStorage.machineData = newDataCombination;
+    pageStorage.reloadRowPage();
+  }
+
+  // 搜尋進階資料
+  searchAdvancedData() {
+    const { $inputAdvanceKeyword, pageStorage } = this;
+    const newDataCombination = MachineData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
+    pageStorage.machineData = newDataCombination;
+    pageStorage.reloadRowPage();
   }
 
   // 驗證輸入資料

@@ -2,7 +2,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../css/main.scss';
 import MenuData from '../api/MenuData';
 import MenuCard from './menu/MenuCard';
-import Features from './features/Features';
 import GridGroup from './content/GridGroup';
 import Pagination from './features/Pagination';
 
@@ -17,9 +16,6 @@ $().ready(() => {
     const $MenuCard = new MenuCard(menu);
     $('#menu').append($MenuCard.render());
   });
-  // 帶入功能區
-  const $Features = new Features();
-  $('#content').append($Features.render());
 
   // 帶入列表
   const $GridGroup = new GridGroup();

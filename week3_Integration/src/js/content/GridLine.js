@@ -170,7 +170,7 @@ export default class GridLine {
     const confirm = window.confirm('Are you sure you want to delete this data?');
     if (!confirm) return;
     // 確定後將資料刪除
-    MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    pageStorage.machineData.splice(pageStorage.machineData.findIndex(alldata => alldata.id === lineData.id), 1);
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
   }

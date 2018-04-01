@@ -1,5 +1,6 @@
 import MachineData from '../../api/MachineData';
 import Perpage from '../features/Perpage';
+import Features from '../features/Features';
 import GridLine from '../content/GridLine';
 
 export default class Pagination {
@@ -19,13 +20,22 @@ export default class Pagination {
       allDataLength: () => this.PageStorage.machineData.length,
       totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
       startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
-      endPage: () => this.PageStorage.pageSize * this.PageStorage.currentPage,
+      endPage: () => {
+        if (this.PageStorage.pageSize * this.PageStorage.currentPage > this.PageStorage.allDataLength()) return this.PageStorage.allDataLength();
+        return this.PageStorage.pageSize * this.PageStorage.currentPage;
+      },
       reloadRowPage: () => {
+        $('.controls-box').remove();
         $('.grid-row').remove();
         $('.page-item').remove();
+
+        // 帶入功能區
+        const $Features = new Features(this.PageStorage);
+        $('.controls').append($Features.render());
+
         // 重長page
         const pageLine = [];
-        this.PageStorage.machineData.forEach((data, index) => {
+        this.PageStorage.machineData.forEach((pagedata, index) => {
           if (index + 1 > this.PageStorage.totalPage()) return;
           const $pageItem = new Perpage(index, this.PageStorage);
           pageLine.push($pageItem.render());
@@ -53,12 +63,12 @@ export default class Pagination {
       this.PageStorage.reloadRowPage();
     });
     $pageNext.click(() => {
-      if (this.PageStorage.currentPage === Math.ceil(MachineData.length / this.PageStorage.pageSize)) return;
+      if (this.PageStorage.currentPage === Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pageSize)) return;
       this.PageStorage.currentPage += 1;
       this.PageStorage.reloadRowPage();
     });
     $pageEnd.click(() => {
-      this.PageStorage.currentPage = Math.ceil(MachineData.length / this.PageStorage.pageSize);
+      this.PageStorage.currentPage = Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pageSize);
       this.PageStorage.reloadRowPage();
     });
 
