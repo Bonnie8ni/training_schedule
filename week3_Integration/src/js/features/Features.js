@@ -110,7 +110,6 @@ export default class Features {
       pageStorage.machineData.push(machine);
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     } else {
-      MachineData.push(machine);
       newDataCombination = [...MachineData, machine];
     }
     pageStorage.machineData = newDataCombination;
