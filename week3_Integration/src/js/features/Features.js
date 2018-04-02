@@ -106,7 +106,6 @@ export default class Features {
     };
 
     // 確定後將資料新增
-    debugger;
     let newDataCombination = [];
     if (searchKeyword.inputKeyword !== '') {
       pageStorage.machineData.push(machine);
@@ -115,7 +114,7 @@ export default class Features {
     } else if (searchKeyword.inputAdvanceKeyword !== '' || searchKeyword.selectedValue !== '') {
       pageStorage.machineData.push(machine);
       searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
     } else {
       pageStorage.machineData.push(machine);
       searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
@@ -132,38 +131,30 @@ export default class Features {
 
   // 搜尋資料
   searchData() {
-    debugger;
     const { pageStorage, $inputKeyword } = this;
     searchKeyword.inputKeyword = '';
     searchKeyword.inputAdvanceKeyword = '';
     searchKeyword.selectedValue = '';
     searchKeyword.inputKeyword = $inputKeyword.val();
-    const newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
+    const newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search(searchKeyword.inputKeyword) !== -1 || data.region.search(searchKeyword.inputKeyword) !== -1);
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }
 
   // 搜尋進階資料
   searchAdvancedData() {
-    const {
-      $inputAdvanceKeyword, pageStorage, $selectSearch, selectedValue,
-    } = this;
+    const { $inputAdvanceKeyword, pageStorage, selectedValue } = this;
     let newDataCombination = [];
-    searchKeyword.inputAdvanceKeyword = '';
     searchKeyword.inputKeyword = '';
-    searchKeyword.selectedValue = '';
     searchKeyword.inputAdvanceKeyword = $inputAdvanceKeyword.val();
+    searchKeyword.selectedValue = selectedValue;
 
-    if (selectedValue === undefined) {
-      searchKeyword.selectedValue = '';
-    } else {
+    if (selectedValue !== undefined) {
       searchKeyword.selectedValue = selectedValue;
-    }
-
-    if ($selectSearch.val() !== 'Select') {
-      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === selectedValue || (data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1));
+      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
     } else {
-      newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
+      searchKeyword.selectedValue = '';
+      newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1);
     }
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
