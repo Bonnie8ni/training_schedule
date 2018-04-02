@@ -146,12 +146,15 @@ export default class Features {
     pageStorage.inputKeyword = pageStorage.inputAdvanceKeyword;
     pageStorage.selectedValue = selectedValue;
     let newDataCombination = [];
-    debugger;
     if (pageStorage.status !== 'defult') {
-      if (selectedValue === undefined) pageStorage.selectedValue = '';
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      if (pageStorage.selectedValue !== undefined) {
+        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      } else {
+        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      }
+    } else if (pageStorage.selectedValue !== undefined) {
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     } else {
-      if (selectedValue === undefined) pageStorage.selectedValue = '';
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     }
     pageStorage.status = 'searchAdvanced';
