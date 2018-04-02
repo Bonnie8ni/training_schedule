@@ -4,6 +4,7 @@ const SEARCHKEYWORK = {
   inputKeyword: '',
   inputAdvanceKeyword: '',
   selectedValue: '',
+  temporaryData: MachineData,
 };
 
 export default class Features {
@@ -110,11 +111,11 @@ export default class Features {
     let newDataCombination = [];
     if (SEARCHKEYWORK.inputKeyword !== '') {
       pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
+      SEARCHKEYWORK.temporaryData = [...SEARCHKEYWORK.temporaryData, machine];
       newDataCombination = pageStorage.machineData.filter(data => data.address.search(SEARCHKEYWORK.inputKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputKeyword) !== -1);
     } else if (SEARCHKEYWORK.inputAdvanceKeyword !== '' || SEARCHKEYWORK.selectedValue !== '') {
       pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
+      SEARCHKEYWORK.temporaryData = [...SEARCHKEYWORK.temporaryData, machine];
       if (SEARCHKEYWORK.inputAdvanceKeyword !== '') {
         newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue || (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
       } else {
@@ -122,7 +123,7 @@ export default class Features {
       }
     } else {
       pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
+      SEARCHKEYWORK.temporaryData = [...SEARCHKEYWORK.temporaryData, machine];
       newDataCombination = [...pageStorage.machineData];
     }
     pageStorage.machineData = newDataCombination;
@@ -141,7 +142,7 @@ export default class Features {
     SEARCHKEYWORK.inputAdvanceKeyword = '';
     SEARCHKEYWORK.selectedValue = '';
     SEARCHKEYWORK.inputKeyword = $inputKeyword.val();
-    const newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputKeyword) !== -1);
+    const newDataCombination = SEARCHKEYWORK.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputKeyword) !== -1);
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }
@@ -156,10 +157,10 @@ export default class Features {
 
     if (selectedValue !== undefined) {
       SEARCHKEYWORK.selectedValue = selectedValue;
-      newDataCombination = pageStorage.temporaryData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue && (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
+      newDataCombination = SEARCHKEYWORK.temporaryData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue && (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
     } else {
       SEARCHKEYWORK.selectedValue = '';
-      newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1);
+      newDataCombination = SEARCHKEYWORK.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1);
     }
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();

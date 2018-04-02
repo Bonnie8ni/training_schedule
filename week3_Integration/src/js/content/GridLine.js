@@ -1,5 +1,3 @@
-import MachineData from '../../api/MachineData';
-
 const STATUS = {
   0: {
     style: 'status-online',
@@ -138,7 +136,7 @@ export default class GridLine {
   // 編輯-儲存
   saveEditGridlineFunc() {
     const {
-      $spanAddress, $editAddress, $spanRegion, $editRegion, $inputDisplay, lineData,
+      $spanAddress, $editAddress, $spanRegion, $editRegion, $inputDisplay, lineData, pageStorage,
     } = this;
     // 驗證編輯輸入框資料是否正確
     if (!this.verificationFunc()) return;
@@ -147,12 +145,11 @@ export default class GridLine {
     $inputDisplay(false);
     $spanAddress.text($editAddress.val());
     $spanRegion.text($editRegion.val());
-
     // 找尋修改id的位置
-    const index = MachineData.findIndex(line => line.id === lineData.id);
+    const index = pageStorage.machineData.findIndex(line => line.id === lineData.id);
     // 將編輯的資料覆蓋原本的資料
-    MachineData[index].address = $editAddress.val();
-    MachineData[index].region = $editRegion.val();
+    pageStorage.machineData[index].address = $editAddress.val();
+    pageStorage.machineData[index].region = $editRegion.val();
   }
 
   // 編輯-取消
