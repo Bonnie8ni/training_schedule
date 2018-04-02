@@ -1,5 +1,12 @@
 import MachineData from '../../api/MachineData';
 
+const searchKeyword = {
+  inputKeyword: '',
+  inputAdvanceKeyword: '',
+  selectedValue: '',
+  temporaryData: MachineData,
+};
+
 export default class Features {
   constructor(PageStorage) {
     this.pageStorage = PageStorage;
@@ -99,25 +106,24 @@ export default class Features {
     };
 
     // 確定後將資料新增
+    debugger;
     let newDataCombination = [];
-    let oldDataCombination = [];
-    if (sessionStorage.getItem('searchKeyword') !== null) {
+    if (searchKeyword.inputKeyword !== '') {
       pageStorage.machineData.push(machine);
-      oldDataCombination = [...MachineData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search(sessionStorage.getItem('searchKeyword')) !== -1 || data.region.search(sessionStorage.getItem('searchKeyword')) !== -1);
-    } else if (sessionStorage.getItem('inputAdvanceKeyword') !== null || sessionStorage.getItem('selectedValue') !== null) {
+      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search(searchKeyword.inputKeyword) !== -1 || data.region.search(searchKeyword.inputKeyword) !== -1);
+    } else if (searchKeyword.inputAdvanceKeyword !== '' || searchKeyword.selectedValue !== '') {
       pageStorage.machineData.push(machine);
-      oldDataCombination = [...MachineData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === sessionStorage.getItem('selectedValue') && (data.address.search(sessionStorage.getItem('inputAdvanceKeyword')) !== -1 || data.region.search(sessionStorage.getItem('inputAdvanceKeyword')) !== -1));
+      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
     } else {
       pageStorage.machineData.push(machine);
-      oldDataCombination = [...MachineData, machine];
+      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
       newDataCombination = [...pageStorage.machineData];
     }
     pageStorage.machineData = newDataCombination;
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
-    pageStorage.machineData = oldDataCombination;
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
     $('body').removeAttr('class').removeAttr('style');
@@ -126,11 +132,13 @@ export default class Features {
 
   // 搜尋資料
   searchData() {
-    const { pageStorage } = this;
-    const { $inputKeyword } = this;
-    sessionStorage.clear();
-    sessionStorage.setItem('searchKeyword', $inputKeyword.val());
-    const newDataCombination = pageStorage.machineData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
+    debugger;
+    const { pageStorage, $inputKeyword } = this;
+    searchKeyword.inputKeyword = '';
+    searchKeyword.inputAdvanceKeyword = '';
+    searchKeyword.selectedValue = '';
+    searchKeyword.inputKeyword = $inputKeyword.val();
+    const newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }
@@ -141,17 +149,21 @@ export default class Features {
       $inputAdvanceKeyword, pageStorage, $selectSearch, selectedValue,
     } = this;
     let newDataCombination = [];
-    sessionStorage.clear();
-    sessionStorage.setItem('inputAdvanceKeyword', $inputAdvanceKeyword.val());
+    searchKeyword.inputAdvanceKeyword = '';
+    searchKeyword.inputKeyword = '';
+    searchKeyword.selectedValue = '';
+    searchKeyword.inputAdvanceKeyword = $inputAdvanceKeyword.val();
+
     if (selectedValue === undefined) {
-      sessionStorage.setItem('selectedValue', '');
+      searchKeyword.selectedValue = '';
     } else {
-      sessionStorage.setItem('selectedValue', selectedValue);
+      searchKeyword.selectedValue = selectedValue;
     }
+
     if ($selectSearch.val() !== 'Select') {
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === selectedValue && (data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1));
+      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === selectedValue || (data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1));
     } else {
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
+      newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
     }
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
