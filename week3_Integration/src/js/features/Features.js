@@ -1,10 +1,9 @@
 import MachineData from '../../api/MachineData';
 
-const searchKeyword = {
+const SEARCHKEYWORK = {
   inputKeyword: '',
   inputAdvanceKeyword: '',
   selectedValue: '',
-  temporaryData: MachineData,
 };
 
 export default class Features {
@@ -21,6 +20,7 @@ export default class Features {
     const $btnSearch = $search.find('.btn-search');
     const $advancedSearch = $search.find('.advanced-search');
     this.$inputKeyword = $search.find('.input-keyword');
+    this.$inputKeyword.val(SEARCHKEYWORK.inputKeyword);
     const $advancedSearchBox = $search.find('.advanced-search-box');
     this.$inputAdvanceKeyword = $search.find('.input-advanced-keyword');
     this.$selectSearch = $search.find('.select-search');
@@ -45,6 +45,7 @@ export default class Features {
     // 進階搜尋
     $advancedSearch.click(() => {
       $advancedSearchBox.show();
+      this.$inputAdvanceKeyword.val(SEARCHKEYWORK.inputKeyword);
     });
 
     this.$selectSearch.change(() => {
@@ -107,21 +108,21 @@ export default class Features {
 
     // 確定後將資料新增
     let newDataCombination = [];
-    if (searchKeyword.inputKeyword !== '') {
+    if (SEARCHKEYWORK.inputKeyword !== '') {
       pageStorage.machineData.push(machine);
-      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search(searchKeyword.inputKeyword) !== -1 || data.region.search(searchKeyword.inputKeyword) !== -1);
-    } else if (searchKeyword.inputAdvanceKeyword !== '' || searchKeyword.selectedValue !== '') {
+      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search(SEARCHKEYWORK.inputKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputKeyword) !== -1);
+    } else if (SEARCHKEYWORK.inputAdvanceKeyword !== '' || SEARCHKEYWORK.selectedValue !== '') {
       pageStorage.machineData.push(machine);
-      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
-      if (searchKeyword.inputAdvanceKeyword !== '') {
-        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
+      if (SEARCHKEYWORK.inputAdvanceKeyword !== '') {
+        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue || (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
       } else {
-        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue && (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
       }
     } else {
       pageStorage.machineData.push(machine);
-      searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
+      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
       newDataCombination = [...pageStorage.machineData];
     }
     pageStorage.machineData = newDataCombination;
@@ -136,11 +137,11 @@ export default class Features {
   // 搜尋資料
   searchData() {
     const { pageStorage, $inputKeyword } = this;
-    searchKeyword.inputKeyword = '';
-    searchKeyword.inputAdvanceKeyword = '';
-    searchKeyword.selectedValue = '';
-    searchKeyword.inputKeyword = $inputKeyword.val();
-    const newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search(searchKeyword.inputKeyword) !== -1 || data.region.search(searchKeyword.inputKeyword) !== -1);
+    SEARCHKEYWORK.inputKeyword = '';
+    SEARCHKEYWORK.inputAdvanceKeyword = '';
+    SEARCHKEYWORK.selectedValue = '';
+    SEARCHKEYWORK.inputKeyword = $inputKeyword.val();
+    const newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputKeyword) !== -1);
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }
@@ -149,16 +150,16 @@ export default class Features {
   searchAdvancedData() {
     const { $inputAdvanceKeyword, pageStorage, selectedValue } = this;
     let newDataCombination = [];
-    searchKeyword.inputKeyword = '';
-    searchKeyword.inputAdvanceKeyword = $inputAdvanceKeyword.val();
-    searchKeyword.selectedValue = selectedValue;
+    SEARCHKEYWORK.inputKeyword = '';
+    SEARCHKEYWORK.inputAdvanceKeyword = $inputAdvanceKeyword.val();
+    SEARCHKEYWORK.selectedValue = selectedValue;
 
     if (selectedValue !== undefined) {
-      searchKeyword.selectedValue = selectedValue;
-      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      SEARCHKEYWORK.selectedValue = selectedValue;
+      newDataCombination = pageStorage.temporaryData.filter(data => data.status.toString() === SEARCHKEYWORK.selectedValue && (data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1));
     } else {
-      searchKeyword.selectedValue = '';
-      newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1);
+      SEARCHKEYWORK.selectedValue = '';
+      newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1 || data.region.search(SEARCHKEYWORK.inputAdvanceKeyword) !== -1);
     }
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();

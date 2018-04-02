@@ -27,6 +27,7 @@
 .controls-box {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin: 1.5% 0 0 0;
   .stack-background {
     font-size: 13pt;
@@ -41,6 +42,7 @@
     margin: 0 5px 0 0;
   }
   .search {
+    align-items: baseline;
     position: relative;
     display: flex;
     flex: 8;

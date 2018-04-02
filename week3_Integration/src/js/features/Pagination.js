@@ -17,6 +17,7 @@ export default class Pagination {
       pageSize: 8,
       currentPage: 1,
       machineData: MachineData,
+      temporaryData: MachineData,
       allDataLength: () => this.PageStorage.machineData.length,
       totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
       startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
