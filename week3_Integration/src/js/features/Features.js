@@ -114,7 +114,11 @@ export default class Features {
     } else if (searchKeyword.inputAdvanceKeyword !== '' || searchKeyword.selectedValue !== '') {
       pageStorage.machineData.push(machine);
       searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      if (searchKeyword.inputAdvanceKeyword !== '') {
+        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      } else {
+        newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      }
     } else {
       pageStorage.machineData.push(machine);
       searchKeyword.temporaryData = [...searchKeyword.temporaryData, machine];
@@ -151,7 +155,7 @@ export default class Features {
 
     if (selectedValue !== undefined) {
       searchKeyword.selectedValue = selectedValue;
-      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === searchKeyword.selectedValue || (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
+      newDataCombination = searchKeyword.temporaryData.filter(data => data.status.toString() === searchKeyword.selectedValue && (data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1));
     } else {
       searchKeyword.selectedValue = '';
       newDataCombination = searchKeyword.temporaryData.filter(data => data.address.search(searchKeyword.inputAdvanceKeyword) !== -1 || data.region.search(searchKeyword.inputAdvanceKeyword) !== -1);
