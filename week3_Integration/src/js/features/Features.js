@@ -20,8 +20,6 @@ export default class Features {
     const $btnAdvancedClose = $search.find('.btn-advanced-close');
     const $btnAdvancedSearch = $search.find('.btn-advanced-search');
 
-    $advancedSearchBox.hide();
-
     // 新增機台
     $addMachine.click(() => {
       this.addMachineFunc();
@@ -40,6 +38,10 @@ export default class Features {
     // 進階搜尋
     $advancedSearch.click(() => {
       $advancedSearchBox.show();
+    });
+
+    this.$selectSearch.change(() => {
+      this.selectedValue = this.$selectSearch.val();
     });
 
     // 進階搜尋-關閉
@@ -89,7 +91,7 @@ export default class Features {
     const machine = {
       id: $addId,
       model: $addModel,
-      status: this.addStatus,
+      status: parseInt(this.addStatus, 10),
       temperature: $addTemperature,
       address: $addAddress,
       region: $addRegion,
@@ -97,28 +99,60 @@ export default class Features {
     };
 
     // 確定後將資料新增
-    pageStorage.machineData.push(machine);
+    let newDataCombination = [];
+    let oldDataCombination = [];
+    if (sessionStorage.getItem('searchKeyword') !== null) {
+      pageStorage.machineData.push(machine);
+      oldDataCombination = [...MachineData, machine];
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search(sessionStorage.getItem('searchKeyword')) !== -1 || data.region.search(sessionStorage.getItem('searchKeyword')) !== -1);
+    } else if (sessionStorage.getItem('inputAdvanceKeyword') !== null || sessionStorage.getItem('selectedValue') !== null) {
+      pageStorage.machineData.push(machine);
+      oldDataCombination = [...MachineData, machine];
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === sessionStorage.getItem('selectedValue') && (data.address.search(sessionStorage.getItem('inputAdvanceKeyword')) !== -1 || data.region.search(sessionStorage.getItem('inputAdvanceKeyword')) !== -1));
+    } else {
+      pageStorage.machineData.push(machine);
+      oldDataCombination = [...MachineData, machine];
+      newDataCombination = [...pageStorage.machineData];
+    }
+    pageStorage.machineData = newDataCombination;
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
+    pageStorage.machineData = oldDataCombination;
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
     $('body').removeAttr('class').removeAttr('style');
-    $('.modal-backdrop').remove();
+    $('.modal-backdrop').hide();
   }
 
   // 搜尋資料
   searchData() {
     const { pageStorage } = this;
     const { $inputKeyword } = this;
-    const newDataCombination = MachineData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
+    sessionStorage.clear();
+    sessionStorage.setItem('searchKeyword', $inputKeyword.val());
+    const newDataCombination = pageStorage.machineData.filter(data => data.address.search($inputKeyword.val()) !== -1 || data.region.search($inputKeyword.val()) !== -1);
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }
 
   // 搜尋進階資料
   searchAdvancedData() {
-    const { $inputAdvanceKeyword, pageStorage } = this;
-    const newDataCombination = MachineData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
+    const {
+      $inputAdvanceKeyword, pageStorage, $selectSearch, selectedValue,
+    } = this;
+    let newDataCombination = [];
+    sessionStorage.clear();
+    sessionStorage.setItem('inputAdvanceKeyword', $inputAdvanceKeyword.val());
+    if (selectedValue === undefined) {
+      sessionStorage.setItem('selectedValue', '');
+    } else {
+      sessionStorage.setItem('selectedValue', selectedValue);
+    }
+    if ($selectSearch.val() !== 'Select') {
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === selectedValue && (data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1));
+    } else {
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search($inputAdvanceKeyword.val()) !== -1 || data.region.search($inputAdvanceKeyword.val()) !== -1);
+    }
     pageStorage.machineData = newDataCombination;
     pageStorage.reloadRowPage();
   }

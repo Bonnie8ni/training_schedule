@@ -41,12 +41,17 @@ export default class Pagination {
           pageLine.push($pageItem.render());
         });
         // 重長Row
-        this.PageStorage.machineData.forEach((lineData, index) => {
-          if (index >= this.PageStorage.startPage() && index < this.PageStorage.endPage()) {
-            const $GridLine = new GridLine(lineData, this.PageStorage);
-            $('.grid-list').append($GridLine.render());
-          }
-        });
+        if (this.PageStorage.machineData.length === 0) {
+          $('.grid-list').append('<div class="grid-row">No data found!</div>');
+        } else {
+          this.PageStorage.machineData.forEach((lineData, index) => {
+            if (index >= this.PageStorage.startPage() && index < this.PageStorage.endPage()) {
+              const $GridLine = new GridLine(lineData, this.PageStorage);
+              $('.grid-list').append($GridLine.render());
+            }
+          });
+        }
+
         // 重新帶入資料總筆數
         $('.rowsPerPage').text(this.PageStorage.allDataLength);
         $('.page-next').before(pageLine);

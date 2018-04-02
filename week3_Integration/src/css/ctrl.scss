@@ -66,6 +66,7 @@
       margin: 0 0 0 10px;
     }
     .advanced-search-box{
+      display: none;
       background: #fff;
       position: absolute;
       top: -13px;
@@ -96,6 +97,16 @@
           font-size: 10pt;
           background: #fff;
           border: 1px solid #D7D7D7;
+      }
+      &:before {
+        position: absolute;
+        right: -12px;
+        top: 22px;
+        border-top: 8px solid hsla(0, 0, 0, 0);
+        border-bottom: 8px solid hsla(0, 0, 0, 0);
+        border-left: 12px solid #D7D7D7;
+        display: inline-block;
+        content: '';
       }
       &:after {
         position: absolute;

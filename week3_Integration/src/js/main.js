@@ -11,6 +11,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 $().ready(() => {
+  sessionStorage.clear();
+
   // 帶入選單
   MenuData.forEach((menu) => {
     const $MenuCard = new MenuCard(menu);
