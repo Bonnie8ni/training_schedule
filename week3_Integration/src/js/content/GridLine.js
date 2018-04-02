@@ -1,3 +1,5 @@
+import MachineData from '../../api/MachineData';
+
 const STATUS = {
   0: {
     style: 'status-online',
@@ -148,26 +150,22 @@ export default class GridLine {
 
     // 將編輯的資料覆蓋原本的資料
     // 搜尋過後的編輯
-    let newDataCombination = [];
-    if (pageStorage.status === 'search') {
-      const index = pageStorage.temporaryData.findIndex(line => line.id === lineData.id);
-      pageStorage.temporaryData[index].address = $editAddress.val();
-      pageStorage.temporaryData[index].region = $editRegion.val();
-      newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1);
-      pageStorage.temporaryData = newDataCombination;
-      pageStorage.reloadSearchRowPage();
-    } else if (pageStorage.status === 'searchAdvanced') {
-      const index = pageStorage.temporaryData.findIndex(line => line.id === lineData.id);
-      pageStorage.temporaryData[index].address = $editAddress.val();
-      pageStorage.temporaryData[index].region = $editRegion.val();
-      newDataCombination = pageStorage.temporaryData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
-      pageStorage.temporaryData = newDataCombination;
-      pageStorage.reloadSearchRowPage();
+    if (pageStorage.status !== 'defult') {
+      if (pageStorage.selectedValue === undefined) pageStorage.selectedValue = '';
+      const index = MachineData.findIndex(line => line.id === lineData.id);
+      MachineData[index].address = $editAddress.val();
+      MachineData[index].region = $editRegion.val();
+      const searchIndex = pageStorage.machineData.findIndex(line => line.id === lineData.id);
+      pageStorage.machineData[searchIndex].address = $editAddress.val();
+      pageStorage.machineData[searchIndex].region = $editRegion.val();
+      pageStorage.machineData = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      pageStorage.reloadRowPage();
     } else {
       // 找尋修改id的位置
-      const index = pageStorage.machineData.findIndex(line => line.id === lineData.id);
-      pageStorage.machineData[index].address = $editAddress.val();
-      pageStorage.machineData[index].region = $editRegion.val();
+      const index = MachineData.findIndex(line => line.id === lineData.id);
+      MachineData[index].address = $editAddress.val();
+      MachineData[index].region = $editRegion.val();
+      pageStorage.reloadRowPage();
     }
   }
 

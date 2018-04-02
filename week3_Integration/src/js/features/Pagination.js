@@ -21,7 +21,6 @@ export default class Pagination {
       inputKeyword: '',
       inputAdvanceKeyword: '',
       selectedValue: '',
-      temporaryData: MachineData,
       allDataLength: () => this.PageStorage.machineData.length,
       totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
       startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
@@ -59,38 +58,6 @@ export default class Pagination {
 
         // 重新帶入資料總筆數
         $('.rowsPerPage').text(this.PageStorage.allDataLength);
-        $('.page-next').before(pageLine);
-      },
-      reloadSearchRowPage: () => {
-        $('.controls-box').remove();
-        $('.grid-row').remove();
-        $('.page-item').remove();
-
-        // 帶入功能區
-        const $Features = new Features(this.PageStorage);
-        $('.controls').append($Features.render());
-
-        // 重長page
-        const pageLine = [];
-        this.PageStorage.temporaryData.forEach((pagedata, index) => {
-          if (index + 1 > this.PageStorage.totalPage()) return;
-          const $pageItem = new Perpage(index, this.PageStorage);
-          pageLine.push($pageItem.render());
-        });
-        // 重長Row
-        if (this.PageStorage.temporaryData.length === 0) {
-          $('.grid-list').append('<div class="grid-row">No data found!</div>');
-        } else {
-          this.PageStorage.temporaryData.forEach((lineData, index) => {
-            if (index >= this.PageStorage.startPage() && index < this.PageStorage.endPage()) {
-              const $GridLine = new GridLine(lineData, this.PageStorage);
-              $('.grid-list').append($GridLine.render());
-            }
-          });
-        }
-
-        // 重新帶入資料總筆數
-        $('.rowsPerPage').text(this.PageStorage.temporaryData.length);
         $('.page-next').before(pageLine);
       },
     };

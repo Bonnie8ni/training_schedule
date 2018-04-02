@@ -104,21 +104,17 @@ export default class Features {
 
     // 確定後將資料新增
     let newDataCombination = [];
-    if (pageStorage.status === 'search') {
-      pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
-    } else if (pageStorage.status === 'searchAdvanced') {
+    if (pageStorage.status !== 'defult') {
       if (pageStorage.selectedValue !== undefined) pageStorage.selectedValue = '';
+      MachineData.push(machine);
       pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     } else {
-      pageStorage.machineData.push(machine);
-      pageStorage.temporaryData = [...pageStorage.temporaryData, machine];
-      newDataCombination = [...pageStorage.machineData];
+      MachineData.push(machine);
+      newDataCombination = [...MachineData, machine];
     }
     pageStorage.machineData = newDataCombination;
+
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
     // 關閉視窗新增視窗
@@ -130,19 +126,17 @@ export default class Features {
   // 搜尋資料
   searchData() {
     const { pageStorage, $inputKeyword } = this;
-    pageStorage.inputKeyword = '';
-    pageStorage.inputAdvanceKeyword = '';
-    pageStorage.selectedValue = '';
     pageStorage.inputKeyword = $inputKeyword.val();
+    pageStorage.inputAdvanceKeyword = pageStorage.inputKeyword;
     let newDataCombination = [];
     if (pageStorage.status !== 'defult') {
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
+      newDataCombination = MachineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
     } else {
-      newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
     }
     pageStorage.status = 'search';
-    pageStorage.temporaryData = newDataCombination;
-    pageStorage.reloadSearchRowPage();
+    pageStorage.machineData = newDataCombination;
+    pageStorage.reloadRowPage();
   }
 
   // 搜尋進階資料
@@ -158,11 +152,11 @@ export default class Features {
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     } else {
       if (selectedValue === undefined) pageStorage.selectedValue = '';
-      newDataCombination = pageStorage.temporaryData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
     }
     pageStorage.status = 'searchAdvanced';
-    pageStorage.temporaryData = newDataCombination;
-    pageStorage.reloadSearchRowPage();
+    pageStorage.machineData = newDataCombination;
+    pageStorage.reloadRowPage();
   }
 
   // 驗證輸入資料
