@@ -145,11 +145,30 @@ export default class GridLine {
     $inputDisplay(false);
     $spanAddress.text($editAddress.val());
     $spanRegion.text($editRegion.val());
-    // 找尋修改id的位置
-    const index = pageStorage.machineData.findIndex(line => line.id === lineData.id);
+
     // 將編輯的資料覆蓋原本的資料
-    pageStorage.machineData[index].address = $editAddress.val();
-    pageStorage.machineData[index].region = $editRegion.val();
+    // 搜尋過後的編輯
+    let newDataCombination = [];
+    if (pageStorage.status === 'search') {
+      const index = pageStorage.temporaryData.findIndex(line => line.id === lineData.id);
+      pageStorage.temporaryData[index].address = $editAddress.val();
+      pageStorage.temporaryData[index].region = $editRegion.val();
+      newDataCombination = pageStorage.temporaryData.filter(data => data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1);
+      pageStorage.temporaryData = newDataCombination;
+      pageStorage.reloadSearchRowPage();
+    } else if (pageStorage.status === 'searchAdvanced') {
+      const index = pageStorage.temporaryData.findIndex(line => line.id === lineData.id);
+      pageStorage.temporaryData[index].address = $editAddress.val();
+      pageStorage.temporaryData[index].region = $editRegion.val();
+      newDataCombination = pageStorage.temporaryData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      pageStorage.temporaryData = newDataCombination;
+      pageStorage.reloadSearchRowPage();
+    } else {
+      // 找尋修改id的位置
+      const index = pageStorage.machineData.findIndex(line => line.id === lineData.id);
+      pageStorage.machineData[index].address = $editAddress.val();
+      pageStorage.machineData[index].region = $editRegion.val();
+    }
   }
 
   // 編輯-取消
