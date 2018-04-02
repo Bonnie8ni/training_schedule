@@ -55,6 +55,8 @@ export default class Features {
     // 進階搜尋-搜尋
     $btnAdvancedSearch.click(() => {
       this.searchAdvancedData();
+      this.$inputKeyword.val(this.pageStorage.inputKeyword);
+      this.$inputAdvanceKeyword.val(this.pageStorage.inputKeyword);
     });
 
     this.Features = $tpControls;
@@ -144,8 +146,8 @@ export default class Features {
   searchAdvancedData() {
     const { $inputAdvanceKeyword, pageStorage, selectedValue } = this;
     let newDataCombination = [];
-    pageStorage.inputKeyword = '';
     pageStorage.inputAdvanceKeyword = $inputAdvanceKeyword.val();
+    pageStorage.inputKeyword = pageStorage.inputAdvanceKeyword;
     pageStorage.selectedValue = selectedValue;
 
     if (selectedValue !== undefined) {
