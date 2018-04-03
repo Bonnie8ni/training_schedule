@@ -11,15 +11,14 @@ export default class Features {
     this.$modalTitle = $modalModel.find('.modal-title');
 
     const $search = $tpControls.find('.search');
-    const $btnSearch = $search.find('.btn-search');
     const $advancedSearch = $search.find('.advanced-search');
-    this.$inputKeyword = $search.find('.input-keyword');
-    this.$inputKeyword.val(this.pageStorage.searchItem.inputKeyword);
+    const $btnSearch = $search.find('.btn-search');
     const $advancedSearchBox = $search.find('.advanced-search-box');
-    this.$inputAdvanceKeyword = $search.find('.input-advanced-keyword');
-    this.$selectSearch = $search.find('.select-search');
     const $btnAdvancedClose = $search.find('.btn-advanced-close');
     const $btnAdvancedSearch = $search.find('.btn-advanced-search');
+    this.$inputKeyword = $search.find('.input-keyword').val(this.pageStorage.searchItem.inputKeyword);
+    this.$inputAdvanceKeyword = $search.find('.input-advanced-keyword').val(this.pageStorage.searchItem.inputKeyword);
+    this.$selectSearch = $search.find('.select-search').val(this.pageStorage.searchItem.selectedValue);
 
     // 新增機台
     $addMachine.click(() => {
@@ -39,11 +38,11 @@ export default class Features {
     // 進階搜尋
     $advancedSearch.click(() => {
       $advancedSearchBox.show();
-      this.$inputAdvanceKeyword.val(this.pageStorage.searchItem.inputKeyword);
     });
 
+    // 進階搜尋-type
     this.$selectSearch.change(() => {
-      this.searchItem.selectedValue = this.$selectSearch.val();
+      this.pageStorage.searchItem.selectedValue = this.$selectSearch.val();
     });
 
     // 進階搜尋-關閉
@@ -55,8 +54,6 @@ export default class Features {
     // 進階搜尋-搜尋
     $btnAdvancedSearch.click(() => {
       this.searchAdvancedData();
-      this.$inputKeyword.val(this.pageStorage.searchItem.inputKeyword);
-      this.$inputAdvanceKeyword.val(this.pageStorage.searchItem.inputKeyword);
     });
 
     this.Features = $tpControls;
@@ -140,17 +137,16 @@ export default class Features {
 
   // 搜尋進階資料
   searchAdvancedData() {
-    const { $inputAdvanceKeyword, pageStorage, selectedValue } = this;
+    const { $inputAdvanceKeyword, pageStorage } = this;
     pageStorage.searchItem.inputKeyword = $inputAdvanceKeyword.val();
-    pageStorage.searchItem.selectedValue = selectedValue;
     let newDataCombination = [];
     if (pageStorage.status !== 'defult') {
-      if (pageStorage.searchItem.selectedValue !== undefined) {
+      if (pageStorage.searchItem.selectedValue !== '') {
         newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue && (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
       } else {
         newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
       }
-    } else if (pageStorage.searchItem.selectedValue !== undefined) {
+    } else if (pageStorage.searchItem.selectedValue !== '') {
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue && (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     } else {
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
