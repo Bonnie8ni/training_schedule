@@ -151,14 +151,14 @@ export default class GridLine {
     // 將編輯的資料覆蓋原本的資料
     // 搜尋過後的編輯
     if (pageStorage.status !== 'defult') {
-      if (pageStorage.selectedValue === undefined) pageStorage.selectedValue = '';
+      if (pageStorage.searchItem.selectedValue === undefined) pageStorage.searchItem.selectedValue = '';
       const index = MachineData.findIndex(line => line.id === lineData.id);
       MachineData[index].address = $editAddress.val();
       MachineData[index].region = $editRegion.val();
       const searchIndex = pageStorage.machineData.findIndex(line => line.id === lineData.id);
       pageStorage.machineData[searchIndex].address = $editAddress.val();
       pageStorage.machineData[searchIndex].region = $editRegion.val();
-      pageStorage.machineData = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      pageStorage.machineData = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
       pageStorage.reloadRowPage();
     } else {
       // 找尋修改id的位置
@@ -184,9 +184,13 @@ export default class GridLine {
     const confirm = window.confirm('Are you sure you want to delete this data?');
     if (!confirm) return;
     // 確定後將資料刪除
-    pageStorage.machineData.splice(pageStorage.machineData.findIndex(alldata => alldata.id === lineData.id), 1);
-    MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
-    console.log(pageStorage.machineData, MachineData);
+    if (pageStorage.status !== 'defult') {
+      pageStorage.machineData.splice(pageStorage.machineData.findIndex(alldata => alldata.id === lineData.id), 1);
+      MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    } else {
+      MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    }
+
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
   }

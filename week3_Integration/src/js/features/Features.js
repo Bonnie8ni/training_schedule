@@ -14,7 +14,7 @@ export default class Features {
     const $btnSearch = $search.find('.btn-search');
     const $advancedSearch = $search.find('.advanced-search');
     this.$inputKeyword = $search.find('.input-keyword');
-    this.$inputKeyword.val(this.pageStorage.inputKeyword);
+    this.$inputKeyword.val(this.pageStorage.searchItem.inputKeyword);
     const $advancedSearchBox = $search.find('.advanced-search-box');
     this.$inputAdvanceKeyword = $search.find('.input-advanced-keyword');
     this.$selectSearch = $search.find('.select-search');
@@ -39,11 +39,11 @@ export default class Features {
     // 進階搜尋
     $advancedSearch.click(() => {
       $advancedSearchBox.show();
-      this.$inputAdvanceKeyword.val(this.pageStorage.inputKeyword);
+      this.$inputAdvanceKeyword.val(this.pageStorage.searchItem.inputKeyword);
     });
 
     this.$selectSearch.change(() => {
-      this.selectedValue = this.$selectSearch.val();
+      this.searchItem.selectedValue = this.$selectSearch.val();
     });
 
     // 進階搜尋-關閉
@@ -55,8 +55,8 @@ export default class Features {
     // 進階搜尋-搜尋
     $btnAdvancedSearch.click(() => {
       this.searchAdvancedData();
-      this.$inputKeyword.val(this.pageStorage.inputKeyword);
-      this.$inputAdvanceKeyword.val(this.pageStorage.inputKeyword);
+      this.$inputKeyword.val(this.pageStorage.searchItem.inputKeyword);
+      this.$inputAdvanceKeyword.val(this.pageStorage.searchItem.inputKeyword);
     });
 
     this.Features = $tpControls;
@@ -105,10 +105,10 @@ export default class Features {
     // 確定後將資料新增
     let newDataCombination = [];
     if (pageStorage.status !== 'defult') {
-      if (pageStorage.selectedValue !== undefined) pageStorage.selectedValue = '';
+      if (pageStorage.searchItem.selectedValue !== undefined) pageStorage.searchItem.selectedValue = '';
       MachineData.push(machine);
       pageStorage.machineData.push(machine);
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     } else {
       newDataCombination = [...MachineData, machine];
     }
@@ -125,41 +125,39 @@ export default class Features {
   // 搜尋資料
   searchData() {
     const { pageStorage, $inputKeyword } = this;
-    pageStorage.inputKeyword = $inputKeyword.val();
-    pageStorage.inputAdvanceKeyword = pageStorage.inputKeyword;
+    pageStorage.searchItem.inputKeyword = $inputKeyword.val();
     let newDataCombination = [];
     if (pageStorage.status !== 'defult') {
-      newDataCombination = MachineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
+      newDataCombination = MachineData.filter(data => data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1);
     } else {
-      newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.inputKeyword) !== -1 || data.region.search(pageStorage.inputKeyword) !== -1);
+      newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1);
     }
     pageStorage.status = 'search';
     pageStorage.machineData = newDataCombination;
-    pageStorage.currentPage = 1;
+    pageStorage.pagination.currentPage = 1;
     pageStorage.reloadRowPage();
   }
 
   // 搜尋進階資料
   searchAdvancedData() {
     const { $inputAdvanceKeyword, pageStorage, selectedValue } = this;
-    pageStorage.inputAdvanceKeyword = $inputAdvanceKeyword.val();
-    pageStorage.inputKeyword = pageStorage.inputAdvanceKeyword;
-    pageStorage.selectedValue = selectedValue;
+    pageStorage.searchItem.inputKeyword = $inputAdvanceKeyword.val();
+    pageStorage.searchItem.selectedValue = selectedValue;
     let newDataCombination = [];
     if (pageStorage.status !== 'defult') {
-      if (pageStorage.selectedValue !== undefined) {
-        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      if (pageStorage.searchItem.selectedValue !== undefined) {
+        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue && (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
       } else {
-        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+        newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
       }
-    } else if (pageStorage.selectedValue !== undefined) {
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue && (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+    } else if (pageStorage.searchItem.selectedValue !== undefined) {
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue && (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     } else {
-      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.selectedValue || (data.address.search(pageStorage.inputAdvanceKeyword) !== -1 || data.region.search(pageStorage.inputAdvanceKeyword) !== -1));
+      newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     }
     pageStorage.status = 'searchAdvanced';
     pageStorage.machineData = newDataCombination;
-    pageStorage.currentPage = 1;
+    pageStorage.pagination.currentPage = 1;
     pageStorage.reloadRowPage();
   }
 

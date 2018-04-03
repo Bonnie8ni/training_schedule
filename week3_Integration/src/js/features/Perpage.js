@@ -14,12 +14,12 @@ export default class Perpage {
     $pageLink.text(perDefult.name);
 
     // 當在最後一頁時，若將資料刪光，會跳至所在頁前一頁
-    if (PageStorage.totalPage() < PageStorage.currentPage) {
-      PageStorage.currentPage -= 1;
+    if (PageStorage.totalPage() < PageStorage.pagination.currentPage) {
+      PageStorage.pagination.currentPage -= 1;
     }
 
     // 現在所在頁面若等於點擊頁面則狀態改變
-    if (PageStorage.currentPage === perDefult.name) {
+    if (PageStorage.pagination.currentPage === perDefult.name) {
       perDefult.active = true;
     } else {
       perDefult.active = false;
@@ -31,11 +31,11 @@ export default class Perpage {
     // 頁數點擊時
     $pageItem.click((e) => {
       e.preventDefault();
-      PageStorage.currentPage = parseInt($pageItem.text(), 10);
+      PageStorage.pagination.currentPage = parseInt($pageItem.text(), 10);
       PageStorage.reloadRowPage();
     });
     this.Perpage = $pageItem;
-    return PageStorage.currentPage;
+    return PageStorage.pagination.currentPage;
   }
   render() {
     return this.Perpage;

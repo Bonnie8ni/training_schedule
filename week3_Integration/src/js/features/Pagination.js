@@ -15,18 +15,21 @@ export default class Pagination {
 
     this.PageStorage = {
       status: 'defult',
-      pageSize: 8,
-      currentPage: 1,
       machineData: MachineData,
-      inputKeyword: '',
-      inputAdvanceKeyword: '',
-      selectedValue: '',
+      pagination: {
+        pageSize: 8,
+        currentPage: 1,
+      },
+      searchItem: {
+        inputKeyword: '',
+        selectedValue: '',
+      },
       allDataLength: () => this.PageStorage.machineData.length,
-      totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pageSize),
-      startPage: () => (this.PageStorage.pageSize * this.PageStorage.currentPage) - this.PageStorage.pageSize,
+      totalPage: () => Math.ceil(this.PageStorage.allDataLength() / this.PageStorage.pagination.pageSize),
+      startPage: () => (this.PageStorage.pagination.pageSize * this.PageStorage.pagination.currentPage) - this.PageStorage.pagination.pageSize,
       endPage: () => {
-        if (this.PageStorage.pageSize * this.PageStorage.currentPage > this.PageStorage.allDataLength()) return this.PageStorage.allDataLength();
-        return this.PageStorage.pageSize * this.PageStorage.currentPage;
+        if (this.PageStorage.pagination.pageSize * this.PageStorage.pagination.currentPage > this.PageStorage.allDataLength()) return this.PageStorage.allDataLength();
+        return this.PageStorage.pagination.pageSize * this.PageStorage.pagination.currentPage;
       },
       reloadRowPage: () => {
         $('.controls-box').remove();
@@ -63,21 +66,21 @@ export default class Pagination {
     };
 
     $pageTop.click(() => {
-      this.PageStorage.currentPage = 1;
+      this.PageStorage.pagination.currentPage = 1;
       this.PageStorage.reloadRowPage();
     });
     $pagePrev.click(() => {
-      if (this.PageStorage.currentPage === 1) return;
-      this.PageStorage.currentPage -= 1;
+      if (this.PageStorage.pagination.currentPage === 1) return;
+      this.PageStorage.pagination.currentPage -= 1;
       this.PageStorage.reloadRowPage();
     });
     $pageNext.click(() => {
-      if (this.PageStorage.currentPage === Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pageSize)) return;
-      this.PageStorage.currentPage += 1;
+      if (this.PageStorage.pagination.currentPage === Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pagination.pageSize)) return;
+      this.PageStorage.pagination.currentPage += 1;
       this.PageStorage.reloadRowPage();
     });
     $pageEnd.click(() => {
-      this.PageStorage.currentPage = Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pageSize);
+      this.PageStorage.pagination.currentPage = Math.ceil(this.PageStorage.machineData.length / this.PageStorage.pagination.pageSize);
       this.PageStorage.reloadRowPage();
     });
 
