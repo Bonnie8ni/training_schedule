@@ -135,6 +135,7 @@ export default class Features {
     }
     pageStorage.status = 'search';
     pageStorage.machineData = newDataCombination;
+    pageStorage.currentPage = 1;
     pageStorage.reloadRowPage();
   }
 
@@ -158,6 +159,7 @@ export default class Features {
     }
     pageStorage.status = 'searchAdvanced';
     pageStorage.machineData = newDataCombination;
+    pageStorage.currentPage = 1;
     pageStorage.reloadRowPage();
   }
 
