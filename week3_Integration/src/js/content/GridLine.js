@@ -185,6 +185,8 @@ export default class GridLine {
     if (!confirm) return;
     // 確定後將資料刪除
     pageStorage.machineData.splice(pageStorage.machineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    MachineData.splice(MachineData.findIndex(alldata => alldata.id === lineData.id), 1);
+    console.log(pageStorage.machineData, MachineData);
     // 重新長出列表和分頁
     pageStorage.reloadRowPage();
   }
