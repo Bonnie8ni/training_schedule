@@ -47,7 +47,6 @@ export default class Features {
 
     // 進階搜尋-關閉
     $btnAdvancedClose.click(() => {
-      this.$inputAdvanceKeyword.val('');
       $advancedSearchBox.hide();
     });
 
@@ -101,18 +100,23 @@ export default class Features {
 
     // 確定後將資料新增
     let newDataCombination = [];
+    // if 若狀態已搜尋過 else 未搜尋過
     if (pageStorage.status !== 'defult') {
-      if (pageStorage.searchItem.selectedValue !== undefined) pageStorage.searchItem.selectedValue = '';
+      // 原始資料新增
       MachineData.push(machine);
+      // 修改資料新增
       pageStorage.machineData.push(machine);
+      // 修改資料依照搜尋值filter
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     } else {
+      // 原始資料新增
       newDataCombination = [...MachineData, machine];
     }
+    // 修改資料得以上結果
     pageStorage.machineData = newDataCombination;
-
-    // 重新長出列表和分頁
+    // 重新render
     pageStorage.reloadRowPage();
+
     // 關閉視窗新增視窗
     $('#exampleModalCenter').modal('hide');
     $('body').removeAttr('class').removeAttr('style');
@@ -122,24 +126,32 @@ export default class Features {
   // 搜尋資料
   searchData() {
     const { pageStorage, $inputKeyword } = this;
+    // 取輸入框的值
     pageStorage.searchItem.inputKeyword = $inputKeyword.val();
     let newDataCombination = [];
+    // if 若狀態已搜尋過 else 未搜尋過
     if (pageStorage.status !== 'defult') {
       newDataCombination = MachineData.filter(data => data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1);
     } else {
       newDataCombination = pageStorage.machineData.filter(data => data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1);
     }
+    // 加入搜尋狀態
     pageStorage.status = 'search';
+    // 將filter後的data回傳新儲存區
     pageStorage.machineData = newDataCombination;
+    // 搜尋完後頁數從1開始
     pageStorage.pagination.currentPage = 1;
+    // 重新render
     pageStorage.reloadRowPage();
   }
 
   // 搜尋進階資料
   searchAdvancedData() {
     const { $inputAdvanceKeyword, pageStorage } = this;
+    // 取輸入框的值
     pageStorage.searchItem.inputKeyword = $inputAdvanceKeyword.val();
     let newDataCombination = [];
+    // if 若狀態已搜尋過 elseif 未搜尋過進階搜尋有type else 未搜尋過進階搜尋無type
     if (pageStorage.status !== 'defult') {
       if (pageStorage.searchItem.selectedValue !== '') {
         newDataCombination = MachineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue && (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
@@ -151,9 +163,13 @@ export default class Features {
     } else {
       newDataCombination = pageStorage.machineData.filter(data => data.status.toString() === pageStorage.searchItem.selectedValue || (data.address.search(pageStorage.searchItem.inputKeyword) !== -1 || data.region.search(pageStorage.searchItem.inputKeyword) !== -1));
     }
+    // 加入搜尋狀態
     pageStorage.status = 'searchAdvanced';
+    // 將filter後的data回傳新儲存區
     pageStorage.machineData = newDataCombination;
+    // 搜尋完後頁數從1開始
     pageStorage.pagination.currentPage = 1;
+    // 重新render
     pageStorage.reloadRowPage();
   }
 
